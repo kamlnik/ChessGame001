@@ -20,9 +20,10 @@ public:
     Pawn(Color nColor, const TextureHolder& textures);  
     void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const override;
     //virtual void can_move(Type type);
-    std::vector<sf::Vector2f> all_move() override; // virtual void значит что может быть переопределена потом в наследовательных функциях 
+    std::vector<sf::Vector2f> all_move() override; // virtual void значит что может быть переопределена потом в наследовательных функциях
+
     // virtual void updateCurrent(sf::Time dt);
-private:
+public:
     sf::Sprite mSprite; // вообще не нужно 
    // Color mColor; // не факт что вообще нужно с собой таcкать 
 };

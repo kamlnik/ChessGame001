@@ -14,7 +14,7 @@ Textures::ID toTextureID(unsigned t)
 	}
 }
 
-Pawn::Pawn(Color ncolor, const TextureHolder& textures) : Figure(Type::Pawn, ncolor), mSprite(textures.get(toTextureID(ncolor))) {}
+Pawn::Pawn(Color ncolor, const TextureHolder& textures) :Figure(Type::Pawn, ncolor), mSprite(textures.get(toTextureID(ncolor))) { this->set_boundingBox(mSprite.getGlobalBounds()); }
 
 
 void Pawn::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {

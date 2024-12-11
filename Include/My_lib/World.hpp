@@ -28,8 +28,6 @@ public:
     explicit World(sf::RenderWindow& window);
 //    void update(sf::Time dt);
     void draw();
-    
-    
 private:
     void loadTextures();
     void buildScene();
@@ -42,6 +40,7 @@ private:
     };
 
 private:
+    bool Whoose_move = 1;
     sf::RenderWindow& mWindow;
     sf::View  mWorldView;
     TextureHolder mTextures;

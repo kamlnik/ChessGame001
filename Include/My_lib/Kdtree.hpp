@@ -7,7 +7,6 @@
 
 class kdNode {
 private:
-
     std::shared_ptr <Figure> ptr;
     std::shared_ptr <kdNode> right;
     std::shared_ptr <kdNode> left;
@@ -42,19 +41,10 @@ public:
     std::shared_ptr<kdNode> FindNode(float xc, float yc);
     std::shared_ptr<kdNode> findminx(std::shared_ptr<kdNode> fptr);
     std::shared_ptr<kdNode> findminy(std::shared_ptr<kdNode> fptr);
+    std::shared_ptr<kdNode> getroot() { return root; }
+    void tree_bypass( float xc, float yc /*std::shared_ptr<kdNode>* Needed_element*/);
     // std::shared_ptr<kdNode> FindMin(std::shared_ptr<kdNode> fptr);
-    void drawtree(sf::RenderTarget& target) {
-        putTree(target, root);
-    }
-    void putTree(sf::RenderTarget& target, std::shared_ptr <kdNode> ptr)
-    {
-        if (ptr != nullptr) {
-            putTree(target, ptr->getleftchild());
-            target.draw(*(ptr->getthis())); // интересно будет ли работать 
-            putTree(target, ptr->getrightchild());
-
-        }
-    }
+    void drawtree(sf::RenderTarget& target);
 };
 
 

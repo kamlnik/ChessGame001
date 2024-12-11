@@ -18,16 +18,19 @@ public:
    // explicit Figure(Type type);
   //  Figure(Type type, const TextureHolder& textures); // тоже пока не нужно 
     Figure();
-    Figure(Type newType, Color newColor) : mType(newType), mColor(newColor) {}
+    Figure(Type newType, Color newColor) : mType(newType), mColor(newColor) /*, boundingBox(newboundingBox)*/ {}
+    virtual std::vector<sf::Vector2f> all_move(); // virtual void значит что может быть переопределена потом в наследовательных функциях
+    sf::FloatRect boundingBox; 
+    void set_boundingBox(sf::FloatRect newboundingBox) { boundingBox = newboundingBox; }
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const; // необходимо определение 
     virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const; 
     virtual void can_move(Type type);
-    virtual std::vector<sf::Vector2f> all_move(); // virtual void значит что может быть переопределена потом в наследовательных функциях 
    // virtual void updateCurrent(sf::Time dt);
 protected:
     Type mType;
     Color mColor;
+    
 private:
   // sf::Sprite mSprite; // вообще не нужно 
     

@@ -278,3 +278,41 @@ void Copy_Info(std::shared_ptr <kdNode> ptr1, std::shared_ptr <kdNode> ptr2) {
 void Kdtree::ChangeNode(kdNode* delNode, int nx, int ny) {
 
 }
+void putTree(sf::RenderTarget& target, std::shared_ptr <kdNode> ptr, int level)
+{
+    int i = level;
+    if (ptr != nullptr) {
+        
+        putTree(target, ptr->getrightchild(), level+1);
+       // while (i-- > 0) {
+       //     std::cout << "      ";
+       // }
+      //  std::cout << ptr.get()->getthis()->getPosition().x << " , " << ptr.get()->getthis()->getPosition().y << "\n";
+        target.draw(*(ptr->getthis())); // интересно будет ли работать 
+        putTree(target, ptr->getleftchild(), level + 1);
+
+    }
+}
+void Kdtree::drawtree(sf::RenderTarget& target) {
+    putTree(target, root, 0);
+}
+
+
+void tree_bypass_help_func(std::shared_ptr<kdNode> fptr, float xc, float yc) {
+    std::cout << 1 << std::endl;
+    if (fptr != nullptr) {
+
+        tree_bypass_help_func(fptr->getrightchild(), xc, yc);
+        //if ....
+        std::cout << fptr->getthis()->getPosition().x << fptr->getthis()->getPosition().y << std::endl;
+        //if (fptr->getthis()->boundingBox.contains(xc, yc) && Needed_element == nullptr ) {
+        //	std::cout << fptr->getthis()->boundingBox.left << std::endl;
+        //	*Needed_element = fptr;
+        //}
+        tree_bypass_help_func(fptr->getleftchild(), xc, yc);
+
+    }
+}
+void Kdtree::tree_bypass( float xc, float yc ) {
+    tree_bypass_help_func(this->root, xc, yc);
+}
