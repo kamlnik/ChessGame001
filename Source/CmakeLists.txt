@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.8)
+# Добавьте источник в исполняемый файл этого проекта.
+#add_executable (Source "Main.cpp" "Game.cpp" "SceneNode.cpp" "Figure.cpp" "Entity.cpp" "SpriteNode.cpp" "World.cpp" "Pawn.cpp")
+add_executable (Source "Main.cpp" "Game.cpp"  "Figure.cpp" "Pawn.cpp" "Kdtree.cpp" "World.cpp" )
+#add_subdirectory("Resource")
+
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-window.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-network.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-system.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-audio.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics-d.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-window-d.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-network-d.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-system-d.lib)
+target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-audio-d.lib)
+#target_link_libraries(ChessGame "Resource")
+
+
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+
+set_property(TARGET Source PROPERTY CXX_STANDARD 17)
+set_property(TARGET Source PROPERTY CXX_STANDARD_REQUIRED ON)
