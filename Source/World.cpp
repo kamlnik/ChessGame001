@@ -34,30 +34,15 @@ void World::draw() // нужна отрисовка дерева фигур
 	mWindow.display();
 }
 
+
 void World::loadTextures()
 {
 	mTextures.load(Textures::Chess_board, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/Chess_board2.png");
 	mTextures.load(Textures::wPawn, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wP.png");
 	mTextures.load(Textures::bPawn, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bP.png");
 }
-void tree_bypass(std::shared_ptr<kdNode> fptr, float xc, float yc, std::vector<std::shared_ptr<kdNode>>& Needed_elements) {
-	//std::cout << 1 << std::endl;
-	if (fptr != nullptr) {
-		
-		tree_bypass(fptr->getrightchild(), xc, yc, Needed_elements);
-		//if ...
-		sf::FloatRect rect(sf::Vector2f(fptr->getthis()->getPosition().x - 40, fptr->getthis()->getPosition().y - 40), sf::Vector2f(80.f,80.f));
-		if (Needed_elements.empty() == true && rect.contains(xc,yc)) {
-		//	std::cout << fptr->getthis()->boundingBox.left << std::endl;
-			Needed_elements.push_back(fptr);
-		}
-		tree_bypass(fptr->getleftchild(), xc, yc, Needed_elements);
 
-	}
-	//else {
-	//	std::cout << 2 << std::endl;
-	//}
-}
+
 void World::buildScene() {
 	
 	sf::Texture& texture = mTextures.get(Textures::Chess_board);
@@ -88,14 +73,6 @@ void World::buildScene() {
 		bPawn->setPosition(50.f + i * 100.f, 150.f);
 		std::shared_ptr <kdNode> node(new kdNode(std::move(bPawn)));
 		Chesstree.AddNode(node);
-	}
-	if (Chesstree.getroot() == nullptr) {
-		throw std::runtime_error("wefqw");
-	}
-	std::shared_ptr<kdNode> testptr = Chesstree.getroot();
-	if ((Chesstree.getroot())->getrightchild() == nullptr) {
-		
-		throw std::runtime_error("????");
 	}
 
 //	std::shared_ptr<kdNode>* Needed_element = nullptr;
@@ -149,49 +126,98 @@ void World::buildScene() {
 	//mSceneLayers[Background]->attachChild(std::move(bPawn1));
 	*/
 }
+float correct_position(float position) {
+	float returned_val = 0.f;
+	int per = position / 50;
+	if (per % 2 == 0) {
+		returned_val = (per + 1) * 50;
+		return returned_val;
+	}
+	returned_val = (per) * 50;
+	return returned_val;
+}
+void tree_bypass(std::shared_ptr<kdNode> fptr, float xc, float yc, std::vector<std::shared_ptr<kdNode>>& Needed_elements, bool whoose_move) {
+	if (fptr != nullptr) {
+
+		tree_bypass(fptr->getrightchild(), xc, yc, Needed_elements, whoose_move);
+		//if ...
+		sf::FloatRect rect(sf::Vector2f(fptr->getthis()->getPosition().x - 40, fptr->getthis()->getPosition().y - 40), sf::Vector2f(80.f, 80.f));
+		unsigned val = fptr->getthis()->getColor();
+		if (Needed_elements.empty() == true && val == whoose_move &&rect.contains(xc, yc)) {
+			Needed_elements.push_back(fptr);
+		}
+		tree_bypass(fptr->getleftchild(), xc, yc, Needed_elements, whoose_move);
+
+	}
+}
+void putTree(std::shared_ptr <kdNode> ptr, int level)
+{
+	int i = level;
+	if (ptr != nullptr) {
+
+		putTree(ptr->getrightchild(), level + 1);
+		while (i-- > 0) {
+			std::cout << "      ";
+		}
+		std::cout << ptr.get()->getthis()->getPosition().x << " , " << ptr.get()->getthis()->getPosition().y << "\n";
+		//target.draw(*(ptr->getthis())); // интересно будет ли работать 
+		putTree(ptr->getleftchild(), level + 1);
+
+	}
+}
 void World::World_processEvents() {
 	bool isMove = false;//переменная для щелчка мыши по спрайту
 	float dX = 0;
 	float dY = 0;
 	std::vector<std::shared_ptr<kdNode>> moved_element;
+	sf::Vector2f Previos_Position;
 	while (mWindow.isOpen())
 	{
+		this->draw();
+		if (moved_element.empty() == false) {
+			mWindow.draw(*(moved_element.front()->getthis()));
+		}
 		sf::Vector2i pixelPos = sf::Mouse::getPosition(mWindow);//забираем коорд курсора
 		sf::Vector2f pos = mWindow.mapPixelToCoords(pixelPos);
 		sf::Event event;
-		//std::cout << pos.x << pos.y << std::endl;
-		//std::cout << "the end " << std::endl;
 		while (mWindow.pollEvent(event)) {
 			if (event.type == sf::Event::Closed) {
 				mWindow.close();
 			}
-			//tree_bypass(Chesstree.getroot(), pos.x, pos.y, moved_element);
 			if (event.type == sf::Event::MouseButtonPressed) {
+
 				if (event.key.code == sf::Mouse::Left) {
-					//pixelPos = sf::Mouse::getPosition(mWindow);
-					//pos = mWindow.mapPixelToCoords(pixelPos);
-					//tree_bypass(Chesstree.getroot(), pos.x, pos.y, moved_element); //  не работает
-					//std::cout << pos.x << pos.y << std::endl;
-					tree_bypass(Chesstree.getroot(), pos.x, pos.y, moved_element);
+					tree_bypass(Chesstree.getroot(), pos.x, pos.y, moved_element, Whoose_move);
 					if (moved_element.empty() == false) {
+						std::cout << 1 <<std::endl;
+						Previos_Position = (moved_element.front())->getthis()->getPosition();
 						dX = pos.x - (moved_element.front())->getthis()->getPosition().x;
 						dY = pos.y - (moved_element.front())->getthis()->getPosition().y;
 						isMove = true;
-					}else {
-						std::cout << "daun\n";
 					}
-					//if (Chess_board.getGlobalBounds().contains(pos.x, pos.y)) {
-					//	dX = pos.x - Chess_board.getPosition().x;
-					//	dY = pos.y - Chess_board.getPosition().y;
-					//	isMove = true;
-					//} 
 				}
 			}
-			if (event.type == sf::Event::MouseButtonReleased) {
-				if (event.key.code == sf::Mouse::Left)
-					isMove = false;
-				moved_element.clear();
-				//shape.setFillColor(sf::Color::White);
+			if (event.type == sf::Event::MouseButtonReleased ) {
+				if (event.key.code == sf::Mouse::Left) {
+					if (moved_element.empty() == false) {
+						moved_element.front()->getthis()->setPosition(correct_position(moved_element.front()->getthis()->getPosition().x), correct_position(moved_element.front()->getthis()->getPosition().y));
+						sf::Vector2f New_position = moved_element.front()->getthis()->getPosition();
+						Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position); // работает 
+						//putTree(Chesstree.getroot(), 0);
+						isMove = false;
+						//putTree(Chesstree.getroot(), 0);
+						if (moved_element.front()->getthis()->getPosition() != Previos_Position) {
+							if (Whoose_move) {
+								Whoose_move = 0;
+							}
+							else {
+								Whoose_move = 1;
+							}
+						}
+						Previos_Position = sf::Vector2f(0.f, 0.f);
+						moved_element.clear();
+					}
+				}
 			}
 
 		}
@@ -201,7 +227,7 @@ void World::World_processEvents() {
 			//pos = mWindow.mapPixelToCoords(pixelPos);
 			(moved_element.front())->getthis()->setPosition(pos.x - dX, pos.y - dY);
 		}
-		this->draw();
+		//this->draw();
 	}
 }
 

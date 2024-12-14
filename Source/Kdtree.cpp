@@ -51,7 +51,7 @@ std::shared_ptr<kdNode> Kdtree::findminx(std::shared_ptr<kdNode> fptr) {
 std::shared_ptr<kdNode> Kdtree::findminy(std::shared_ptr<kdNode> fptr) {
     return hfindminy(fptr);
 }
-std::shared_ptr <kdNode> delete_kdNode(std::shared_ptr<kdNode> fptr) {
+/*std::shared_ptr <kdNode> delete_kdNode(std::shared_ptr<kdNode> fptr) {
     if (fptr != nullptr) {
         if (fptr->getrightchild() != nullptr) {
 
@@ -114,6 +114,7 @@ std::shared_ptr <kdNode> delete_kdNode(std::shared_ptr<kdNode> fptr) {
                         fptr->setparent(nullptr);
                     }
                 }
+                fptr.~shared_ptr();
             }
             // else {
               //   return nullptr;
@@ -125,6 +126,299 @@ std::shared_ptr <kdNode> delete_kdNode(std::shared_ptr<kdNode> fptr) {
         throw std::logic_error("not found deleted element");
     }
     return fptr;
+}*/
+/*std::shared_ptr <kdNode> Kdtree::delete_kdNode(std::shared_ptr<kdNode> fptr) {
+    if (fptr != nullptr) {
+        if (fptr->getrightchild() != nullptr) {
+
+            if (fptr->getcoord() == true) { // ломается при 5 5 
+                std::shared_ptr <kdNode> findp = hfindminx(fptr->getrightchild());  // find min in right subtree
+                std::shared_ptr <kdNode> hfindp = delete_kdNode(findp);
+                hfindp->setrightchild(fptr->getrightchild());
+                hfindp->setleftchild(fptr->getleftchild());
+                if (fptr->getparent() != nullptr) {
+                    if (fptr->getparent()->getcoord() == true) {
+                        if (fptr->getthis()->getPosition().x >= fptr->getparent()->getthis()->getPosition().x) {
+                            fptr->getparent()->setrightchild(hfindp);
+                        }
+                        else {
+                            fptr->getparent()->setleftchild(hfindp);
+                        }
+                    }
+                    else {
+                        if (fptr->getthis()->getPosition().y >= fptr->getparent()->getthis()->getPosition().y) {
+                            fptr->getparent()->setrightchild(hfindp);
+                        }
+                        else {
+                            fptr->getparent()->setleftchild(hfindp);
+                        }
+                    }
+                }
+                else {
+                    root = hfindp;
+                }
+                hfindp->setparent(fptr->getparent());
+                fptr->setrightchild(nullptr);
+                fptr->setleftchild(nullptr);
+                hfindp->setcoord(true);
+                fptr->setparent(nullptr);
+            }
+            else {
+                std::shared_ptr <kdNode> findp = hfindminy(fptr->getrightchild());  // find min in right subtree
+                std::shared_ptr <kdNode> hfindp = delete_kdNode(findp);
+                hfindp->setrightchild(fptr->getrightchild());
+                hfindp->setleftchild(fptr->getleftchild());
+                if (fptr->getparent() != nullptr) {
+                    if (fptr->getparent()->getcoord() == true) {
+                        if (fptr->getthis()->getPosition().x >= fptr->getparent()->getthis()->getPosition().x) {
+                            fptr->getparent()->setrightchild(hfindp);
+                        }
+                        else {
+                            fptr->getparent()->setleftchild(hfindp);
+                        }
+                    }
+                    else {
+                        if (fptr->getthis()->getPosition().y >= fptr->getparent()->getthis()->getPosition().y) {
+                            fptr->getparent()->setrightchild(hfindp);
+                        }
+                        else {
+                            fptr->getparent()->setleftchild(hfindp);
+                        }
+                    }
+                }
+                else {
+                    root = hfindp;
+                }
+                hfindp->setparent(fptr->getparent());
+                fptr->setrightchild(nullptr);
+                fptr->setleftchild(nullptr);
+                hfindp->setcoord(false);
+                fptr->setparent(nullptr);
+            }
+        }
+        else if (fptr->getleftchild() != nullptr) {
+            if (fptr->getcoord() == true) {
+                std::shared_ptr <kdNode> findp = hfindminx(fptr->getleftchild());  // find min in right subtree
+                std::shared_ptr <kdNode> hfindp = delete_kdNode(findp);
+                hfindp->setrightchild(fptr->getleftchild());
+                hfindp->setleftchild(nullptr);
+                if (fptr->getparent() != nullptr) {
+
+                    if (fptr->getparent()->getcoord() == true) {
+                        if (fptr->getthis()->getPosition().x >= fptr->getparent()->getthis()->getPosition().x) {
+                            fptr->getparent()->setrightchild(hfindp);
+                        }
+                        else {
+                            fptr->getparent()->setleftchild(hfindp);
+                        }
+                    }
+                    else {
+                        if (fptr->getthis()->getPosition().y >= fptr->getparent()->getthis()->getPosition().y) {
+                            fptr->getparent()->setrightchild(hfindp);
+                        }
+                        else {
+                            fptr->getparent()->setleftchild(hfindp);
+                        }
+                    }
+                }
+                else {
+                    root = hfindp;
+                }
+                hfindp->setparent(fptr->getparent());
+                fptr->setrightchild(nullptr);
+                fptr->setleftchild(nullptr);
+                fptr->setparent(nullptr);
+                hfindp->setcoord(true);
+            }
+            else {
+                std::shared_ptr <kdNode> findp = hfindminy(fptr->getleftchild());  // find min in right subtree
+                // fptr->setthis(findp->getthis());
+                std::shared_ptr <kdNode> hfindp = delete_kdNode(findp);
+                hfindp->setrightchild(fptr->getleftchild());
+                hfindp->setleftchild(nullptr);
+                if (fptr->getparent() != nullptr) {
+                    if (fptr->getparent()->getcoord() == true) {
+                        if (fptr->getthis()->getPosition().x >= fptr->getparent()->getthis()->getPosition().x) {
+                            fptr->getparent()->setrightchild(hfindp);
+                        }
+                        else {
+                            fptr->getparent()->setleftchild(hfindp);
+                        }
+                    }
+                    else {
+                        if (fptr->getthis()->getPosition().y >= fptr->getparent()->getthis()->getPosition().y) {
+                            fptr->getparent()->setrightchild(hfindp);
+                        }
+                        else {
+                            fptr->getparent()->setleftchild(hfindp);
+                        }
+                    }
+                }
+                else {
+                    root = hfindp;
+                }
+                hfindp->setparent(fptr->getparent());
+                fptr->setrightchild(nullptr);
+                fptr->setleftchild(nullptr);
+                fptr->setparent(nullptr);
+                //   fptr->setthis((hfindp->getthis()));
+                hfindp->setcoord(false);
+            }
+        }
+        else {
+            std::shared_ptr<kdNode> mparent = fptr->getparent();
+            if (mparent != nullptr) {   // подчищаем parent
+                if (fptr->getparent()->getcoord() == true) {
+                    if (fptr->getthis()->getPosition().x >= fptr->getparent()->getthis()->getPosition().x) {
+                        fptr->getparent()->setrightchild(nullptr);
+                        fptr->setparent(nullptr);
+                        // fptr.~shared_ptr();
+                    }
+                    else {
+                        fptr->getparent()->setleftchild(nullptr);
+                        fptr->setparent(nullptr);
+                        // fptr.~shared_ptr();
+                    }
+                }
+                else {
+                    if (fptr->getthis()->getPosition().y >= fptr->getparent()->getthis()->getPosition().y) {
+                        fptr->getparent()->setrightchild(nullptr);
+                        fptr->setparent(nullptr);
+                        //fptr.~shared_ptr();
+                    }
+                    else {
+                        fptr->getparent()->setleftchild(nullptr);
+                        fptr->setparent(nullptr);
+                        //  fptr.~shared_ptr();
+                    }
+                }
+            }
+            // else {
+              //   return nullptr;
+             //}
+            // return nullptr; // удаление этого узла 
+        }
+    }
+    else {
+        throw std::logic_error("not found deleted element");
+    }
+    return fptr;
+}*/
+unsigned help_to_find_node_for_delete(std::shared_ptr<kdNode> fptr) {
+    std::shared_ptr<kdNode> parent = fptr->getparent();
+    std::shared_ptr<Figure> figure = fptr->getthis();
+    if (parent == nullptr) {
+        return 2;
+    }
+    std::shared_ptr<Figure> pfigure = parent->getthis();
+    bool coord = parent->getcoord();
+    if (coord == true) {
+        if (figure->getPosition().x >= pfigure->getPosition().x) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    if (coord == false) {
+        if (figure->getPosition().y >= pfigure->getPosition().y) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    return 2;
+}
+void Kdtree::delete_kdNode(std::shared_ptr<kdNode> fptr) { /// not work 
+    if (fptr == nullptr) {
+        return;
+    }
+    if (fptr->getrightchild() != nullptr) {
+        //std::shared_ptr<kdNode> needed; // needed - min элемент, fptr - удаляемый узел 
+        std::shared_ptr<kdNode> valptr;
+        if (fptr->getcoord() == true) {
+            valptr = findminx(fptr->getrightchild()); // needed - min элемент, fptr - удаляемый узел     
+        }
+        else {
+            valptr = findminy(fptr->getrightchild());
+        }
+        delete_kdNode(valptr); // это рекурсия от правого узла, дальше замена указателей
+
+        valptr->setrightchild(fptr->getrightchild()); // необходимо корректно определять в конце 
+        valptr->setleftchild(fptr->getleftchild());
+        valptr->setcoord(fptr->getcoord());
+        valptr->setparent(fptr->getparent());
+        if (fptr->getrightchild() != nullptr) {
+            fptr->getrightchild()->setparent(valptr);
+        }
+        if (fptr->getleftchild() != nullptr) {
+            fptr->getleftchild()->setparent(valptr);
+        }
+        unsigned per = help_to_find_node_for_delete(fptr);
+        if (per == 2) {
+            root = valptr;
+        }
+        if (per == 0) {
+            fptr->getparent()->setleftchild(valptr);
+        }
+        if (per == 1) {
+            fptr->getparent()->setrightchild(valptr);
+        }
+        // fptr->setleftchild(nullptr);
+        // fptr->setrightchild(nullptr);
+    }
+    else if (fptr->getleftchild() != nullptr) {
+        // std::shared_ptr<kdNode> needed; // needed - min элемент, fptr - удаляемый узел 
+        std::shared_ptr<kdNode> valptr;
+        if (fptr->getcoord() == true) {
+            valptr = findminx(fptr->getleftchild());
+        }
+        else {
+            valptr = findminy(fptr->getleftchild());
+        }
+        delete_kdNode(valptr);
+        // fptr->getleftchild()->setparent(valptr);
+        valptr->setrightchild(fptr->getleftchild()); // необходимо корректно определять в конце 
+        valptr->setleftchild(nullptr);
+        valptr->setcoord(fptr->getcoord());
+        valptr->setparent(fptr->getparent());
+        if (fptr->getrightchild() != nullptr) {
+            fptr->getrightchild()->setparent(valptr);
+        }
+        if (fptr->getleftchild() != nullptr) {
+            fptr->getleftchild()->setparent(valptr);
+        }
+        unsigned per = help_to_find_node_for_delete(fptr);
+        if (per == 2) {
+            root = valptr;
+        }
+        if (per == 0) {
+            fptr->getparent()->setleftchild(valptr);
+        }
+        if (per == 1) {
+            fptr->getparent()->setrightchild(valptr);
+        }
+        //fptr->setleftchild(nullptr);
+        //fptr->setrightchild(nullptr);
+    }
+    else {
+        if (fptr->getparent() == nullptr) {
+            root = nullptr;
+        }
+        else {
+            unsigned per = help_to_find_node_for_delete(fptr);
+            if (per == 0) {
+                (fptr->getparent())->setleftchild(nullptr);
+                fptr->setparent(nullptr);
+            }
+            else if (per == 1) {
+                (fptr->getparent())->setrightchild(nullptr);
+                fptr->setparent(nullptr);
+            }
+        }
+    }
+    //return fptr;
 }
 void Kdtree::AddNode(std::shared_ptr <kdNode> newNode) { // надо сделать проверку на дубликаты 
     if (FindNode(newNode->getthis()->getPosition().x, newNode->getthis()->getPosition().y) != nullptr) {
@@ -271,12 +565,15 @@ void Kdtree::DeleteNode(std::shared_ptr <kdNode> fptr) {
     }
     
 }
-void Copy_Info(std::shared_ptr <kdNode> ptr1, std::shared_ptr <kdNode> ptr2) {
-    std::shared_ptr<kdNode> hptr = ptr1;
-    ptr1->setthis(ptr2->getthis());
-}
-void Kdtree::ChangeNode(kdNode* delNode, int nx, int ny) {
 
+void Kdtree::ChangeNode(std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position) {
+    if (fptr == nullptr) {
+        throw std::runtime_error("ChangeNode Error: pointer = nullptr");
+    }
+    fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
+    DeleteNode(fptr);
+    fptr->getthis()->setPosition(New_position.x, New_position.y);
+    AddNode(fptr);
 }
 void putTree(sf::RenderTarget& target, std::shared_ptr <kdNode> ptr, int level)
 {
@@ -284,9 +581,9 @@ void putTree(sf::RenderTarget& target, std::shared_ptr <kdNode> ptr, int level)
     if (ptr != nullptr) {
         
         putTree(target, ptr->getrightchild(), level+1);
-       // while (i-- > 0) {
-       //     std::cout << "      ";
-       // }
+      //  while (i-- > 0) {
+      //      std::cout << "      ";
+      //  }
       //  std::cout << ptr.get()->getthis()->getPosition().x << " , " << ptr.get()->getthis()->getPosition().y << "\n";
         target.draw(*(ptr->getthis())); // интересно будет ли работать 
         putTree(target, ptr->getleftchild(), level + 1);

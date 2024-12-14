@@ -16,6 +16,7 @@ private:
 public:
     kdNode() : ptr(nullptr), right(nullptr), left(nullptr), parent(nullptr), mcoordx(true) {};
     kdNode(std::shared_ptr <Figure> hptr) : ptr(hptr), right(nullptr), left(nullptr), parent(nullptr), mcoordx(true) {};
+ //   kdNode(const kdNode& fptr): ptr(fptr.ptr), right(nullptr), left(nullptr), parent(nullptr), mcoordx(true)
     void setrightchild(std::shared_ptr <kdNode> newright) { right = newright; }
     void setleftchild(std::shared_ptr <kdNode> newleft) { left = newleft; }
     void setparent(std::shared_ptr <kdNode> newparent) { parent = newparent; }
@@ -35,9 +36,10 @@ public:
     Kdtree() : root(nullptr) {};
     Kdtree(kdNode* newroot) : root(newroot) {};
     void AddNode(std::shared_ptr <kdNode> newNode);
+    void delete_kdNode(std::shared_ptr<kdNode> fptr);
     void DeleteNode(float xc, float yc);
     void DeleteNode(std::shared_ptr <kdNode> fptr);
-    void ChangeNode(kdNode* delNode, int nx, int ny);
+    void ChangeNode(std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position);
     std::shared_ptr<kdNode> FindNode(float xc, float yc);
     std::shared_ptr<kdNode> findminx(std::shared_ptr<kdNode> fptr);
     std::shared_ptr<kdNode> findminy(std::shared_ptr<kdNode> fptr);
