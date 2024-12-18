@@ -1,6 +1,19 @@
 #include <My_lib/Kdtree.hpp>
 #include <algorithm>
 
+
+unsigned newmindex_correct_position(float position) {
+    float returned_val = 0.f;
+    int per = position / 50;
+    if (per % 2 == 0) {
+        returned_val = (per) / 2;
+        return returned_val;
+    }
+    returned_val = (per - 1) / 2;
+    return returned_val;
+}
+
+
 std::shared_ptr<kdNode> minNodex(std::shared_ptr<kdNode> x, std::shared_ptr<kdNode> y, std::shared_ptr<kdNode> z) {
     std::shared_ptr<kdNode> res = x;
     if (y != nullptr && y->getthis()->getPosition().x < res->getthis()->getPosition().x) {
@@ -594,6 +607,37 @@ void Kdtree::drawtree(sf::RenderTarget& target) {
     putTree(target, root, 0);
 }
 
+void  help_func_for_update_move(std::shared_ptr <kdNode> ptr) {
+    if (ptr != nullptr) {
+        help_func_for_update_move(ptr->getleftchild());
+        ptr->getthis()->update_move();
+        help_func_for_update_move(ptr->getrightchild());
+    }
+}
+void Kdtree::update_all_move() {
+    help_func_for_update_move(root);
+}
+
+void  help_func_for_update_status(std::shared_ptr <kdNode> ptr, const unsigned(&chessboard)[8][8]) {
+    if (ptr != nullptr) {
+
+        help_func_for_update_status(ptr->getleftchild(), chessboard);
+        unsigned xc = newmindex_correct_position(ptr->getthis()->getPosition().x);
+        unsigned yc = newmindex_correct_position(ptr->getthis()->getPosition().y);
+        ptr->getthis()->set_is_under_attack(0);
+        if (ptr->getthis()->getColor() == 0 && chessboard[yc][xc] == 3) {
+            ptr->getthis()->set_is_under_attack(1);
+        }
+        if (ptr->getthis()->getColor() == 1 && chessboard[yc][xc] == 4) {
+            ptr->getthis()->set_is_under_attack(1);
+        }
+        help_func_for_update_status(ptr->getrightchild(), chessboard);
+    }
+}
+
+void Kdtree::update_all_status( const unsigned (&chessboard)[8][8]) {
+    help_func_for_update_status(root, chessboard);
+}
 
 void tree_bypass_help_func(std::shared_ptr<kdNode> fptr, float xc, float yc) {
     std::cout << 1 << std::endl;

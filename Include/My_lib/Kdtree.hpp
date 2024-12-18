@@ -44,6 +44,10 @@ public:
     std::shared_ptr<kdNode> findminx(std::shared_ptr<kdNode> fptr);
     std::shared_ptr<kdNode> findminy(std::shared_ptr<kdNode> fptr);
     std::shared_ptr<kdNode> getroot() { return root; }
+    void update_all_move();
+    void update_all_status(const unsigned(&chessboard)[8][8]);
+   // void update(unsigned(&chessboard)[8][8]) { update_all_move; update_all_status(chessboard); }
+    
     void tree_bypass( float xc, float yc /*std::shared_ptr<kdNode>* Needed_element*/);
     // std::shared_ptr<kdNode> FindMin(std::shared_ptr<kdNode> fptr);
     void drawtree(sf::RenderTarget& target);

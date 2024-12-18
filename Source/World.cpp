@@ -42,6 +42,25 @@ void World::loadTextures()
 	mTextures.load(Textures::bPawn, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bP.png");
 }
 
+unsigned index_correct_position(float position) {
+	float returned_val = 0.f;
+	int per = position / 50;
+	if (per % 2 == 0) {
+		returned_val = (per) / 2;
+		return returned_val;
+	}
+	returned_val = (per - 1) / 2;
+	return returned_val;
+}
+
+void func_print_desk(const unsigned(&chess_borad)[8][8]) {
+	for (int t = 0; t < 8; t++) {
+		for (int r = 0; r < 8; r++) {
+			std::cout << chess_borad[t][r];
+		}
+		std::cout << std::endl;
+	}
+}
 
 void World::buildScene() {
 	
@@ -61,20 +80,27 @@ void World::buildScene() {
 	Chesstree.AddNode(node2);
 	Chesstree.DeleteNode(450.f, 650.f);*/
 	for (int i = 0; i < 8; i++) {
-		std::unique_ptr<Pawn> wPawn(new Pawn(Figure::white, mTextures));
+		std::unique_ptr<Pawn> wPawn(new Pawn(Figure::white, mTextures, Chess_board_for_figures));
 		wPawn.get()->setOrigin(40.f, 40.f);
 		wPawn->setPosition(50.f + i * 100.f, 650.f);
+		Chess_board_for_figures[6][i] = 2; // 0 - ничего 1 - чёрное 2 - белое 3 - чёрное под ударом 4 - белое под ударом 
 		std::shared_ptr <kdNode> node(new kdNode(std::move(wPawn)));
 		Chesstree.AddNode(node);
 	}
 	for (int i = 0; i < 8; i++) {
-		std::unique_ptr<Pawn> bPawn(new Pawn(Figure::black, mTextures));
+		std::unique_ptr<Pawn> bPawn(new Pawn(Figure::black, mTextures, Chess_board_for_figures));
 		bPawn.get()->setOrigin(40.f, 40.f);
 		bPawn->setPosition(50.f + i * 100.f, 150.f);
+		Chess_board_for_figures[1][i] = 1;
 		std::shared_ptr <kdNode> node(new kdNode(std::move(bPawn)));
 		Chesstree.AddNode(node);
 	}
 
+	//func_print_desk(Chess_board_for_figures);
+	Chesstree.update_all_move();
+	Chesstree.update_all_status(Chess_board_for_figures);
+
+	//func_print_desk(Chess_board_for_figures);
 //	std::shared_ptr<kdNode>* Needed_element = nullptr;
 	//tree_bypass(Chesstree.getroot(), 0.f, 0.f, Needed_element);//std::cout << Chesstree.getroot()->getleftchild()->getthis()->getPosition().x << Chesstree.getroot()->getleftchild()->getthis()->getPosition().y;
 	//Chesstree.tree_bypass(0.f, 0.f);
@@ -95,8 +121,6 @@ void World::buildScene() {
 	//std::cout << mFigure->getPosition().x;;
 	//std::cout << (*mFigure).getPosition().x;
 	//(*mFigure).getPosition().x
-
-//	mFigure->setPosition(450.f, 650.f);
 	/*for (std::size_t i = 0; i < LayerCount; ++i) // инициализация слоёв 
 	{
 		SceneNode::Ptr layer(new SceneNode());
@@ -160,7 +184,6 @@ void putTree(std::shared_ptr <kdNode> ptr, int level)
 			std::cout << "      ";
 		}
 		std::cout << ptr.get()->getthis()->getPosition().x << " , " << ptr.get()->getthis()->getPosition().y << "\n";
-		//target.draw(*(ptr->getthis())); // интересно будет ли работать 
 		putTree(ptr->getleftchild(), level + 1);
 
 	}
@@ -189,7 +212,6 @@ void World::World_processEvents() {
 				if (event.key.code == sf::Mouse::Left) {
 					tree_bypass(Chesstree.getroot(), pos.x, pos.y, moved_element, Whoose_move);
 					if (moved_element.empty() == false) {
-						std::cout << 1 <<std::endl;
 						Previos_Position = (moved_element.front())->getthis()->getPosition();
 						dX = pos.x - (moved_element.front())->getthis()->getPosition().x;
 						dY = pos.y - (moved_element.front())->getthis()->getPosition().y;
@@ -200,13 +222,40 @@ void World::World_processEvents() {
 			if (event.type == sf::Event::MouseButtonReleased ) {
 				if (event.key.code == sf::Mouse::Left) {
 					if (moved_element.empty() == false) {
+						isMove = false;
 						moved_element.front()->getthis()->setPosition(correct_position(moved_element.front()->getthis()->getPosition().x), correct_position(moved_element.front()->getthis()->getPosition().y));
 						sf::Vector2f New_position = moved_element.front()->getthis()->getPosition();
+						//Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position);
+						std::vector<sf::Vector2f> possible_moves = moved_element.front()->getthis()->all_move();
+						auto t = std::find(possible_moves.begin(), possible_moves.end(), New_position);
+						if (t != possible_moves.end()) {
+							Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position);
+							Chess_board_for_figures[index_correct_position(Previos_Position.y)][index_correct_position(Previos_Position.x)] = 0;
+							Chess_board_for_figures[index_correct_position(New_position.y)][index_correct_position(New_position.x)] = (moved_element.front()->getthis()->getColor()) + 1;
+							Chesstree.update_all_move();
+							Chesstree.update_all_status(Chess_board_for_figures);
+							if (Whoose_move) {
+								Whoose_move = 0;
+							}
+							else {
+								Whoose_move = 1;
+							}
+							func_print_desk(Chess_board_for_figures);
+						}
+						else {
+							//throw std::exception("nicceee");
+							moved_element.front()->getthis()->setPosition(Previos_Position);
+						}
+						Previos_Position = sf::Vector2f(0.f, 0.f);
+						moved_element.clear();
+						//func_print_desk(Chess_board_for_figures);
+						//if()
+						/*sf::Vector2f New_position = moved_element.front()->getthis()->getPosition();
 						Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position); // работает 
-						//putTree(Chesstree.getroot(), 0);
 						isMove = false;
-						//putTree(Chesstree.getroot(), 0);
 						if (moved_element.front()->getthis()->getPosition() != Previos_Position) {
+							Chess_board_for_figures[index_correct_position(Previos_Position.y)][index_correct_position(Previos_Position.x)] = 0;
+							Chess_board_for_figures[index_correct_position(New_position.y)][index_correct_position(New_position.x)] = (moved_element.front()->getthis()->getColor()) + 1;
 							if (Whoose_move) {
 								Whoose_move = 0;
 							}
@@ -216,6 +265,7 @@ void World::World_processEvents() {
 						}
 						Previos_Position = sf::Vector2f(0.f, 0.f);
 						moved_element.clear();
+						func_print_desk(Chess_board_for_figures);*/
 					}
 				}
 			}

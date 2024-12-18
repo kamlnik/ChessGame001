@@ -10,30 +10,32 @@ class Figure : public sf::Transformable, public sf::Drawable, private sf::NonCop
 {
 public:
     enum Type { // нужно просто Pawn
-        NUll, Pawn //, wPawn
+        Pawn //, wPawn
     };
     enum Color {
-        black, white, null
+        black, white
     };
-    
-   // explicit Figure(Type type);
-  //  Figure(Type type, const TextureHolder& textures); // тоже пока не нужно 
-    Figure();
-    Figure(Type newType, Color newColor) : mType(newType), mColor(newColor) /*, boundingBox(newboundingBox)*/ {}
-    virtual std::vector<sf::Vector2f> all_move(); // virtual void значит что может быть переопределена потом в наследовательных функциях
+
+public:
+    virtual std::vector<sf::Vector2f>& all_move(); // virtual void значит что может быть переопределена потом в наследовательных функциях
+    virtual void update_move();
     void set_boundingBox(sf::FloatRect newboundingBox) { boundingBox = newboundingBox; }
     unsigned getColor() { return mColor; }
+    void set_is_under_attack(unsigned t) { is_under_attack = t; }
+
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const; // необходимо определение 
     virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const; 
-    virtual void can_move(Type type);
+  //  virtual void can_move(Type type);
    // virtual void updateCurrent(sf::Time dt);
+
 protected:
+    bool is_under_attack;
     Type mType;
     Color mColor;
     sf::FloatRect boundingBox;
-private:
+    Figure(Type newType, Color newColor) : mType(newType), mColor(newColor), is_under_attack(0) {}
+     /*, boundingBox(newboundingBox)*/ 
   // sf::Sprite mSprite; // вообще не нужно 
-    
 };
 #endif

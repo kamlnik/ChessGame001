@@ -47,5 +47,6 @@ private:
     Kdtree Chesstree;
     sf::Sprite Chess_board;
     sf::FloatRect mWorldBounds;
+    unsigned Chess_board_for_figures[8][8] = {};
 };
 #endif

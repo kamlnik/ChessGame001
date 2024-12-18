@@ -10,14 +10,14 @@ void Figure::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 void Figure::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
-
 }
-void Figure::can_move(Type type) {
 
-}
-std::vector<sf::Vector2f> Figure::all_move() {
+std::vector<sf::Vector2f>& Figure::all_move() {
 	std::vector<sf::Vector2f> test;
 	return test;
 }
-Figure::Figure(): mType(NUll), mColor(null)  {}
+
+void Figure::update_move() {
+}
+//Figure::Figure(): mType(NUll), mColor(null)  {}
 //Figure::Figure(Type type, const TextureHolder& textures) : mType(type), mSprite(textures.get(toTextureID(type))) {}
