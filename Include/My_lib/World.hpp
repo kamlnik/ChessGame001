@@ -7,6 +7,7 @@
 //#include <My_lib/SpriteNode.hpp>
 #include <My_lib/Figure.hpp>
 #include <My_lib/Pawn.hpp>
+#include <My_lib/King.hpp>
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/View.hpp>
 #include <SFML/Graphics/Texture.hpp>
@@ -48,5 +49,9 @@ private:
     sf::Sprite Chess_board;
     sf::FloatRect mWorldBounds;
     unsigned Chess_board_for_figures[8][8] = {};
+    float Scale_value;
+    float Screen_width;
+    std::shared_ptr<Figure> BKing;
+    std::shared_ptr<Figure> WKing;
 };
 #endif

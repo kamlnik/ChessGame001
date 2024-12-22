@@ -15,9 +15,12 @@ World::World(sf::RenderWindow& window)
 	, mTextures()
 	, Chess_board()
 	, Chesstree()
+
 	//, mSceneGraph()
 	//, mSceneLayers()
 {
+	Screen_width = mWindow.getSize().y;
+	Scale_value = Screen_width / 800;
 	loadTextures();
 	buildScene();
 
@@ -40,13 +43,15 @@ void World::loadTextures()
 	mTextures.load(Textures::Chess_board, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/Chess_board2.png");
 	mTextures.load(Textures::wPawn, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wP.png");
 	mTextures.load(Textures::bPawn, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bP.png");
+	mTextures.load(Textures::bKing, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bK.png");
+	mTextures.load(Textures::wKing, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wK.png");
 }
 
-unsigned index_correct_position(float position) {
+unsigned index_correct_position(float position, float Screen_size) {
 	float returned_val = 0.f;
-	int per = position / 50;
+	int per = position / (Screen_size/16);
 	if (per % 2 == 0) {
-		returned_val = (per) / 2;
+		returned_val = (per) / 2 ;
 		return returned_val;
 	}
 	returned_val = (per - 1) / 2;
@@ -63,11 +68,10 @@ void func_print_desk(const unsigned(&chess_borad)[8][8]) {
 }
 
 void World::buildScene() {
-	
 	sf::Texture& texture = mTextures.get(Textures::Chess_board);
 	sf::IntRect textureRect(mWorldBounds);
 	Chess_board.setTexture(texture, true); // не знаю зачем true или false 
-//	*mFigure(Figure::Pawn, Figure::black);
+	Chess_board.scale(Scale_value , Scale_value);
 /*	std::unique_ptr<Pawn> wPawn1(new Pawn(Figure::white, mTextures));
 	wPawn1.get()->setOrigin(40.f, 40.f);
 	wPawn1->setPosition(450.f, 650.f);
@@ -79,26 +83,54 @@ void World::buildScene() {
 	std::shared_ptr <kdNode> node2(new kdNode(std::move(wPawn2)));
 	Chesstree.AddNode(node2);
 	Chesstree.DeleteNode(450.f, 650.f);*/
+
 	for (int i = 0; i < 8; i++) {
 		std::unique_ptr<Pawn> wPawn(new Pawn(Figure::white, mTextures, Chess_board_for_figures));
+		//wPawn->mSprite.scale(1.5, 1.5);
 		wPawn.get()->setOrigin(40.f, 40.f);
-		wPawn->setPosition(50.f + i * 100.f, 650.f);
+		wPawn.get()->scale(Scale_value, Scale_value);
+		wPawn.get()->getTransform();
+		wPawn->setPosition(Screen_width / 16 + ( i * Screen_width / 8), 13 * Screen_width / 16);
 		Chess_board_for_figures[6][i] = 2; // 0 - ничего 1 - чёрное 2 - белое 3 - чёрное под ударом 4 - белое под ударом 
 		std::shared_ptr <kdNode> node(new kdNode(std::move(wPawn)));
 		Chesstree.AddNode(node);
 	}
+
 	for (int i = 0; i < 8; i++) {
 		std::unique_ptr<Pawn> bPawn(new Pawn(Figure::black, mTextures, Chess_board_for_figures));
 		bPawn.get()->setOrigin(40.f, 40.f);
-		bPawn->setPosition(50.f + i * 100.f, 150.f);
+		bPawn.get()->scale(Scale_value, Scale_value);
+		bPawn.get()->getTransform();
+		//bPawn.get()->scale(Scale_value, Scale_value);
+		//bPawn.get()->setOrigin(40.f * Scale_value, 40.f * Scale_value);
+		bPawn->setPosition(Screen_width / 16 + (i * Screen_width) / 8, 3 * Screen_width / 16);
 		Chess_board_for_figures[1][i] = 1;
 		std::shared_ptr <kdNode> node(new kdNode(std::move(bPawn)));
 		Chesstree.AddNode(node);
 	}
 
-	//func_print_desk(Chess_board_for_figures);
-	Chesstree.update_all_move();
-	Chesstree.update_all_status(Chess_board_for_figures);
+	std::unique_ptr<King> wKing(new King(Figure::white, mTextures, Chess_board_for_figures));
+	wKing.get()->setOrigin(40.f, 40.f);
+	wKing.get()->scale(Scale_value, Scale_value);
+	wKing.get()->getTransform();
+	wKing->setPosition(Screen_width / 16 + (4 * Screen_width / 8), 15 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_wking(new kdNode(std::move(wKing)));
+	WKing = node_for_wking->getthis();
+	Chesstree.AddNode(node_for_wking);
+
+	std::unique_ptr<King> bKing(new King(Figure::black, mTextures, Chess_board_for_figures));
+	bKing.get()->setOrigin(40.f, 40.f);
+	bKing.get()->scale(Scale_value, Scale_value);
+	bKing.get()->getTransform();
+	bKing->setPosition(Screen_width / 16 + (3 * Screen_width / 8), 1 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_bking(new kdNode(std::move(bKing)));
+	BKing = node_for_bking->getthis();
+	Chesstree.AddNode(node_for_bking);
+
+
+
+	Chesstree.update( Screen_width, Chess_board_for_figures);
+	//Chesstree.update_all_status(Chess_board_for_figures);
 
 	//func_print_desk(Chess_board_for_figures);
 //	std::shared_ptr<kdNode>* Needed_element = nullptr;
@@ -150,27 +182,27 @@ void World::buildScene() {
 	//mSceneLayers[Background]->attachChild(std::move(bPawn1));
 	*/
 }
-float correct_position(float position) {
+float correct_position(float position , float screen_size) {
 	float returned_val = 0.f;
-	int per = position / 50;
+	int per = position / (screen_size / 16);
 	if (per % 2 == 0) {
-		returned_val = (per + 1) * 50;
+		returned_val = (per + 1) * (screen_size / 16);
 		return returned_val;
 	}
-	returned_val = (per) * 50;
+	returned_val = (per) * (screen_size / 16);
 	return returned_val;
 }
-void tree_bypass(std::shared_ptr<kdNode> fptr, float xc, float yc, std::vector<std::shared_ptr<kdNode>>& Needed_elements, bool whoose_move) {
+void tree_bypass(std::shared_ptr<kdNode> fptr, float xc, float yc, std::vector<std::shared_ptr<kdNode>>& Needed_elements, bool whoose_move, float Scale_value) {
 	if (fptr != nullptr) {
 
-		tree_bypass(fptr->getrightchild(), xc, yc, Needed_elements, whoose_move);
+		tree_bypass(fptr->getrightchild(), xc, yc, Needed_elements, whoose_move, Scale_value);
 		//if ...
-		sf::FloatRect rect(sf::Vector2f(fptr->getthis()->getPosition().x - 40, fptr->getthis()->getPosition().y - 40), sf::Vector2f(80.f, 80.f));
+		sf::FloatRect rect(sf::Vector2f(fptr->getthis()->getPosition().x - 40* Scale_value, fptr->getthis()->getPosition().y - 40* Scale_value), sf::Vector2f(80.f * Scale_value, 80.f * Scale_value));
 		unsigned val = fptr->getthis()->getColor();
-		if (Needed_elements.empty() == true && val == whoose_move &&rect.contains(xc, yc)) {
+		if (Needed_elements.empty() == true && val == whoose_move && rect.contains(xc, yc)) {
 			Needed_elements.push_back(fptr);
 		}
-		tree_bypass(fptr->getleftchild(), xc, yc, Needed_elements, whoose_move);
+		tree_bypass(fptr->getleftchild(), xc, yc, Needed_elements, whoose_move, Scale_value);
 
 	}
 }
@@ -183,7 +215,7 @@ void putTree(std::shared_ptr <kdNode> ptr, int level)
 		while (i-- > 0) {
 			std::cout << "      ";
 		}
-		std::cout << ptr.get()->getthis()->getPosition().x << " , " << ptr.get()->getthis()->getPosition().y << "\n";
+		std::cout << ptr.get()->getthis()->getPosition().x << " , " << ptr.get()->getthis()->getPosition().y <<ptr->getthis()->get_is_under_attack() <<std::endl;
 		putTree(ptr->getleftchild(), level + 1);
 
 	}
@@ -192,14 +224,12 @@ void World::World_processEvents() {
 	bool isMove = false;//переменная для щелчка мыши по спрайту
 	float dX = 0;
 	float dY = 0;
+	//std::shared_ptr<kdNode> changed_element;
 	std::vector<std::shared_ptr<kdNode>> moved_element;
 	sf::Vector2f Previos_Position;
 	while (mWindow.isOpen())
 	{
 		this->draw();
-		if (moved_element.empty() == false) {
-			mWindow.draw(*(moved_element.front()->getthis()));
-		}
 		sf::Vector2i pixelPos = sf::Mouse::getPosition(mWindow);//забираем коорд курсора
 		sf::Vector2f pos = mWindow.mapPixelToCoords(pixelPos);
 		sf::Event event;
@@ -210,7 +240,7 @@ void World::World_processEvents() {
 			if (event.type == sf::Event::MouseButtonPressed) {
 
 				if (event.key.code == sf::Mouse::Left) {
-					tree_bypass(Chesstree.getroot(), pos.x, pos.y, moved_element, Whoose_move);
+					tree_bypass(Chesstree.getroot(), pos.x, pos.y, moved_element, Whoose_move, Scale_value);
 					if (moved_element.empty() == false) {
 						Previos_Position = (moved_element.front())->getthis()->getPosition();
 						dX = pos.x - (moved_element.front())->getthis()->getPosition().x;
@@ -223,17 +253,24 @@ void World::World_processEvents() {
 				if (event.key.code == sf::Mouse::Left) {
 					if (moved_element.empty() == false) {
 						isMove = false;
-						moved_element.front()->getthis()->setPosition(correct_position(moved_element.front()->getthis()->getPosition().x), correct_position(moved_element.front()->getthis()->getPosition().y));
+						moved_element.front()->getthis()->setPosition(correct_position(moved_element.front()->getthis()->getPosition().x , Screen_width), correct_position(moved_element.front()->getthis()->getPosition().y , Screen_width));
 						sf::Vector2f New_position = moved_element.front()->getthis()->getPosition();
-						//Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position);
-						std::vector<sf::Vector2f> possible_moves = moved_element.front()->getthis()->all_move();
+						std::vector<sf::Vector2f> possible_moves = moved_element.front()->getthis()->all_move(); // тут проблема (как ожидалось )
 						auto t = std::find(possible_moves.begin(), possible_moves.end(), New_position);
 						if (t != possible_moves.end()) {
-							Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position);
-							Chess_board_for_figures[index_correct_position(Previos_Position.y)][index_correct_position(Previos_Position.x)] = 0;
-							Chess_board_for_figures[index_correct_position(New_position.y)][index_correct_position(New_position.x)] = (moved_element.front()->getthis()->getColor()) + 1;
-							Chesstree.update_all_move();
-							Chesstree.update_all_status(Chess_board_for_figures);
+							unsigned Nx = index_correct_position(New_position.x, Screen_width);
+							unsigned Ny = index_correct_position(New_position.y, Screen_width);
+							unsigned Px = index_correct_position(Previos_Position.x, Screen_width);
+							unsigned Py = index_correct_position(Previos_Position.y, Screen_width);
+							if ((Chess_board_for_figures[Ny][Nx] == 3 && moved_element.front()->getthis()->getColor() == 1) || (Chess_board_for_figures[Ny][Nx] == 4 && moved_element.front()->getthis()->getColor() == 0)) {
+								Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position, 1);
+							}
+							else {
+								Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position, 0);
+							}
+							Chess_board_for_figures[Py][Px] = 0;
+							Chess_board_for_figures[Ny][Nx] = (moved_element.front()->getthis()->getColor()) + 1;
+							Chesstree.update(Screen_width ,Chess_board_for_figures);
 							if (Whoose_move) {
 								Whoose_move = 0;
 							}
@@ -243,41 +280,18 @@ void World::World_processEvents() {
 							func_print_desk(Chess_board_for_figures);
 						}
 						else {
-							//throw std::exception("nicceee");
 							moved_element.front()->getthis()->setPosition(Previos_Position);
 						}
 						Previos_Position = sf::Vector2f(0.f, 0.f);
 						moved_element.clear();
-						//func_print_desk(Chess_board_for_figures);
-						//if()
-						/*sf::Vector2f New_position = moved_element.front()->getthis()->getPosition();
-						Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position); // работает 
-						isMove = false;
-						if (moved_element.front()->getthis()->getPosition() != Previos_Position) {
-							Chess_board_for_figures[index_correct_position(Previos_Position.y)][index_correct_position(Previos_Position.x)] = 0;
-							Chess_board_for_figures[index_correct_position(New_position.y)][index_correct_position(New_position.x)] = (moved_element.front()->getthis()->getColor()) + 1;
-							if (Whoose_move) {
-								Whoose_move = 0;
-							}
-							else {
-								Whoose_move = 1;
-							}
-						}
-						Previos_Position = sf::Vector2f(0.f, 0.f);
-						moved_element.clear();
-						func_print_desk(Chess_board_for_figures);*/
 					}
 				}
 			}
 
 		}
 		if (isMove == true) {
-			//shape.setFillColor(sf::Color::Green);
-			//pixelPos = sf::Mouse::getPosition(mWindow);//забираем коорд курсора
-			//pos = mWindow.mapPixelToCoords(pixelPos);
 			(moved_element.front())->getthis()->setPosition(pos.x - dX, pos.y - dY);
 		}
-		//this->draw();
 	}
 }
 

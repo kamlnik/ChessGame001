@@ -17,7 +17,7 @@ std::vector<sf::Vector2f>& Figure::all_move() {
 	return test;
 }
 
-void Figure::update_move() {
+void Figure::update_move(float t) {
 }
 //Figure::Figure(): mType(NUll), mColor(null)  {}
 //Figure::Figure(Type type, const TextureHolder& textures) : mType(type), mSprite(textures.get(toTextureID(type))) {}

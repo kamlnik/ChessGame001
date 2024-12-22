@@ -4,7 +4,7 @@
 #include <SFML/Graphics/RenderStates.hpp>
 #include <iostream>
 
-Textures::ID toTextureID(unsigned t)
+Textures::ID PawnTextureID(unsigned t)
 {
 	if (t == 0) { // 0 это чёрное 
 		return Textures::bPawn;
@@ -14,7 +14,7 @@ Textures::ID toTextureID(unsigned t)
 	}
 }
 
-Pawn::Pawn(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) : Figure(Type::Pawn, ncolor), pawn_all_move(), chess_board(new_chess_board), mSprite(textures.get(toTextureID(ncolor))) { this->set_boundingBox(mSprite.getGlobalBounds()); }
+Pawn::Pawn(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) : Figure(Type::Pawn, ncolor), pawn_all_move(), chess_board(new_chess_board), mSprite(textures.get(PawnTextureID(ncolor))) { this->set_boundingBox(mSprite.getGlobalBounds()); }
 
 
 void Pawn::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -22,39 +22,41 @@ void Pawn::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const 
 	}
 
 
-unsigned mindex_correct_position(float position) {
+unsigned mindex_correct_position(float position, float Screen_size) {
 	float returned_val = 0.f;
-	int per = position / 50;
+	int per = position / (Screen_size/16);
 	if (per % 2 == 0) {
 		returned_val = (per) / 2;
 		return returned_val;
 	}
 	returned_val = (per - 1) / 2;
 	return returned_val;
+	
 }
 
-void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigned fcolor, std::vector<sf::Vector2f>& pawn_all_move, bool is_first_move) {
+void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigned fcolor, std::vector<sf::Vector2f>& pawn_all_move, bool is_first_move, float Screen_size) {
+	float l = Screen_size / 8;
 	if (is_first_move == 1) {
 		if (fcolor == 0) {
-			for (auto i = y + 1; i < y + 3; i++) {
-				if (chess_board[i][x] == 0 && i + 1 < 8) {
-					float xc = x * 100 + 50;
-					float yc = (i ) * 100 + 50;
-					std::cout << xc << "\\" << yc << std::endl;
+			for (unsigned i = y + 1; i < y + 3; i++) {
+				if (chess_board[i][x] == 0 && i < 8) {
+					float xc = x * l + l/2;
+					float yc = (i) * l + l/2;
 					pawn_all_move.push_back(sf::Vector2f(xc, yc));
+					//std::cout << xc << "//" << yc << std::endl;
 				}
 				else {
 					return;
 				}
-			} ////////////////////////////////////////////// очень много ошибок тут 
+			} 
 		}
 		else {
-			for (auto i = y - 1 ; i > y - 3; i--) {
-				if (chess_board[i][x] == 0 && i - 1 > 0) {
-					float xc = x * 100 + 50;
-					float yc = (i) * 100 + 50;
-					std::cout << xc << "\\" << yc << std::endl;
+			for (unsigned i = y - 1 ; i > y - 3; i--) {
+				if (chess_board[i][x] == 0 && i >= 0) {
+					float xc = x * l + l/2;
+					float yc = (i) * l + l/2;
 					pawn_all_move.push_back(sf::Vector2f(xc, yc));
+					//std::cout << xc << "//" << yc << std::endl;
 				}
 				else {
 					return;
@@ -64,40 +66,34 @@ void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigne
 	}
 	else {
 		if (fcolor == 0) {
-			for (auto i = y + 1; i < y + 2; i++) {
-				if (chess_board[i][x] == 0 && i + 1 < 8) {
-					float xc = x * 100 + 50;
-					float yc = (i ) * 100 + 50;
-					std::cout << xc << "\\" << yc << std::endl;
-					pawn_all_move.push_back(sf::Vector2f(xc, yc));
-				}
-				else {
-					return;
-				}
+			if (x < 8) {
+				unsigned i = y + 1;
+				float xc = x * l + l/2;
+				float yc = (i) * l + l/2;
+				pawn_all_move.push_back(sf::Vector2f(xc, yc));
+				//std::cout << xc << "//" << yc << std::endl;
 			}
 		}
 		else {
-			for (auto i = y - 1; i > y - 2; i--) {
-				if (chess_board[i][x] == 0 && i - 1 > 0) {
-					float xc = x * 100 + 50;
-					float yc = (i) * 100 + 50;
-					std::cout << xc << "\\" << yc << std::endl;
+			if (y > 0) {
+				unsigned i = y - 1;
+				if (chess_board[i][x] == 0 && i >= 0) {
+					float xc = x * l + l/2;
+					float yc = (i) * l + l/2;
 					pawn_all_move.push_back(sf::Vector2f(xc, yc));
-				}
-				else {
-					return;
+					//std::cout << xc << "//" << yc << std::endl;
 				}
 			}
 		}
 	}
 }
 
-void Pawn::update_move() {
-	std::cout << "new" << std::endl;
-	is_under_attack = 0;
+void Pawn::update_move( float Screen_size) {
+	//std::cout << "new" << std::endl;
+	//is_under_attack = 0;
 	bool is_first_move = 0;
-	unsigned x = mindex_correct_position(this->getPosition().x);
-	unsigned y = mindex_correct_position(this->getPosition().y);
+	unsigned x = mindex_correct_position(this->getPosition().x, Screen_size);
+	unsigned y = mindex_correct_position(this->getPosition().y, Screen_size);
 	unsigned fcolor = this->getColor();
 	//if (chess_board[y][x] == 4) {
 	//	is_under_attack = 1;
@@ -110,25 +106,26 @@ void Pawn::update_move() {
 	else if (y == 6 && fcolor == 1) {
 		is_first_move = 1;
 	}
-	vertical_move(chess_board, x, y, fcolor, pawn_all_move, is_first_move);
+	vertical_move(chess_board, x, y, fcolor, pawn_all_move, is_first_move, Screen_size);
+	float xl = (Screen_size / 8);
 	if (fcolor == 0) {
-		if (y + 1 < 8 && x - 1 < 8 && (chess_board[y + 1][x - 1] == 2 || chess_board[y + 1][x - 1] == 4)) {
+		if (x > 0 && y + 1 < 8 && x - 1 >= 0 && (chess_board[y + 1][x - 1] == 2 || chess_board[y + 1][x - 1] == 4)) {
 			chess_board[y + 1][x - 1] = 4;
-			pawn_all_move.push_back(sf::Vector2f((x - 1) * 100 + 50, (y + 1) * 100 + 50));
+			pawn_all_move.push_back(sf::Vector2f( (x - 1) * xl + (xl / 2), (y + 1) * xl + (xl/2) ) );
 		}
 		if (y + 1 < 8 && x + 1 < 8 && (chess_board[y + 1][x + 1] == 2 || chess_board[y + 1][x + 1] == 4)) {
 			chess_board[y + 1][x + 1] = 4;
-			pawn_all_move.push_back(sf::Vector2f((x + 1) * 100 + 50, (y + 1) * 100 + 50));
+			pawn_all_move.push_back(sf::Vector2f((x + 1) * xl + xl/2, (y + 1) * xl + xl/2));
 		}
 	}
 	else {
-		if (y - 1 < 8 && x - 1 < 8 && (chess_board[y - 1][x - 1] == 1 || chess_board[y - 1][x - 1] == 3)) {
+		if (y > 0 && x > 0 && y - 1 < 8 && x - 1 >= 0 && (chess_board[y - 1][x - 1] == 1 || chess_board[y - 1][x - 1] == 3)) {
 			chess_board[y - 1][x - 1] = 3;
-			pawn_all_move.push_back(sf::Vector2f((x - 1) * 100 + 50, (y - 1) * 100 + 50));
+			pawn_all_move.push_back(sf::Vector2f((x - 1) * xl + xl/2, (y - 1) * xl + xl/2));
 		}
-		if (y - 1 < 8 && x + 1 < 8 && (chess_board[y - 1][x + 1] == 1 || chess_board[y - 1][x + 1] == 3)) {
+		if (y > 0 && y - 1 < 8 && x + 1 < 8 && (chess_board[y - 1][x + 1] == 1 || chess_board[y - 1][x + 1] == 3)) {
 			chess_board[y - 1][x + 1] = 3;
-			pawn_all_move.push_back(sf::Vector2f((x + 1) * 100 + 50, (y - 1) * 100 + 50));
+			pawn_all_move.push_back(sf::Vector2f((x + 1) * xl + xl/2, (y - 1) * xl + xl/2));
 		}
 	}
 	

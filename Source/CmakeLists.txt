@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 # Добавьте источник в исполняемый файл этого проекта.
 #add_executable (Source "Main.cpp" "Game.cpp" "SceneNode.cpp" "Figure.cpp" "Entity.cpp" "SpriteNode.cpp" "World.cpp" "Pawn.cpp")
-add_executable (Source "Main.cpp" "Game.cpp"  "Figure.cpp" "Pawn.cpp" "Kdtree.cpp" "World.cpp" )
+add_executable (Source "Main.cpp" "Game.cpp"  "Figure.cpp" "Pawn.cpp" "Kdtree.cpp" "World.cpp"  "King.cpp")
 #add_subdirectory("Resource")
 
 target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics.lib)

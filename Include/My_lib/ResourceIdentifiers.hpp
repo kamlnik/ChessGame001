@@ -14,6 +14,8 @@ namespace Textures
 	{
 		wPawn,
 		bPawn,
+		bKing,
+		wKing,
 		Chess_board, // шахматная доска
 	};
 }

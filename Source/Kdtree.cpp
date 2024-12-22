@@ -2,9 +2,9 @@
 #include <algorithm>
 
 
-unsigned newmindex_correct_position(float position) {
+unsigned newmindex_correct_position(float position, float Screen_size) {
     float returned_val = 0.f;
-    int per = position / 50;
+    int per = position / (Screen_size/16);
     if (per % 2 == 0) {
         returned_val = (per) / 2;
         return returned_val;
@@ -579,12 +579,15 @@ void Kdtree::DeleteNode(std::shared_ptr <kdNode> fptr) {
     
 }
 
-void Kdtree::ChangeNode(std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position) {
+void Kdtree::ChangeNode(std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete) {
     if (fptr == nullptr) {
         throw std::runtime_error("ChangeNode Error: pointer = nullptr");
     }
     fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
     DeleteNode(fptr);
+    if (is_delete == 1) {
+        DeleteNode(New_position.x, New_position.y);
+    }
     fptr->getthis()->setPosition(New_position.x, New_position.y);
     AddNode(fptr);
 }
@@ -607,23 +610,20 @@ void Kdtree::drawtree(sf::RenderTarget& target) {
     putTree(target, root, 0);
 }
 
-void  help_func_for_update_move(std::shared_ptr <kdNode> ptr) {
+void  help_func_for_update_move(float Screen_size, std::shared_ptr <kdNode> ptr) {
     if (ptr != nullptr) {
-        help_func_for_update_move(ptr->getleftchild());
-        ptr->getthis()->update_move();
-        help_func_for_update_move(ptr->getrightchild());
+        help_func_for_update_move(Screen_size,ptr->getleftchild());
+        ptr->getthis()->update_move(Screen_size);
+        help_func_for_update_move(Screen_size, ptr->getrightchild());
     }
 }
-void Kdtree::update_all_move() {
-    help_func_for_update_move(root);
-}
 
-void  help_func_for_update_status(std::shared_ptr <kdNode> ptr, const unsigned(&chessboard)[8][8]) {
+void  help_func_for_update_status(std::shared_ptr <kdNode> ptr, unsigned(&chessboard)[8][8], float Screen_size) {
     if (ptr != nullptr) {
 
-        help_func_for_update_status(ptr->getleftchild(), chessboard);
-        unsigned xc = newmindex_correct_position(ptr->getthis()->getPosition().x);
-        unsigned yc = newmindex_correct_position(ptr->getthis()->getPosition().y);
+        help_func_for_update_status(ptr->getleftchild(), chessboard, Screen_size);
+        unsigned xc = newmindex_correct_position(ptr->getthis()->getPosition().x, Screen_size);
+        unsigned yc = newmindex_correct_position(ptr->getthis()->getPosition().y, Screen_size);
         ptr->getthis()->set_is_under_attack(0);
         if (ptr->getthis()->getColor() == 0 && chessboard[yc][xc] == 3) {
             ptr->getthis()->set_is_under_attack(1);
@@ -631,29 +631,41 @@ void  help_func_for_update_status(std::shared_ptr <kdNode> ptr, const unsigned(&
         if (ptr->getthis()->getColor() == 1 && chessboard[yc][xc] == 4) {
             ptr->getthis()->set_is_under_attack(1);
         }
-        help_func_for_update_status(ptr->getrightchild(), chessboard);
+       // chessboard[yc][xc] = ptr->getthis()->getColor() + 1;
+        help_func_for_update_status(ptr->getrightchild(), chessboard, Screen_size);
     }
 }
 
-void Kdtree::update_all_status( const unsigned (&chessboard)[8][8]) {
-    help_func_for_update_status(root, chessboard);
+void help_func_for_initialization(std::shared_ptr <kdNode> ptr, unsigned(&chessboard)[8][8], float Screen_size) {
+    if (ptr != nullptr) {
+        help_func_for_initialization(ptr->getleftchild(), chessboard, Screen_size);
+        unsigned xc = newmindex_correct_position(ptr->getthis()->getPosition().x, Screen_size);
+        unsigned yc = newmindex_correct_position(ptr->getthis()->getPosition().y, Screen_size);
+        chessboard[yc][xc] = ptr->getthis()->getColor() + 1;
+        help_func_for_initialization(ptr->getrightchild(), chessboard, Screen_size);
+    }
 }
 
-void tree_bypass_help_func(std::shared_ptr<kdNode> fptr, float xc, float yc) {
-    std::cout << 1 << std::endl;
+void tree_bypass_help_func(std::shared_ptr<kdNode> fptr) {
     if (fptr != nullptr) {
 
-        tree_bypass_help_func(fptr->getrightchild(), xc, yc);
+        tree_bypass_help_func(fptr->getrightchild());
         //if ....
-        std::cout << fptr->getthis()->getPosition().x << fptr->getthis()->getPosition().y << std::endl;
+        std::cout << fptr->getthis()->getPosition().x << "    " << fptr->getthis()->getPosition().y << "    " << fptr->getthis()->get_is_under_attack() << std::endl;
         //if (fptr->getthis()->boundingBox.contains(xc, yc) && Needed_element == nullptr ) {
         //	std::cout << fptr->getthis()->boundingBox.left << std::endl;
         //	*Needed_element = fptr;
         //}
-        tree_bypass_help_func(fptr->getleftchild(), xc, yc);
+        tree_bypass_help_func(fptr->getleftchild());
 
     }
 }
-void Kdtree::tree_bypass( float xc, float yc ) {
-    tree_bypass_help_func(this->root, xc, yc);
+void Kdtree::tree_bypass() {
+    tree_bypass_help_func(root);
+}
+
+void Kdtree::update(float Screen_size , unsigned(&chessboard)[8][8]) {
+    help_func_for_initialization(root, chessboard, Screen_size);
+    help_func_for_update_move(Screen_size, root);
+    help_func_for_update_status(root, chessboard, Screen_size);
 }

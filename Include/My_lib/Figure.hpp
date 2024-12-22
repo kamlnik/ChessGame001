@@ -10,7 +10,7 @@ class Figure : public sf::Transformable, public sf::Drawable, private sf::NonCop
 {
 public:
     enum Type { // нужно просто Pawn
-        Pawn //, wPawn
+        Pawn, King //, wPawn
     };
     enum Color {
         black, white
@@ -18,10 +18,11 @@ public:
 
 public:
     virtual std::vector<sf::Vector2f>& all_move(); // virtual void значит что может быть переопределена потом в наследовательных функциях
-    virtual void update_move();
+    virtual void update_move( float screensize);
     void set_boundingBox(sf::FloatRect newboundingBox) { boundingBox = newboundingBox; }
     unsigned getColor() { return mColor; }
     void set_is_under_attack(unsigned t) { is_under_attack = t; }
+    bool get_is_under_attack() { return is_under_attack; }
 
 private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const; // необходимо определение 
