@@ -38,11 +38,11 @@ void vertical_up_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsi
 		float xc = x * l + l / 2;
 		float yc = (t)*l + l / 2;
 		if (chess_board[t][x] != 0) {
-			if (fcolor == 0 && chess_board[t][x] == 2 || chess_board[t][x] == 4) {
+			if (fcolor == 0 && (chess_board[t][x] == 2 || chess_board[t][x] == 4)) {
 				chess_board[t][x] = 4;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if(fcolor == 1 && chess_board[t][x] == 1 || chess_board[t][x] == 3) {
+			else if(fcolor == 1 && (chess_board[t][x] == 1 || chess_board[t][x] == 3)) {
 				chess_board[t][x] = 3;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -65,11 +65,11 @@ void vertical_dawn_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, un
 		float xc = x * l + l / 2;
 		float yc = (t)*l + l / 2;
 		if (chess_board[t][x] != 0) {
-			if (fcolor == 0 && chess_board[t][x] == 2 || chess_board[t][x] == 4) {
+			if (fcolor == 0 && (chess_board[t][x] == 2 || chess_board[t][x] == 4)) {
 				chess_board[t][x] = 4;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t][x] == 1 || chess_board[t][x] == 3) {
+			else if (fcolor == 1 && (chess_board[t][x] == 1 || chess_board[t][x] == 3)) {
 				chess_board[t][x] = 3;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -94,11 +94,11 @@ void diagonal_right_up_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y
 		float xc = t2 * l + l / 2;
 		float yc = (t1)*l + l / 2;
 		if (chess_board[t1][t2] != 0) {
-			if (fcolor == 0 && chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4) {
+			if (fcolor == 0 && (chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4)) {
 				chess_board[t1][t2] = 4;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3) {
+			else if (fcolor == 1 && (chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3)) {
 				chess_board[t1][t2] = 3;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -123,11 +123,11 @@ void diagonal_left_dawn_move(unsigned(&chess_board)[8][8], unsigned x, unsigned 
 		float xc = t2 * l + l / 2;
 		float yc = (t1)*l + l / 2;
 		if (chess_board[t1][t2] != 0) {
-			if (fcolor == 0 && chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4) {
+			if (fcolor == 0 && (chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4)) {
 				chess_board[t1][t2] = 4;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3) {
+			else if (fcolor == 1 && (chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3)) {
 				chess_board[t1][t2] = 3;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -152,11 +152,11 @@ void diagonal_right_dawn_move(unsigned(&chess_board)[8][8], unsigned x, unsigned
 		float xc = t2 * l + l / 2;
 		float yc = (t1)*l + l / 2;
 		if (chess_board[t1][t2] != 0) {
-			if (fcolor == 0 && chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4) {
+			if (fcolor == 0 && (chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4)) {
 					chess_board[t1][t2] = 4;
 					queen_all_move.push_back(sf::Vector2f(xc, yc));	
 			}
-			else if (fcolor == 1 && chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3) {
+			else if (fcolor == 1 && (chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3)) {
 				chess_board[t1][t2] = 3;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -181,11 +181,11 @@ void diagonal_left_up_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y,
 		float xc = t2 * l + l / 2;
 		float yc = (t1)*l + l / 2;
 		if (chess_board[t1][t2] != 0) {
-			if (fcolor == 0 && chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4) {
+			if (fcolor == 0 && (chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4)) {
 				chess_board[t1][t2] = 4;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3) {
+			else if (fcolor == 1 && (chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3)) {
 				chess_board[t1][t2] = 3;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -209,11 +209,11 @@ void horizontal_left_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, 
 		float xc = t * l + l / 2;
 		float yc = (y)*l + l / 2;
 		if (chess_board[y][t] != 0) {
-			if (fcolor == 0 && chess_board[y][t] == 2 || chess_board[y][t] == 4) {
+			if (fcolor == 0 && (chess_board[y][t] == 2 || chess_board[y][t] == 4)) {
 				chess_board[y][t] = 4;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[y][t] == 1 || chess_board[y][t] == 3) {
+			else if (fcolor == 1 && (chess_board[y][t] == 1 || chess_board[y][t] == 3)) {
 				chess_board[y][t] = 3;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -240,7 +240,7 @@ void horizontal_right_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y,
 				chess_board[y][t] = 4;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[y][t] == 1 || chess_board[y][t] == 3) {
+			else if (fcolor == 1 && (chess_board[y][t] == 1 || chess_board[y][t] == 3)) {
 				chess_board[y][t] = 3;
 				queen_all_move.push_back(sf::Vector2f(xc, yc));
 			}

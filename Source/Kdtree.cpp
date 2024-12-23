@@ -56,7 +56,7 @@ std::shared_ptr<kdNode> hfindminy(std::shared_ptr<kdNode> fptr) {
         }
         return minNodey(fptr, hfindminy(fptr->getleftchild()), nullptr);
     }
-    return minNodey(fptr, hfindminx(fptr->getleftchild()), hfindminx(fptr->getrightchild()));
+    return minNodey(fptr, hfindminy(fptr->getleftchild()), hfindminy(fptr->getrightchild()));
 }
 std::shared_ptr<kdNode> Kdtree::findminx(std::shared_ptr<kdNode> fptr) {
     return hfindminx(fptr);
@@ -658,41 +658,39 @@ unsigned index_correct_position(float position, float Screen_size) {
     return returned_val;
 }
 
-void Kdtree::tree_bypass_help_func(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, float Screensize, unsigned(&chessboard)[8][8], std::vector<unsigned>& vect, unsigned whoose_move) {
+void Kdtree::tree_bypass_help_func( std::shared_ptr<kdNode> fptr, std::vector<std::shared_ptr<kdNode>>& Figure_list, unsigned whoose_move) {
     if (fptr != nullptr) {
-
-        tree_bypass_help_func(Wking, Bking, fptr->getrightchild(), Screensize, chessboard, vect, whoose_move);
-        //if ....
-       // std::cout << fptr->getthis()->getPosition().x << "    " << fptr->getthis()->getPosition().y << "    " << fptr->getthis()->get_is_under_attack() << std::endl;
-        //if (fptr->getthis()->boundingBox.contains(xc, yc) && Needed_element == nullptr ) {
-        //	std::cout << fptr->getthis()->boundingBox.left << std::endl;
-        //	*Needed_element = fptr;
-        //}
-        if (fptr->getthis()->getColor() == whoose_move) {
-            std::vector<sf::Vector2f> val = fptr->getthis()->all_move();
-            float Previos_positionx = fptr->getthis()->getPosition().x;
-            float Previos_positiony = fptr->getthis()->getPosition().y;
-            unsigned Px = index_correct_position(Previos_positionx, Screensize);
-            unsigned Py = index_correct_position(Previos_positiony, Screensize);
-            for (auto s : val) {
-                float New_positionx = s.x;
-                float New_positiony = s.y;
-                unsigned Nx = index_correct_position(New_positionx, Screensize);
-                unsigned Ny = index_correct_position(New_positiony, Screensize);
-                if ((chessboard[Ny][Nx] == 3 && fptr->getthis()->getColor() == 1) || (chessboard[Ny][Nx] == 4 && fptr->getthis()->getColor() == 0)) {
-                    help_func_for_IS_MATE(Wking, Bking, fptr, sf::Vector2f(Previos_positionx, Previos_positiony), sf::Vector2f(New_positionx, New_positiony), 1, Screensize, chessboard, vect);
-                }
-                else {
-                    help_func_for_IS_MATE(Wking, Bking, fptr, sf::Vector2f(Previos_positionx, Previos_positiony), sf::Vector2f(New_positionx, New_positiony), 0, Screensize, chessboard, vect);
-                }
-            }
+        tree_bypass_help_func(fptr->getrightchild(), Figure_list, whoose_move);
+        if (fptr->getthis()->getColor() == whoose_move) { // либо чёрные либо белые 
+            Figure_list.push_back(fptr);
         }
-        tree_bypass_help_func(Wking, Bking, fptr->getleftchild(), Screensize, chessboard, vect, whoose_move);
+        tree_bypass_help_func(fptr->getleftchild(), Figure_list, whoose_move);
 
     }
 }
 void Kdtree::tree_bypass(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, float Screensize, unsigned(&chessboard)[8][8], std::vector<unsigned>& vect, unsigned whoose_move) {
-    tree_bypass_help_func(Wking, Bking, root, Screensize, chessboard, vect , whoose_move);
+    std::vector<std::shared_ptr<kdNode>> Figure_list;
+    tree_bypass_help_func(root, Figure_list, whoose_move);
+    for (auto fptr : Figure_list) {
+        std::vector<sf::Vector2f> val = fptr->getthis()->all_move();
+        float Previos_positionx = fptr->getthis()->getPosition().x;
+        float Previos_positiony = fptr->getthis()->getPosition().y;
+        unsigned Px = index_correct_position(Previos_positionx, Screensize);
+        unsigned Py = index_correct_position(Previos_positiony, Screensize);
+        for (auto s : val) {
+            float New_positionx = s.x;
+            float New_positiony = s.y;
+            unsigned Nx = index_correct_position(New_positionx, Screensize);
+            unsigned Ny = index_correct_position(New_positiony, Screensize);
+            if ((chessboard[Ny][Nx] == 3 && fptr->getthis()->getColor() == 1) || (chessboard[Ny][Nx] == 4 && fptr->getthis()->getColor() == 0)) {
+                help_func_for_IS_MATE(Wking, Bking, fptr, sf::Vector2f(Previos_positionx, Previos_positiony), sf::Vector2f(New_positionx, New_positiony), 1, Screensize, chessboard, vect);
+            }
+            else {
+                help_func_for_IS_MATE(Wking, Bking, fptr, sf::Vector2f(Previos_positionx, Previos_positiony), sf::Vector2f(New_positionx, New_positiony), 0, Screensize, chessboard, vect);
+            }
+        }
+    }
+    Figure_list.~vector();
 }
 
 void Kdtree::update(float Screen_size , unsigned(&chessboard)[8][8]) {
@@ -701,11 +699,27 @@ void Kdtree::update(float Screen_size , unsigned(&chessboard)[8][8]) {
     help_func_for_update_status(root, chessboard, Screen_size);
 }
 
+void putTree2(std::shared_ptr <kdNode> ptr, int level)
+{
+    int i = level;
+    if (ptr != nullptr) {
 
+        putTree2(ptr->getrightchild(), level + 1);
+        while (i-- > 0) {
+            std::cout << "        ";
+        }
+        std::cout << ptr.get()->getthis()->getPosition().x << " , " << ptr.get()->getthis()->getPosition().y << " , " << ptr->getthis()->getColor() << std::endl;
+        putTree2(ptr->getleftchild(), level + 1);
+
+    }
+}
 
 bool Kdtree::can_make_this_move(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete,float Screensize, unsigned(&chessboard)[8][8]) {
     if (fptr == nullptr) {
         throw std::runtime_error("ChangeNode Error: pointer = nullptr");
+    }
+    if (fptr->getthis() == nullptr) {
+        throw std::runtime_error("ChangeNode Error: pointer to figure = nullptr");
     }
     fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
     DeleteNode(fptr);
@@ -737,13 +751,11 @@ bool Kdtree::can_make_this_move(std::shared_ptr<Figure> Wking, std::shared_ptr<F
         update(Screensize, chessboard);
         return 1;
     }
-    if (deleted_element != nullptr) {
-        deleted_element.~shared_ptr();
-    }
+
     return 0;
 }
 
-bool Kdtree::help_func_for_IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete, float Screensize, unsigned(&chessboard)[8][8], std::vector<unsigned>& vect) {
+void Kdtree::help_func_for_IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete, float Screensize, unsigned(&chessboard)[8][8], std::vector<unsigned>& vect) {
     if (fptr == nullptr) {
         throw std::runtime_error("ChangeNode Error: pointer = nullptr");
     }
@@ -765,35 +777,8 @@ bool Kdtree::help_func_for_IS_MATE(std::shared_ptr<Figure> Wking, std::shared_pt
     unsigned t = fptr->getthis()->getColor();
     update(Screensize, chessboard);
     unsigned per = 0;
-    if (t == 0) {
-        if (Bking->get_is_under_attack() == 1) {
-            DeleteNode(fptr);
-            fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
-            AddNode(fptr);
-            chessboard[Ny][Nx] = 0;
-            chessboard[Py][Px] = fptr->getthis()->getColor() + 1;
-            if (deleted_element != nullptr) {
-                AddNode(deleted_element);
-                chessboard[Ny][Nx] = deleted_element->getthis()->getColor() + 1;
-            }
-            update(Screensize, chessboard);
-            return 0;
-        }
-    }
-    else if(t == 1) {
-        if (Wking->get_is_under_attack() == 1) {
-            DeleteNode(fptr);
-            fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
-            AddNode(fptr);
-            chessboard[Ny][Nx] = 0;
-            chessboard[Py][Px] = fptr->getthis()->getColor() + 1;
-            if (deleted_element != nullptr) {
-                AddNode(deleted_element);
-                chessboard[Ny][Nx] = deleted_element->getthis()->getColor() + 1;
-            }
-            update(Screensize, chessboard);
-            return 0;
-        }
+    if ( (t == 0 && Bking->get_is_under_attack() == 0) || (t == 1 && Wking->get_is_under_attack() == 0)) {  
+        vect.push_back(1);
     }
     DeleteNode(fptr);
     fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
@@ -805,19 +790,25 @@ bool Kdtree::help_func_for_IS_MATE(std::shared_ptr<Figure> Wking, std::shared_pt
         chessboard[Ny][Nx] = deleted_element->getthis()->getColor() + 1;
     }
     update(Screensize, chessboard);
-    vect.push_back(1);
+    
 }
 bool Kdtree::IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, float Screensize, unsigned(&chessboard)[8][8]) {
     std::vector<unsigned> vect;
     vect.clear();
     if (Wking->get_is_under_attack() == 1) {
-        tree_bypass(Wking, Bking, Screensize, chessboard, vect, 0);
+        tree_bypass(Wking, Bking, Screensize, chessboard, vect, 1);
+        if (vect.empty() == true) {
+            vect.~vector();
+            return 1;
+        }
     }
     else if (Bking->get_is_under_attack() == 1) {
-        tree_bypass(Wking, Bking, Screensize, chessboard, vect, 1);
+        tree_bypass(Wking, Bking, Screensize, chessboard, vect, 0);
+        if (vect.empty() == true) {
+            vect.~vector();
+            return 1;
+        }
     }
-    if (vect.empty() == true) {
-        return 1;
-    }
+    vect.~vector();
     return 0;
 }

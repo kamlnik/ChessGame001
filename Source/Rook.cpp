@@ -40,11 +40,11 @@ void vertical_up_move_for_rook(unsigned(&chess_board)[8][8], unsigned x, unsigne
 		float xc = x * l + l / 2;
 		float yc = (t)*l + l / 2;
 		if (chess_board[t][x] != 0) {
-			if (fcolor == 0 && chess_board[t][x] == 2 || chess_board[t][x] == 4) {
+			if (fcolor == 0 && (chess_board[t][x] == 2 || chess_board[t][x] == 4)) {
 				chess_board[t][x] = 4;
 				rook_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t][x] == 1 || chess_board[t][x] == 3) {
+			else if (fcolor == 1 && (chess_board[t][x] == 1 || chess_board[t][x] == 3)) {
 				chess_board[t][x] = 3;
 				rook_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -68,11 +68,11 @@ void vertical_dawn_move_for_rook(unsigned(&chess_board)[8][8], unsigned x, unsig
 		float xc = x * l + l / 2;
 		float yc = (t)*l + l / 2;
 		if (chess_board[t][x] != 0) {
-			if (fcolor == 0 && chess_board[t][x] == 2 || chess_board[t][x] == 4) {
+			if (fcolor == 0 && (chess_board[t][x] == 2 || chess_board[t][x] == 4)) {
 				chess_board[t][x] = 4;
 				rook_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t][x] == 1 || chess_board[t][x] == 3) {
+			else if (fcolor == 1 && (chess_board[t][x] == 1 || chess_board[t][x] == 3)) {
 				chess_board[t][x] = 3;
 				rook_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -96,11 +96,11 @@ void horizontal_left_move_for_rook(unsigned(&chess_board)[8][8], unsigned x, uns
 		float xc = t * l + l / 2;
 		float yc = (y)*l + l / 2;
 		if (chess_board[y][t] != 0) {
-			if (fcolor == 0 && chess_board[y][t] == 2 || chess_board[y][t] == 4) {
+			if (fcolor == 0 && (chess_board[y][t] == 2 || chess_board[y][t] == 4)) {
 				chess_board[y][t] = 4;
 				rook_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[y][t] == 1 || chess_board[y][t] == 3) {
+			else if (fcolor == 1 && (chess_board[y][t] == 1 || chess_board[y][t] == 3)) {
 				chess_board[y][t] = 3;
 				rook_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -124,11 +124,11 @@ void horizontal_right_move_for_rook(unsigned(&chess_board)[8][8], unsigned x, un
 		float xc = t * l + l / 2;
 		float yc = (y)*l + l / 2;
 		if (chess_board[y][t] != 0) {
-			if (fcolor == 0 && chess_board[y][t] == 2 || chess_board[y][t] == 4) {
+			if (fcolor == 0 && (chess_board[y][t] == 2 || chess_board[y][t] == 4)) {
 				chess_board[y][t] = 4;
 				rook_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[y][t] == 1 || chess_board[y][t] == 3) {
+			else if (fcolor == 1 && (chess_board[y][t] == 1 || chess_board[y][t] == 3)) {
 				chess_board[y][t] = 3;
 				rook_all_move.push_back(sf::Vector2f(xc, yc));
 			}

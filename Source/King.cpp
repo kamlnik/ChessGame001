@@ -132,7 +132,7 @@ void King::update_move(float Screen_size) {
 			}
 		}
 		else {
-			if (chess_board[y][x - 1] == 1 || chess_board[y - 1][x - 1] == 3) {
+			if (chess_board[y][x - 1] == 1 || chess_board[y][x - 1] == 3) {
 				chess_board[y][x - 1] = 3;
 				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
 			}

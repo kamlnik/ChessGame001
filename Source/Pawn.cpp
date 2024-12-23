@@ -68,10 +68,12 @@ void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigne
 		if (fcolor == 0) {
 			if (x < 8) {
 				unsigned i = y + 1;
-				float xc = x * l + l/2;
-				float yc = (i) * l + l/2;
-				pawn_all_move.push_back(sf::Vector2f(xc, yc));
-				//std::cout << xc << "//" << yc << std::endl;
+				if (chess_board[i][x] == 0 && i >= 0) {
+					float xc = x * l + l / 2;
+					float yc = (i)*l + l / 2;
+					pawn_all_move.push_back(sf::Vector2f(xc, yc));
+					//std::cout << xc << "//" << yc << std::endl;
+				}
 			}
 		}
 		else {

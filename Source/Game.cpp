@@ -5,28 +5,7 @@
 const sf::Time Game::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Game::Game()
-	: mWindow(sf::VideoMode(800, 800), "ChessAPP", sf::Style::Close), mWorld(mWindow)
-	//, mPlayer()
-	//, mFont()
-	//, mStatisticsText()
-	, mStatisticsUpdateTime()
-	, mStatisticsNumFrames(0)
-	//, shape(100.f)
-	//,test()
-{
-	//shape.setFillColor(sf::Color::Blue);
-//	shape.setOrigin(50.f, 50.f);
-	//shape.setPosition(100.f, 100.f);
-	/*sf::Texture texture;
-	texture.loadFromFile("C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wK.png");
-	test.setTexture(texture);
-	test.setOrigin(40.f, 40.f);
-	test.setPosition(100.f, 100.f);*/
-	//mFont.loadFromFile("Media/Sansation.ttf");
-	//mStatisticsText.setFont(mFont);
-	//mStatisticsText.setPosition(5.f, 5.f);
-	//mStatisticsText.setCharacterSize(10);
-}
+	: mWindow(sf::VideoMode(800, 800), "ChessAPP", sf::Style::Close), mWorld(mWindow), mStatisticsUpdateTime(), mStatisticsNumFrames(0){}
 
 void Game::run()
 {
@@ -36,27 +15,8 @@ void Game::run()
 	while (mWindow.isOpen())
 	{
 		mWorld.World_processEvents();
-	//	render();
 	}
-	//mWorld.World_processEvent();
-//	while (mWindow.isOpen())
-//	{
-		//sf::Time elapsedTime = clock.restart();
-		//timeSinceLastUpdate += elapsedTime;
-		//while (timeSinceLastUpdate > TimePerFrame)
-	//	{
-		//	timeSinceLastUpdate -= TimePerFrame;
-
-		//	processEvents();
-		//	std::cout << "daun" << std::endl;
-		//	std::cout << "bro, update " << std::endl;
-		//	update(TimePerFrame);
-			
-	//	}
-		//render();
-		//updateStatistics(elapsedTime);
-		//render();
-	//}
+	
 }
 
 /*void Game::processEvents()

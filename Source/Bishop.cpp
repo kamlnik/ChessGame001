@@ -39,11 +39,11 @@ void diagonal_right_up_move_for_bishop(unsigned(&chess_board)[8][8], unsigned x,
 		float xc = t2 * l + l / 2;
 		float yc = (t1)*l + l / 2;
 		if (chess_board[t1][t2] != 0) {
-			if (fcolor == 0 && chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4) {
+			if (fcolor == 0 && (chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4)) {
 				chess_board[t1][t2] = 4;
 				bishop_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3) {
+			else if (fcolor == 1 && (chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3)) {
 				chess_board[t1][t2] = 3;
 				bishop_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -69,11 +69,11 @@ void diagonal_left_dawn_move_for_bishop(unsigned(&chess_board)[8][8], unsigned x
 		float xc = t2 * l + l / 2;
 		float yc = (t1)*l + l / 2;
 		if (chess_board[t1][t2] != 0) {
-			if (fcolor == 0 && chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4) {
+			if (fcolor == 0 && (chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4)) {
 				chess_board[t1][t2] = 4;
 				bishop_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3) {
+			else if (fcolor == 1 && (chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3)) {
 				chess_board[t1][t2] = 3;
 				bishop_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -99,11 +99,11 @@ void diagonal_right_dawn_move_for_bishop(unsigned(&chess_board)[8][8], unsigned 
 		float xc = t2 * l + l / 2;
 		float yc = (t1)*l + l / 2;
 		if (chess_board[t1][t2] != 0) {
-			if (fcolor == 0 && chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4) {
+			if (fcolor == 0 && (chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4)) {
 				chess_board[t1][t2] = 4;
 				bishop_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3) {
+			else if (fcolor == 1 && (chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3)) {
 				chess_board[t1][t2] = 3;
 				bishop_all_move.push_back(sf::Vector2f(xc, yc));
 			}
@@ -129,11 +129,11 @@ void diagonal_left_up_move_for_bishop(unsigned(&chess_board)[8][8], unsigned x, 
 		float xc = t2 * l + l / 2;
 		float yc = (t1)*l + l / 2;
 		if (chess_board[t1][t2] != 0) {
-			if (fcolor == 0 && chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4) {
+			if (fcolor == 0 && (chess_board[t1][t2] == 2 || chess_board[t1][t2] == 4)) {
 				chess_board[t1][t2] = 4;
 				bishop_all_move.push_back(sf::Vector2f(xc, yc));
 			}
-			else if (fcolor == 1 && chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3) {
+			else if (fcolor == 1 && (chess_board[t1][t2] == 1 || chess_board[t1][t2] == 3)) {
 				chess_board[t1][t2] = 3;
 				bishop_all_move.push_back(sf::Vector2f(xc, yc));
 			}
