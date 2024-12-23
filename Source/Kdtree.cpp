@@ -792,7 +792,7 @@ void Kdtree::help_func_for_IS_MATE(std::shared_ptr<Figure> Wking, std::shared_pt
     update(Screensize, chessboard);
     
 }
-bool Kdtree::IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, float Screensize, unsigned(&chessboard)[8][8]) {
+unsigned Kdtree::IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, float Screensize, unsigned(&chessboard)[8][8]) {
     std::vector<unsigned> vect;
     vect.clear();
     if (Wking->get_is_under_attack() == 1) {
@@ -807,6 +807,14 @@ bool Kdtree::IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bkin
         if (vect.empty() == true) {
             vect.~vector();
             return 1;
+        }
+    }
+    if (Wking->get_is_under_attack() == 0 && Bking->get_is_under_attack() == 0) {
+        tree_bypass(Wking, Bking, Screensize, chessboard, vect, 1);
+        tree_bypass(Wking, Bking, Screensize, chessboard, vect, 0);
+        if (vect.empty() == true) {
+            vect.~vector();
+            return 2;
         }
     }
     vect.~vector();

@@ -323,14 +323,19 @@ void World::World_processEvents() {
 							else if ((Chess_board_for_figures[Ny][Nx] == 0)) {
 								t = Chesstree.can_make_this_move(WKing, BKing, moved_element.front(), Previos_Position, New_position, 0, Screen_width, Chess_board_for_figures);
 							}
-							if (Chesstree.IS_MATE(WKing, BKing, Screen_width, Chess_board_for_figures) == 1) {
+							unsigned status = 0;
+							status = Chesstree.IS_MATE(WKing, BKing, Screen_width, Chess_board_for_figures);
+							if (status == 1) {
 								if (moved_element.front()->getthis()->getColor() == 1) {
 									std::cout << "______ Mate to black ______" << std::endl;
 								}
 								else {
 									std::cout << "______ Mate to white ______" << std::endl;
 								}
-							}else
+							}
+							else if (status == 2) {
+								std::cout << "____________PAT_____________" << std::endl;
+							}
 							if (WKing->get_is_under_attack() == 1){
 								std::cout << "______ Check to white ______" << std::endl;
 							}
@@ -364,7 +369,7 @@ void World::World_processEvents() {
 						else {
 							moved_element.front()->getthis()->setPosition(Previos_Position);
 						}
-						func_print_desk(Chess_board_for_figures);
+						//func_print_desk(Chess_board_for_figures);
 							//putTree(Chesstree.getroot(), 0 );
 						Previos_Position = sf::Vector2f(0.f, 0.f);
 						moved_element.clear();
