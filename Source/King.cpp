@@ -40,96 +40,165 @@ void King::update_move(float Screen_size) {
 	unsigned fcolor = this->getColor();
 	float xl = (Screen_size / 8);
 	king_all_move.clear();
-	if (y > 0 && x > 0 && (chess_board[y - 1][x - 1] != fcolor + 1)) {
-		if (chess_board[y - 1][x - 1] != 0) {
-			if (fcolor == 0) {
+	if (y > 0 && x > 0 ) {
+		if (fcolor == 0) {
+			if (chess_board[y - 1][x - 1] == 2 || chess_board[y - 1][x - 1] == 4) {
 				chess_board[y - 1][x - 1] = 4;
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
 			}
-			else {
+			else if (chess_board[y - 1][x - 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+		}
+		else {
+			if (chess_board[y - 1][x - 1] == 1 || chess_board[y - 1][x - 1] == 3) {
 				chess_board[y - 1][x - 1] = 3;
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y - 1][x - 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
 			}
 		}
-		king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
 	}
-	if (y > 0  && (chess_board[y - 1][x] != fcolor + 1)) {
-		if (chess_board[y - 1][x] != 0) {
-			if (fcolor == 0) {
-				chess_board[y - 1][x] = 4;
-			}
-			else {
-				chess_board[y - 1][x] = 3;
-			}
-		}
-		king_all_move.push_back(sf::Vector2f((x) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
-	}
-	if (y > 0 && x < 7  && (chess_board[y - 1][x + 1] != fcolor + 1)) {
-		if (chess_board[y - 1][x + 1] != 0) {
-			if (fcolor == 0) {
-				chess_board[y - 1][x + 1] = 4;
-			}
-			else {
-				chess_board[y - 1][x + 1] = 3;
-			}
-		}
-		king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
-	}
-	if ( x < 7  && (chess_board[y][x + 1] != fcolor + 1)) {
-		if (chess_board[y][x + 1] != 0) {
-			if (fcolor == 0) {
-				chess_board[y][x + 1] = 4;
-			}
-			else {
-				chess_board[y][x + 1] = 3;
-			}
-		}
-		king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
-	}
-	if (x > 0  && (chess_board[y][x - 1] != fcolor + 1)) {
-		if (chess_board[y][x - 1] != 0) {
-			if (fcolor == 0) {
-				chess_board[y][x - 1] = 4;
-			}
-			else {
-				chess_board[y][x - 1] = 3;
-			}
-		}
-		king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y)*xl + (xl / 2)));
-	}
-	if (y < 7 && x < 7  && (chess_board[y + 1][x + 1] != fcolor + 1)) {
-		if (chess_board[y + 1][x + 1] != 0) {
-			if (fcolor == 0) {
-				chess_board[y + 1][x + 1] = 4;
-			}
-			else {
-				chess_board[y + 1][x + 1] = 3;
-			}
-		}
-		king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
-	}
-	if (y < 7 && (chess_board[y + 1][x] != fcolor + 1)) {
-		if (chess_board[y + 1][x] != 0) {
-			if (fcolor == 0) {
-				chess_board[y + 1][x] = 4;
-			}
-			else {
-				chess_board[y + 1][x] = 3;
-			}
-		}
-		king_all_move.push_back(sf::Vector2f((x) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
-	}
-	if (y < 7 && x > 0 && (chess_board[y + 1][x - 1] != fcolor + 1)) {
-		if (chess_board[y + 1][x - 1] != 0) {
-			if (fcolor == 0) {
-				chess_board[y + 1][x - 1] = 4;
-			}
-			else {
-				chess_board[y + 1][x - 1] = 3;
-			}
-		}
-		king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
-	}
-
-
-
 	
+	if (y > 0) {
+		if (fcolor == 0) {
+			if (chess_board[y - 1][x] == 2 || chess_board[y - 1][x] == 4) {
+				chess_board[y - 1][x] = 4;
+				king_all_move.push_back(sf::Vector2f((x) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y - 1][x] == 0) {
+				king_all_move.push_back(sf::Vector2f((x) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+		}
+		else {
+			if (chess_board[y - 1][x] == 1 || chess_board[y - 1][x] == 3) {
+				chess_board[y - 1][x] = 3;
+				king_all_move.push_back(sf::Vector2f((x) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y - 1][x] == 0) {
+				king_all_move.push_back(sf::Vector2f((x) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+		}
+	}
+	if (y > 0 && x < 7) {
+		if (fcolor == 0) {
+			if (chess_board[y - 1][x + 1] == 2 || chess_board[y - 1][x + 1] == 4) {
+				chess_board[y - 1][x + 1] = 4;
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y - 1][x + 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+		}
+		else {
+			if (chess_board[y - 1][x + 1] == 1 || chess_board[y - 1][x + 1] == 3) {
+				chess_board[y - 1][x + 1] = 3;
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y - 1][x + 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y - 1) * xl + (xl / 2)));
+			}
+		}
+	}
+	if ( x < 7 ) {
+		if (fcolor == 0) {
+			if (chess_board[y][x + 1] == 2 || chess_board[y][x + 1] == 4) {
+				chess_board[y][x + 1] = 4;
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
+			}
+			else if (chess_board[y][x + 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
+			}
+		}
+		else {
+			if (chess_board[y][x + 1] == 1 || chess_board[y][x + 1] == 3) {
+				chess_board[y][x + 1] = 3;
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
+			}
+			else if (chess_board[y][x + 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
+			}
+		}
+	}
+	if (x > 0 ) {
+		if (fcolor == 0) {
+			if (chess_board[y][x - 1] == 2 || chess_board[y][x - 1] == 4) {
+				chess_board[y][x - 1] = 4;
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
+			}
+			else if (chess_board[y][x - 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
+			}
+		}
+		else {
+			if (chess_board[y][x - 1] == 1 || chess_board[y - 1][x - 1] == 3) {
+				chess_board[y][x - 1] = 3;
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
+			}
+			else if (chess_board[y][x - 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y) * xl + (xl / 2)));
+			}
+		}
+	}
+	if (y < 7 && x < 7 ) {
+		if (fcolor == 0) {
+			if (chess_board[y + 1][x + 1] == 2 || chess_board[y + 1][x + 1] == 4) {
+				chess_board[y + 1][x + 1] = 4;
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y+1)*xl + (xl / 2)));
+			}
+			else if (chess_board[y + 1][x + 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y+1)*xl + (xl / 2)));
+			}
+		}
+		else {
+			if (chess_board[y + 1][x + 1] == 1 || chess_board[y + 1][x + 1] == 3) {
+				chess_board[y + 1][x + 1] = 3;
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y+1)*xl + (xl / 2)));
+			}
+			else if (chess_board[y + 1][x + 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x + 1) * xl + (xl / 2), (y+1)*xl + (xl / 2)));
+			}
+		}
+	}
+	if (y < 7 ) {
+		if (fcolor == 0) {
+			if (chess_board[y + 1][x] == 2 || chess_board[y + 1][x] == 4) {
+				chess_board[y + 1][x] = 4;
+				king_all_move.push_back(sf::Vector2f((x) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y + 1][x] == 0) {
+				king_all_move.push_back(sf::Vector2f((x) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
+			}
+		}
+		else {
+			if (chess_board[y + 1][x] == 1 || chess_board[y + 1][x] == 3) {
+				chess_board[y + 1][x] = 3;
+				king_all_move.push_back(sf::Vector2f((x)*xl + (xl / 2), (y + 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y + 1][x] == 0) {
+				king_all_move.push_back(sf::Vector2f((x)*xl + (xl / 2), (y + 1) * xl + (xl / 2)));
+			}
+		}
+	}
+	if (y < 7 && x > 0) {
+		if (fcolor == 0) {
+			if (chess_board[y + 1][x - 1] == 2 || chess_board[y + 1][x - 1] == 4) {
+				chess_board[y + 1][x - 1] = 4;
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y + 1][x - 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
+			}
+		}
+		else {
+			if (chess_board[y + 1][x - 1] == 1 || chess_board[y + 1][x - 1] == 3) {
+				chess_board[y + 1][x - 1] = 3;
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
+			}
+			else if (chess_board[y + 1][x - 1] == 0) {
+				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
+			}
+		}
+	}
 }

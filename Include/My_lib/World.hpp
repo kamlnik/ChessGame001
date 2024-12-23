@@ -8,6 +8,10 @@
 #include <My_lib/Figure.hpp>
 #include <My_lib/Pawn.hpp>
 #include <My_lib/King.hpp>
+#include <My_lib/Queen.hpp>
+#include <My_lib/Rook.hpp>
+#include <My_lib/Bishop.hpp>
+#include <My_lib/Knight.hpp>
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/View.hpp>
 #include <SFML/Graphics/Texture.hpp>

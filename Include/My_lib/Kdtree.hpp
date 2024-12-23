@@ -32,6 +32,7 @@ public:
 class Kdtree {
 private:
     std::shared_ptr <kdNode> root;
+    void tree_bypass_help_func(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, float Screensize, unsigned(&chessboard)[8][8], std::vector<unsigned>& vect, unsigned whoose_move);
 public:
     Kdtree() : root(nullptr) {};
     Kdtree(kdNode* newroot) : root(newroot) {};
@@ -48,8 +49,10 @@ public:
    // void update_all_move();
    // void update_all_status(const unsigned(&chessboard)[8][8]);
    // void update(unsigned(&chessboard)[8][8]) { update_all_move; update_all_status(chessboard); }
-    
-    void tree_bypass( /*std::shared_ptr<kdNode>* Needed_element*/); // не совсем нужно 
+    bool can_make_this_move(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete, float Screensize, unsigned(&chessboard)[8][8]);
+    bool IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, float Screensize, unsigned(&chessboard)[8][8]);
+    bool help_func_for_IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete, float Screensize, unsigned(&chessboard)[8][8], std::vector<unsigned>& vect);
+    void tree_bypass(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, float Screensize, unsigned(&chessboard)[8][8], std::vector<unsigned>& vect, unsigned whoose_move); // не совсем нужно 
     // std::shared_ptr<kdNode> FindMin(std::shared_ptr<kdNode> fptr);
     void drawtree(sf::RenderTarget& target);
 };

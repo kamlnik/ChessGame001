@@ -15,9 +15,6 @@ World::World(sf::RenderWindow& window)
 	, mTextures()
 	, Chess_board()
 	, Chesstree()
-
-	//, mSceneGraph()
-	//, mSceneLayers()
 {
 	Screen_width = mWindow.getSize().y;
 	Scale_value = Screen_width / 800;
@@ -33,7 +30,6 @@ void World::draw() // нужна отрисовка дерева фигур
 	mWindow.setView(mWorldView);
 	mWindow.draw(Chess_board);
 	Chesstree.drawtree(mWindow);
-	//mWindow.draw(mStatisticsText);
 	mWindow.display();
 }
 
@@ -45,9 +41,17 @@ void World::loadTextures()
 	mTextures.load(Textures::bPawn, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bP.png");
 	mTextures.load(Textures::bKing, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bK.png");
 	mTextures.load(Textures::wKing, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wK.png");
+	mTextures.load(Textures::wQueen, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wQ.png");
+	mTextures.load(Textures::bQueen, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bQ.png");
+	mTextures.load(Textures::wRook, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wR.png");
+	mTextures.load(Textures::bRook, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bR.png");
+	mTextures.load(Textures::wBishop, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wB.png");
+	mTextures.load(Textures::bBishop, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bB.png");
+	mTextures.load(Textures::wKnight, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wN.png");
+	mTextures.load(Textures::bKnight, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bN.png");
 }
 
-unsigned index_correct_position(float position, float Screen_size) {
+unsigned new_index_correct_position(float position, float Screen_size) {
 	float returned_val = 0.f;
 	int per = position / (Screen_size/16);
 	if (per % 2 == 0) {
@@ -72,21 +76,9 @@ void World::buildScene() {
 	sf::IntRect textureRect(mWorldBounds);
 	Chess_board.setTexture(texture, true); // не знаю зачем true или false 
 	Chess_board.scale(Scale_value , Scale_value);
-/*	std::unique_ptr<Pawn> wPawn1(new Pawn(Figure::white, mTextures));
-	wPawn1.get()->setOrigin(40.f, 40.f);
-	wPawn1->setPosition(450.f, 650.f);
-	std::shared_ptr <kdNode> node1(new kdNode(std::move(wPawn1)));
-	Chesstree.AddNode(node1);
-	std::unique_ptr<Pawn> wPawn2(new Pawn(Figure::white, mTextures));
-	wPawn2.get()->setOrigin(40.f, 40.f);
-	wPawn2->setPosition(250.f, 650.f);
-	std::shared_ptr <kdNode> node2(new kdNode(std::move(wPawn2)));
-	Chesstree.AddNode(node2);
-	Chesstree.DeleteNode(450.f, 650.f);*/
 
 	for (int i = 0; i < 8; i++) {
 		std::unique_ptr<Pawn> wPawn(new Pawn(Figure::white, mTextures, Chess_board_for_figures));
-		//wPawn->mSprite.scale(1.5, 1.5);
 		wPawn.get()->setOrigin(40.f, 40.f);
 		wPawn.get()->scale(Scale_value, Scale_value);
 		wPawn.get()->getTransform();
@@ -101,8 +93,6 @@ void World::buildScene() {
 		bPawn.get()->setOrigin(40.f, 40.f);
 		bPawn.get()->scale(Scale_value, Scale_value);
 		bPawn.get()->getTransform();
-		//bPawn.get()->scale(Scale_value, Scale_value);
-		//bPawn.get()->setOrigin(40.f * Scale_value, 40.f * Scale_value);
 		bPawn->setPosition(Screen_width / 16 + (i * Screen_width) / 8, 3 * Screen_width / 16);
 		Chess_board_for_figures[1][i] = 1;
 		std::shared_ptr <kdNode> node(new kdNode(std::move(bPawn)));
@@ -127,60 +117,118 @@ void World::buildScene() {
 	BKing = node_for_bking->getthis();
 	Chesstree.AddNode(node_for_bking);
 
+	std::unique_ptr<Queen> wQueen(new Queen(Figure::white, mTextures, Chess_board_for_figures));
+	wQueen.get()->setOrigin(40.f, 40.f);
+	wQueen.get()->scale(Scale_value, Scale_value);
+	wQueen.get()->getTransform();
+	wQueen->setPosition(Screen_width / 16 + (3 * Screen_width / 8), 15 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_wQueen(new kdNode(std::move(wQueen)));
+	Chesstree.AddNode(node_for_wQueen);
+	
+	std::unique_ptr<Queen> bQueen(new Queen(Figure::black, mTextures, Chess_board_for_figures));
+	bQueen.get()->setOrigin(40.f, 40.f);
+	bQueen.get()->scale(Scale_value, Scale_value);
+	bQueen.get()->getTransform();
+	bQueen->setPosition(Screen_width / 16 + (4 * Screen_width / 8), 1 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_bQueen(new kdNode(std::move(bQueen)));
+	Chesstree.AddNode(node_for_bQueen);
 
+	std::unique_ptr<Rook> wRook1(new Rook(Figure::white, mTextures, Chess_board_for_figures));
+	wRook1.get()->setOrigin(40.f, 40.f);
+	wRook1.get()->scale(Scale_value, Scale_value);
+	wRook1.get()->getTransform();
+	wRook1->setPosition(Screen_width / 16 + (0 * Screen_width / 8), 15 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_wRook1(new kdNode(std::move(wRook1)));
+	Chesstree.AddNode(node_for_wRook1);
 
+	std::unique_ptr<Rook> wRook2(new Rook(Figure::white, mTextures, Chess_board_for_figures));
+	wRook2.get()->setOrigin(40.f, 40.f);
+	wRook2.get()->scale(Scale_value, Scale_value);
+	wRook2.get()->getTransform();
+	wRook2->setPosition(Screen_width / 16 + (7 * Screen_width / 8), 15 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_wRook2(new kdNode(std::move(wRook2)));
+	Chesstree.AddNode(node_for_wRook2);
+
+	std::unique_ptr<Rook> bRook1(new Rook(Figure::black, mTextures, Chess_board_for_figures));
+	bRook1.get()->setOrigin(40.f, 40.f);
+	bRook1.get()->scale(Scale_value, Scale_value);
+	bRook1.get()->getTransform();
+	bRook1->setPosition(Screen_width / 16 + (0 * Screen_width / 8), 1 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_bRook1(new kdNode(std::move(bRook1)));
+	Chesstree.AddNode(node_for_bRook1);
+
+	std::unique_ptr<Rook> bRook2(new Rook(Figure::black, mTextures, Chess_board_for_figures));
+	bRook2.get()->setOrigin(40.f, 40.f);
+	bRook2.get()->scale(Scale_value, Scale_value);
+	bRook2.get()->getTransform();
+	bRook2->setPosition(Screen_width / 16 + (7 * Screen_width / 8), 1 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_bRook2(new kdNode(std::move(bRook2)));
+	Chesstree.AddNode(node_for_bRook2);
+
+	std::unique_ptr<Bishop> wBishop1(new Bishop(Figure::white, mTextures, Chess_board_for_figures));
+	wBishop1.get()->setOrigin(40.f, 40.f);
+	wBishop1.get()->scale(Scale_value, Scale_value);
+	wBishop1.get()->getTransform();
+	wBishop1->setPosition(Screen_width / 16 + (2 * Screen_width / 8), 15 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_wBishop1(new kdNode(std::move(wBishop1)));
+	Chesstree.AddNode(node_for_wBishop1);
+
+	std::unique_ptr<Bishop> wBishop2(new Bishop(Figure::white, mTextures, Chess_board_for_figures));
+	wBishop2.get()->setOrigin(40.f, 40.f);
+	wBishop2.get()->scale(Scale_value, Scale_value);
+	wBishop2.get()->getTransform();
+	wBishop2->setPosition(Screen_width / 16 + (5 * Screen_width / 8), 15 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_wBishop2(new kdNode(std::move(wBishop2)));
+	Chesstree.AddNode(node_for_wBishop2);
+
+	std::unique_ptr<Bishop> bBishop1(new Bishop(Figure::black, mTextures, Chess_board_for_figures));
+	bBishop1.get()->setOrigin(40.f, 40.f);
+	bBishop1.get()->scale(Scale_value, Scale_value);
+	bBishop1.get()->getTransform();
+	bBishop1->setPosition(Screen_width / 16 + (2 * Screen_width / 8), 1 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_bBishop1(new kdNode(std::move(bBishop1)));
+	Chesstree.AddNode(node_for_bBishop1);
+
+	std::unique_ptr<Bishop> bBishop2(new Bishop(Figure::black, mTextures, Chess_board_for_figures));
+	bBishop2.get()->setOrigin(40.f, 40.f);
+	bBishop2.get()->scale(Scale_value, Scale_value);
+	bBishop2.get()->getTransform();
+	bBishop2->setPosition(Screen_width / 16 + (5 * Screen_width / 8), 1 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_bBishop2(new kdNode(std::move(bBishop2)));
+	Chesstree.AddNode(node_for_bBishop2);
+
+	std::unique_ptr<Knight> wKnight1(new Knight(Figure::white, mTextures, Chess_board_for_figures));
+	wKnight1.get()->setOrigin(40.f, 40.f);
+	wKnight1.get()->scale(Scale_value, Scale_value);
+	wKnight1.get()->getTransform();
+	wKnight1->setPosition(Screen_width / 16 + (1 * Screen_width / 8), 15 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_wKnight1(new kdNode(std::move(wKnight1)));
+	Chesstree.AddNode(node_for_wKnight1);
+
+	std::unique_ptr<Knight> wKnight2(new Knight(Figure::white, mTextures, Chess_board_for_figures));
+	wKnight2.get()->setOrigin(40.f, 40.f);
+	wKnight2.get()->scale(Scale_value, Scale_value);
+	wKnight2.get()->getTransform();
+	wKnight2->setPosition(Screen_width / 16 + (6 * Screen_width / 8), 15 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_wKnight2(new kdNode(std::move(wKnight2)));
+	Chesstree.AddNode(node_for_wKnight2);
+
+	std::unique_ptr<Knight> bKnight1(new Knight(Figure::black, mTextures, Chess_board_for_figures));
+	bKnight1.get()->setOrigin(40.f, 40.f);
+	bKnight1.get()->scale(Scale_value, Scale_value);
+	bKnight1.get()->getTransform();
+	bKnight1->setPosition(Screen_width / 16 + (1 * Screen_width / 8), 1 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_bKnight1(new kdNode(std::move(bKnight1)));
+	Chesstree.AddNode(node_for_bKnight1);
+
+	std::unique_ptr<Knight> bKnight2(new Knight(Figure::black, mTextures, Chess_board_for_figures));
+	bKnight2.get()->setOrigin(40.f, 40.f);
+	bKnight2.get()->scale(Scale_value, Scale_value);
+	bKnight2.get()->getTransform();
+	bKnight2->setPosition(Screen_width / 16 + (6 * Screen_width / 8), 1 * Screen_width / 16);
+	std::shared_ptr <kdNode> node_for_bKnight2(new kdNode(std::move(bKnight2)));
+	Chesstree.AddNode(node_for_bKnight2);
 	Chesstree.update( Screen_width, Chess_board_for_figures);
-	//Chesstree.update_all_status(Chess_board_for_figures);
-
-	//func_print_desk(Chess_board_for_figures);
-//	std::shared_ptr<kdNode>* Needed_element = nullptr;
-	//tree_bypass(Chesstree.getroot(), 0.f, 0.f, Needed_element);//std::cout << Chesstree.getroot()->getleftchild()->getthis()->getPosition().x << Chesstree.getroot()->getleftchild()->getthis()->getPosition().y;
-	//Chesstree.tree_bypass(0.f, 0.f);
-	//std::cout << Chesstree.getroot()->getrightchild()->getrightchild()->getthis()->getPosition().x << Chesstree.getroot()->getrightchild()->getrightchild()->getthis()->getPosition().y;
-	//if ((Chesstree.getroot())->getleftchild() == nullptr) {
-	//	throw std::runtime_error("4444");
-	//}
-	//std::cout << Chesstree.getroot()->getthis()->getPosition().x << Chesstree.getroot()->getthis()->getPosition().y;
-	//if (Chesstree.getroot()->getleftchild() == nullptr) {
-	////	throw std::runtime_error("leftchild");
-	//}
-	//std::shared_ptr<kdNode>* Needed_element = nullptr;
-	//Chesstree.tree_bypass(Chesstree.getroot(), 1110.f, 1111.f, Needed_element);
-	//Chesstree.DeleteNode(450.f, 650.f);
-	//std::unique_ptr<Figure> testptr = wPawn1;
-	//mFigure = std::move(wPawn1);
-	//Figure* test = Pawn(Figure::white, mTextures);
-	//std::cout << mFigure->getPosition().x;;
-	//std::cout << (*mFigure).getPosition().x;
-	//(*mFigure).getPosition().x
-	/*for (std::size_t i = 0; i < LayerCount; ++i) // инициализация слоёв 
-	{
-		SceneNode::Ptr layer(new SceneNode());
-		mSceneLayers[i] = layer.get();
-		mSceneGraph.attachChild(std::move(layer));
-	}*/
-	/*SceneNode::Ptr layer(new SceneNode());
-	mSceneLayers.push_back(layer.get());
-	mSceneGraph.attachChild(std::move(layer));
-	sf::Texture& texture = mTextures.get(Textures::Chess_board);
-	sf::IntRect textureRect(mWorldBounds);
-	std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture, textureRect));
-	backgroundSprite->setPosition(0, 0);
-	mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
-
-	std::unique_ptr<Figure> wPawn1(new Figure(Figure::wPawn, mTextures));  //
-	wPawn1.get()->setOrigin(40.f, 40.f);
-	wPawn1->setPosition(450.f, 650.f);
-	std::cout << wPawn1.get()->getPosition().x;
-	mSceneLayers[Background]->attachChild(std::move(wPawn1));// Инициализация фигур
-
-	//mSceneLayers[Background]->attachChild(std::move(wPawn1)); // ничего не понимаю 
-	std::unique_ptr<Figure> bPawn1(new Figure(Figure::bPawn, mTextures));  // 
-	bPawn1.get()->setOrigin(40.f, 40.f);
-	bPawn1->sf::Transformable::setPosition(50.f, 150.f); //
-	mSceneGraph.attachChild(std::move(bPawn1));
-	//mSceneLayers[Background]->attachChild(std::move(bPawn1));
-	*/
 }
 float correct_position(float position , float screen_size) {
 	float returned_val = 0.f;
@@ -224,12 +272,14 @@ void World::World_processEvents() {
 	bool isMove = false;//переменная для щелчка мыши по спрайту
 	float dX = 0;
 	float dY = 0;
-	//std::shared_ptr<kdNode> changed_element;
 	std::vector<std::shared_ptr<kdNode>> moved_element;
 	sf::Vector2f Previos_Position;
 	while (mWindow.isOpen())
 	{
 		this->draw();
+		if (moved_element.empty() == false) {
+			mWindow.draw(*(moved_element.front())->getthis());
+		}
 		sf::Vector2i pixelPos = sf::Mouse::getPosition(mWindow);//забираем коорд курсора
 		sf::Vector2f pos = mWindow.mapPixelToCoords(pixelPos);
 		sf::Event event;
@@ -258,24 +308,53 @@ void World::World_processEvents() {
 						std::vector<sf::Vector2f> possible_moves = moved_element.front()->getthis()->all_move(); // тут проблема (как ожидалось )
 						auto t = std::find(possible_moves.begin(), possible_moves.end(), New_position);
 						if (t != possible_moves.end()) {
-							unsigned Nx = index_correct_position(New_position.x, Screen_width);
-							unsigned Ny = index_correct_position(New_position.y, Screen_width);
-							unsigned Px = index_correct_position(Previos_Position.x, Screen_width);
-							unsigned Py = index_correct_position(Previos_Position.y, Screen_width);
+							
+							unsigned Nx = new_index_correct_position(New_position.x, Screen_width);
+							unsigned Ny = new_index_correct_position(New_position.y, Screen_width);
+							unsigned Px = new_index_correct_position(Previos_Position.x, Screen_width);
+							unsigned Py = new_index_correct_position(Previos_Position.y, Screen_width);
+							unsigned t = 0;
 							if ((Chess_board_for_figures[Ny][Nx] == 3 && moved_element.front()->getthis()->getColor() == 1) || (Chess_board_for_figures[Ny][Nx] == 4 && moved_element.front()->getthis()->getColor() == 0)) {
-								Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position, 1);
+								t = Chesstree.can_make_this_move(WKing, BKing, moved_element.front(), Previos_Position, New_position, 1, Screen_width, Chess_board_for_figures);
 							}
 							else {
-								Chesstree.ChangeNode(moved_element.front(), Previos_Position, New_position, 0);
+								t = Chesstree.can_make_this_move(WKing, BKing, moved_element.front(), Previos_Position, New_position, 0, Screen_width, Chess_board_for_figures);
 							}
-							Chess_board_for_figures[Py][Px] = 0;
+							/*if (Chesstree.IS_MATE(WKing, BKing, Screen_width, Chess_board_for_figures) == 1) {
+								if (moved_element.front()->getthis()->getColor() == 1) {
+									std::cout << "______ Mate to white ______" << std::endl;
+								}
+								else {
+									std::cout << "______ Mate to black ______" << std::endl;
+								}
+							}*/
+							if(WKing->get_is_under_attack() == 1){
+								std::cout << "______ Check to white ______" << std::endl;
+							}
+							else if (BKing->get_is_under_attack() == 1) {
+								std::cout << "______ Check to black ______" << std::endl;
+							}
+							else {
+								std::cout << "____________________________" << std::endl;
+							}
+							/*if (WKing->get_is_under_attack() == 1) {
+								std::cout << "______ Check to white ______" << std::endl;
+							}else if (BKing->get_is_under_attack() == 1) {
+								std::cout << "______ Check to black ______" << std::endl;
+							}
+							else {
+								std::cout << "____________________________" << std::endl;
+							}*/
+							/*Chess_board_for_figures[Py][Px] = 0;
 							Chess_board_for_figures[Ny][Nx] = (moved_element.front()->getthis()->getColor()) + 1;
-							Chesstree.update(Screen_width ,Chess_board_for_figures);
-							if (Whoose_move) {
-								Whoose_move = 0;
-							}
-							else {
-								Whoose_move = 1;
+							Chesstree.update(Screen_width ,Chess_board_for_figures);*/
+							if (t == 0) {
+								if (Whoose_move) {
+									Whoose_move = 0;
+								}
+								else {
+									Whoose_move = 1;
+								}
 							}
 							func_print_desk(Chess_board_for_figures);
 						}

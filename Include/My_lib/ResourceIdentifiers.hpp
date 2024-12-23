@@ -16,6 +16,14 @@ namespace Textures
 		bPawn,
 		bKing,
 		wKing,
+		bQueen,
+		wQueen,
+		bRook,
+		wRook,
+		bBishop,
+		wBishop,
+		wKnight,
+		bKnight,
 		Chess_board, // шахматная доска
 	};
 }

@@ -9,8 +9,13 @@
 class Figure : public sf::Transformable, public sf::Drawable, private sf::NonCopyable
 {
 public:
-    enum Type { // нужно просто Pawn
-        Pawn, King //, wPawn
+    enum Type { 
+        Pawn,
+        King,
+        Queen,
+        Rook, 
+        Bishop,
+        Knight
     };
     enum Color {
         black, white
