@@ -259,7 +259,6 @@ void Queen::update_move(float Screensize) {
 	unsigned x = mindex_correct_position_for_queen(this->getPosition().x, Screensize);
 	unsigned y = mindex_correct_position_for_queen(this->getPosition().y, Screensize);
 	unsigned fcolor = this->getColor();
-	float xl = (Screensize / 8);
 	queen_all_move.clear();
 	vertical_up_move(chess_board, x, y, fcolor, queen_all_move, Screensize);
 	vertical_dawn_move(chess_board, x, y, fcolor, queen_all_move, Screensize);

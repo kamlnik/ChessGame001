@@ -49,6 +49,19 @@ void World::loadTextures()
 	mTextures.load(Textures::bBishop, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bB.png");
 	mTextures.load(Textures::wKnight, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/wN.png");
 	mTextures.load(Textures::bKnight, "C:/Users/Kamlo/source/repos/ChessGame001/Media/Textures/bN.png");
+	mTextures.get(Textures::Chess_board).setSmooth(true);
+	mTextures.get(Textures::wPawn).setSmooth(true);
+	mTextures.get(Textures::bPawn).setSmooth(true);
+	mTextures.get(Textures::bKing).setSmooth(true);
+	mTextures.get(Textures::wKing).setSmooth(true);
+	mTextures.get(Textures::wQueen).setSmooth(true);
+	mTextures.get(Textures::bQueen).setSmooth(true);
+	mTextures.get(Textures::wRook).setSmooth(true);
+	mTextures.get(Textures::bRook).setSmooth(true);
+	mTextures.get(Textures::wBishop).setSmooth(true);
+	mTextures.get(Textures::bBishop).setSmooth(true);
+	mTextures.get(Textures::wKnight).setSmooth(true);
+	mTextures.get(Textures::bKnight).setSmooth(true);
 }
 
 unsigned new_index_correct_position(float position, float Screen_size) {
@@ -303,6 +316,7 @@ void World::World_processEvents() {
 				if (event.key.code == sf::Mouse::Left) {
 					if (moved_element.empty() == false) {
 						isMove = false;
+						//func_print_desk(Chess_board_for_figures);
 						moved_element.front()->getthis()->setPosition(correct_position(moved_element.front()->getthis()->getPosition().x , Screen_width), correct_position(moved_element.front()->getthis()->getPosition().y , Screen_width));
 						sf::Vector2f New_position = moved_element.front()->getthis()->getPosition();
 						std::vector<sf::Vector2f> possible_moves = moved_element.front()->getthis()->all_move(); // тут проблема (как ожидалось )
@@ -333,10 +347,10 @@ void World::World_processEvents() {
 									std::cout << "______ Mate to white ______" << std::endl;
 								}
 							}
-							else if (status == 2) {
+						/*	else if (status == 2) {
 								std::cout << "____________PAT_____________" << std::endl;
-							}
-							if (WKing->get_is_under_attack() == 1){
+							}*/
+							else if (WKing->get_is_under_attack() == 1){
 								std::cout << "______ Check to white ______" << std::endl;
 							}
 							else if (BKing->get_is_under_attack() == 1) {
@@ -345,17 +359,6 @@ void World::World_processEvents() {
 							else {
 								std::cout << "____________________________" << std::endl;
 							}
-							/*if (WKing->get_is_under_attack() == 1) {
-								std::cout << "______ Check to white ______" << std::endl;
-							}else if (BKing->get_is_under_attack() == 1) {
-								std::cout << "______ Check to black ______" << std::endl;
-							}
-							else {
-								std::cout << "____________________________" << std::endl;
-							}*/
-							/*Chess_board_for_figures[Py][Px] = 0;
-							Chess_board_for_figures[Ny][Nx] = (moved_element.front()->getthis()->getColor()) + 1;
-							Chesstree.update(Screen_width ,Chess_board_for_figures);*/
 							if (t == 0) {
 								if (Whoose_move) {
 									Whoose_move = 0;
@@ -370,7 +373,7 @@ void World::World_processEvents() {
 							moved_element.front()->getthis()->setPosition(Previos_Position);
 						}
 						//func_print_desk(Chess_board_for_figures);
-							//putTree(Chesstree.getroot(), 0 );
+						//putTree(Chesstree.getroot(), 0 );
 						Previos_Position = sf::Vector2f(0.f, 0.f);
 						moved_element.clear();
 					}

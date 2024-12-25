@@ -121,11 +121,11 @@ void Pawn::update_move( float Screen_size) {
 		}
 	}
 	else {
-		if (y > 0 && x > 0 && y - 1 < 8 && x - 1 >= 0 && (chess_board[y - 1][x - 1] == 1 || chess_board[y - 1][x - 1] == 3)) {
+		if (y > 0 && x > 0 && (chess_board[y - 1][x - 1] == 1 || chess_board[y - 1][x - 1] == 3)) {
 			chess_board[y - 1][x - 1] = 3;
 			pawn_all_move.push_back(sf::Vector2f((x - 1) * xl + xl/2, (y - 1) * xl + xl/2));
 		}
-		if (y > 0 && y - 1 < 8 && x + 1 < 8 && (chess_board[y - 1][x + 1] == 1 || chess_board[y - 1][x + 1] == 3)) {
+		if (y > 0 && x + 1 < 8 && (chess_board[y - 1][x + 1] == 1 || chess_board[y - 1][x + 1] == 3)) {
 			chess_board[y - 1][x + 1] = 3;
 			pawn_all_move.push_back(sf::Vector2f((x + 1) * xl + xl/2, (y - 1) * xl + xl/2));
 		}

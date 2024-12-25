@@ -341,7 +341,7 @@ unsigned help_to_find_node_for_delete(std::shared_ptr<kdNode> fptr) {
             return 0;
         }
     }
-    return 2;
+    throw std::exception("Incorrect value on help_to_find_node_for_delete");
 }
 void Kdtree::delete_kdNode(std::shared_ptr<kdNode> fptr) { /// not work 
     if (fptr == nullptr) {
@@ -442,7 +442,7 @@ void Kdtree::AddNode(std::shared_ptr <kdNode> newNode) { // надо сделать проверк
         newNode->setleftchild(nullptr);
         newNode->setrightchild(nullptr);
         newNode->setparent(nullptr);
-        //    newNode->setcoord(true);
+        newNode->setcoord(true);
         return;
     }
     bool coordx = { true };
@@ -459,7 +459,7 @@ void Kdtree::AddNode(std::shared_ptr <kdNode> newNode) { // надо сделать проверк
                 coordx = false;
                 coordy = true;
             }
-            else if (newNode->getthis()->getPosition().x < val->getthis()->getPosition().x) {
+            else {
                 pred = val;
                 val = val->getleftchild();
                 coordx = false;
@@ -473,7 +473,7 @@ void Kdtree::AddNode(std::shared_ptr <kdNode> newNode) { // надо сделать проверк
                 coordx = true;
                 coordy = false;
             }
-            else if (newNode->getthis()->getPosition().y < val->getthis()->getPosition().y) {
+            else {
                 pred = val;
                 val = val->getleftchild();
                 coordx = true;
@@ -513,7 +513,7 @@ std::shared_ptr<kdNode> Kdtree::FindNode(float xc, float yc) { // работает
     std::shared_ptr<kdNode> val = root;
     bool coordx = { true };
     bool coordy = { false };
-    std::shared_ptr <kdNode> pred;
+    std::shared_ptr <kdNode> pred = nullptr;
     val = root;
     pred = val;
     while (val != nullptr) {
@@ -756,6 +756,8 @@ bool Kdtree::can_make_this_move(std::shared_ptr<Figure> Wking, std::shared_ptr<F
 }
 
 void Kdtree::help_func_for_IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete, float Screensize, unsigned(&chessboard)[8][8], std::vector<unsigned>& vect) {
+  //  vect.push_back(1);
+  //  return;
     if (fptr == nullptr) {
         throw std::runtime_error("ChangeNode Error: pointer = nullptr");
     }
@@ -777,7 +779,8 @@ void Kdtree::help_func_for_IS_MATE(std::shared_ptr<Figure> Wking, std::shared_pt
     unsigned t = fptr->getthis()->getColor();
     update(Screensize, chessboard);
     unsigned per = 0;
-    if ( (t == 0 && Bking->get_is_under_attack() == 0) || (t == 1 && Wking->get_is_under_attack() == 0)) {  
+    if ( (t == 0 && Bking->get_is_under_attack() == 0) || (t == 1 && Wking->get_is_under_attack() == 0)) {
+       // std::cout << Nx << "  " << Ny << " / " << Px << "  " << Py << std::endl;
         vect.push_back(1);
     }
     DeleteNode(fptr);
@@ -809,14 +812,14 @@ unsigned Kdtree::IS_MATE(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> 
             return 1;
         }
     }
-    if (Wking->get_is_under_attack() == 0 && Bking->get_is_under_attack() == 0) {
+   /* if (Wking->get_is_under_attack() == 0 && Bking->get_is_under_attack() == 0) {
         tree_bypass(Wking, Bking, Screensize, chessboard, vect, 1);
         tree_bypass(Wking, Bking, Screensize, chessboard, vect, 0);
         if (vect.empty() == true) {
             vect.~vector();
             return 2;
         }
-    }
+    }*/
     vect.~vector();
     return 0;
 }
