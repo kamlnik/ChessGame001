@@ -8,10 +8,11 @@
 class Queen : public Figure
 {
 public:
-    void set_Queen_type(Type newtype) { mType = newtype; }// не факт что нужно вообще 
+    void set_Queen_type(Type newtype) { mType = newtype; }
     unsigned getColor() { return mColor; }
     Type getType() { return mType; }
     Queen(Color nColor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]);
+    Queen::Queen(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]);
     void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const override;
     //virtual void can_move(Type type);
     std::vector<sf::Vector2f>& all_move() override { return queen_all_move; } // virtual void значит что может быть переопределена потом в наследовательных функциях
@@ -20,6 +21,6 @@ public:
 public:
     std::vector<sf::Vector2f> queen_all_move;
     unsigned(&chess_board)[8][8];
-    sf::Sprite mSprite; // вообще не нужно 
+    sf::Sprite mSprite; 
 };
 #endif

@@ -12,10 +12,14 @@ Textures::ID KnightTextureID(unsigned t)
 		return Textures::wKnight;
 	}
 }
-Knight::Knight(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) :Figure(Type::King, ncolor), knight_all_move(), chess_board(new_chess_board), mSprite(textures.get(KnightTextureID(ncolor))) {}
+Knight::Knight(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) :Figure(Type::Knight, ncolor), knight_all_move(), chess_board(new_chess_board), mSprite(textures.get(KnightTextureID(ncolor))) {}
 
 void Knight::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(mSprite, states);// вывод king
+}
+
+Knight::Knight(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]):Figure(Figure::Knight, nColor), chess_board(new_chess_board), mSprite(), knight_all_move() {
+	this->setPosition(Position);
 }
 
 unsigned mindex_correct_position_for_knight(float position, float Screen_size) {
@@ -170,6 +174,4 @@ void Knight::update_move(float Screen_size) {
 				knight_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y - 2) * xl + (xl / 2)));
 		}
 	}
-
-
 }

@@ -7,6 +7,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <iostream>
 #include <vector>
+#include <thread>
+
 
 
 World::World(sf::RenderWindow& window)
@@ -337,29 +339,31 @@ void World::World_processEvents() {
 							else if ((Chess_board_for_figures[Ny][Nx] == 0)) {
 								t = Chesstree.can_make_this_move(WKing, BKing, moved_element.front(), Previos_Position, New_position, 0, Screen_width, Chess_board_for_figures);
 							}
+							
 							unsigned status = 0;
-							status = Chesstree.IS_MATE(WKing, BKing, Screen_width, Chess_board_for_figures);
-							if (status == 1) {
-								if (moved_element.front()->getthis()->getColor() == 1) {
-									std::cout << "______ Mate to black ______" << std::endl;
-								}
-								else {
+							if (t == 0) {
+								status = Chesstree.IS_MATE(Screen_width, Chess_board_for_figures);
+								if (status == 1) {
+									if (moved_element.front()->getthis()->getColor() == 1) {
+										std::cout << "______ Mate to black ______" << std::endl;
+									}
+									else {
 									std::cout << "______ Mate to white ______" << std::endl;
+									}
 								}
-							}
 						/*	else if (status == 2) {
 								std::cout << "____________PAT_____________" << std::endl;
 							}*/
-							else if (WKing->get_is_under_attack() == 1){
-								std::cout << "______ Check to white ______" << std::endl;
-							}
-							else if (BKing->get_is_under_attack() == 1) {
-								std::cout << "______ Check to black ______" << std::endl;
-							}
-							else {
-								std::cout << "____________________________" << std::endl;
-							}
-							if (t == 0) {
+								else if (WKing->get_is_under_attack() == 1){
+									std::cout << "______ Check to white ______" << std::endl;
+								}
+								else if (BKing->get_is_under_attack() == 1) {
+									std::cout << "______ Check to black ______" << std::endl;
+								}
+								else {
+									std::cout << "____________________________" << std::endl;
+								}
+
 								if (Whoose_move) {
 									Whoose_move = 0;
 								}
@@ -386,4 +390,3 @@ void World::World_processEvents() {
 		}
 	}
 }
-

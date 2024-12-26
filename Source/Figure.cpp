@@ -8,6 +8,13 @@ void Figure::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	states.transform *= getTransform();
 	drawCurrent(target, states);
 }
+Figure::Figure(const Figure& need_to_copy) {
+
+	this->mType = need_to_copy.mType;
+	this->mColor = need_to_copy.mColor;
+	this->is_under_attack = need_to_copy.is_under_attack;
+	this->setPosition(need_to_copy.getPosition());
+}
 
 void Figure::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 }
@@ -19,5 +26,3 @@ std::vector<sf::Vector2f>& Figure::all_move() {
 
 void Figure::update_move(float t) {
 }
-//Figure::Figure(): mType(NUll), mColor(null)  {}
-//Figure::Figure(Type type, const TextureHolder& textures) : mType(type), mSprite(textures.get(toTextureID(type))) {}

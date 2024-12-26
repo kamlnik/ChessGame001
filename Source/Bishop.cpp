@@ -14,6 +14,9 @@ Textures::ID BishopTextureID(unsigned t)
 }
 Bishop::Bishop(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) :Figure(Type::Bishop, ncolor), bishop_all_move(), chess_board(new_chess_board), mSprite(textures.get(BishopTextureID(ncolor))) {}
 
+Bishop::Bishop(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]): Figure(Figure::Bishop, nColor), chess_board(new_chess_board), mSprite(), bishop_all_move() {
+	this->setPosition(Position);
+}
 void Bishop::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(mSprite, states);// вывод 
 }
@@ -161,43 +164,4 @@ void Bishop::update_move(float Screensize) {
 	diagonal_right_up_move_for_bishop(chess_board, x, y, fcolor, bishop_all_move, Screensize);
 }
 
-/*bool Kdtree::can_make_this_move(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete, float Screensize, unsigned(&chessboard)[8][8]) {
-	if (fptr == nullptr) {
-		throw std::runtime_error("ChangeNode Error: pointer = nullptr");
-	}
-	if (fptr->getthis() == nullptr) {
-		throw std::runtime_error("ChangeNode Error: pointer to figure = nullptr");
-	}
-	fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
-	DeleteNode(fptr);
-	std::shared_ptr<kdNode> deleted_element = nullptr;
-	if (is_delete == 1) {
-		deleted_element = FindNode(New_position.x, New_position.y);
-		DeleteNode(New_position.x, New_position.y);
-	}
-	fptr->getthis()->setPosition(New_position.x, New_position.y);
-	AddNode(fptr);
-	unsigned Nx = index_correct_position(New_position.x, Screensize);
-	unsigned Ny = index_correct_position(New_position.y, Screensize);
-	unsigned Px = index_correct_position(Previos_position.x, Screensize);
-	unsigned Py = index_correct_position(Previos_position.y, Screensize);
-	chessboard[Py][Px] = 0;
-	chessboard[Ny][Nx] = (fptr->getthis()->getColor()) + 1;
-	unsigned t = fptr->getthis()->getColor();
-	update(Screensize, chessboard);
-	if ((t == 1 && Wking->get_is_under_attack() == 1) || (t == 0 && Bking->get_is_under_attack() == 1)) {
-		DeleteNode(fptr);
-		fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
-		AddNode(fptr);
-		chessboard[Ny][Nx] = 0;
-		chessboard[Py][Px] = fptr->getthis()->getColor() + 1;
-		if (deleted_element != nullptr) {
-			AddNode(deleted_element);
-			chessboard[Ny][Nx] = deleted_element->getthis()->getColor() + 1;
-		}
-		update(Screensize, chessboard);
-		return 1;
-	}
 
-	return 0;
-}*/

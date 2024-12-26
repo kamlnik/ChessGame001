@@ -17,6 +17,9 @@ Queen::Queen(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_bo
 void Queen::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(mSprite, states);// вывод king
 }
+Queen::Queen(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]) :Figure(Figure::Queen, nColor), chess_board(new_chess_board), mSprite(), queen_all_move() {
+	this->setPosition(Position);
+}
 unsigned mindex_correct_position_for_queen(float position, float Screen_size) {
 	float returned_val = 0.f;
 	int per = position / (Screen_size / 16);

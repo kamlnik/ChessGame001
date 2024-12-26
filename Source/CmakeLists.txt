@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.8)
 #add_executable (Source "Main.cpp" "Game.cpp" "SceneNode.cpp" "Figure.cpp" "Entity.cpp" "SpriteNode.cpp" "World.cpp" "Pawn.cpp")
 add_executable (Source "Main.cpp" "Game.cpp"  "Figure.cpp" "Pawn.cpp" "Kdtree.cpp" "World.cpp"  "King.cpp" "Queen.cpp" "Rook.cpp" "Bishop.cpp" "Knight.cpp")
 #add_subdirectory("Resource")
+#find_package(Threads REQUIRED)
+#link_libraries(Threads::Threads)
 
 target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics.lib)
 target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-window.lib)

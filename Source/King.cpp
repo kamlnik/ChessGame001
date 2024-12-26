@@ -17,9 +17,10 @@ King::King(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_boar
 void King::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(mSprite, states);// вывод king
 }
-//void King::update_move(float screensize) {
+King::King(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]) : Figure(Figure::King, nColor), chess_board(new_chess_board), mSprite(), king_all_move() {
+	this->setPosition(Position);
+}
 
-//}
 
 unsigned mindex_correct_position_for_king(float position, float Screen_size) {
 	float returned_val = 0.f;

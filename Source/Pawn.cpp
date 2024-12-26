@@ -14,9 +14,11 @@ Textures::ID PawnTextureID(unsigned t)
 	}
 }
 
-Pawn::Pawn(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) : Figure(Type::Pawn, ncolor), pawn_all_move(), chess_board(new_chess_board), mSprite(textures.get(PawnTextureID(ncolor))) { this->set_boundingBox(mSprite.getGlobalBounds()); }
+Pawn::Pawn(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) : Figure(Type::Pawn, ncolor), pawn_all_move(), chess_board(new_chess_board), mSprite(textures.get(PawnTextureID(ncolor))) { }
 
-
+Pawn::Pawn(Color nColor, const sf::Vector2f Position, unsigned(&new_chess_board)[8][8]): Figure(Figure::Pawn, nColor), chess_board(new_chess_board), mSprite(), pawn_all_move() {
+	this->setPosition(Position);
+}
 void Pawn::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(mSprite, states);// вывод пешки 
 	}
@@ -43,7 +45,6 @@ void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigne
 					float xc = x * l + l/2;
 					float yc = (i) * l + l/2;
 					pawn_all_move.push_back(sf::Vector2f(xc, yc));
-					//std::cout << xc << "//" << yc << std::endl;
 				}
 				else {
 					return;
@@ -56,7 +57,6 @@ void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigne
 					float xc = x * l + l/2;
 					float yc = (i) * l + l/2;
 					pawn_all_move.push_back(sf::Vector2f(xc, yc));
-					//std::cout << xc << "//" << yc << std::endl;
 				}
 				else {
 					return;
@@ -72,7 +72,6 @@ void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigne
 					float xc = x * l + l / 2;
 					float yc = (i)*l + l / 2;
 					pawn_all_move.push_back(sf::Vector2f(xc, yc));
-					//std::cout << xc << "//" << yc << std::endl;
 				}
 			}
 		}
@@ -83,7 +82,6 @@ void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigne
 					float xc = x * l + l/2;
 					float yc = (i) * l + l/2;
 					pawn_all_move.push_back(sf::Vector2f(xc, yc));
-					//std::cout << xc << "//" << yc << std::endl;
 				}
 			}
 		}
@@ -91,16 +89,10 @@ void vertical_move(unsigned(&chess_board)[8][8], unsigned x, unsigned y, unsigne
 }
 
 void Pawn::update_move( float Screen_size) {
-	//std::cout << "new" << std::endl;
-	//is_under_attack = 0;
 	bool is_first_move = 0;
 	unsigned x = mindex_correct_position(this->getPosition().x, Screen_size);
 	unsigned y = mindex_correct_position(this->getPosition().y, Screen_size);
 	unsigned fcolor = this->getColor();
-	//if (chess_board[y][x] == 4) {
-	//	is_under_attack = 1;
-	//}else if(chess_board[y][x] == 4)
-	//chess_board[y][x] = this->getColor() + 1;
 	pawn_all_move.clear();
 	if (y == 1 && fcolor == 0) {
 		is_first_move = 1;
@@ -130,5 +122,4 @@ void Pawn::update_move( float Screen_size) {
 			pawn_all_move.push_back(sf::Vector2f((x + 1) * xl + xl/2, (y - 1) * xl + xl/2));
 		}
 	}
-	
 }

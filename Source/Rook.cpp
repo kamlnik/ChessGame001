@@ -18,6 +18,9 @@ Rook::Rook(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_boar
 void Rook::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(mSprite, states);// вывод king
 }
+Rook::Rook(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]) :Figure(Figure::Rook, nColor), chess_board(new_chess_board), mSprite(), rook_all_move() {
+	this->setPosition(Position);
+}
 
 unsigned mindex_correct_position_for_rook(float position, float Screen_size) {
 	float returned_val = 0.f;
