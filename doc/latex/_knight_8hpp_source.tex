@@ -1,0 +1,36 @@
+\doxysection{Knight.\+hpp}
+\hypertarget{_knight_8hpp_source}{}\label{_knight_8hpp_source}\index{Include/My\_lib/Knight.hpp@{Include/My\_lib/Knight.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ \ Knight.cpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @brief\ Contains\ definition\ of\ figure\ "{}Knight"{}}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *********************************************************************/}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_KNIGHT\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MY\_LIB\_KNIGHT\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <My\_lib/Figure.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <My\_lib/ResourceIdentifiers.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_knight}{Knight}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_figure}{Figure}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_knight_a4ab4447ee1a2d57cae8522e3f9eeaaee}{set\_Knight\_type}}(Type\ newtype)\ \{\ mType\ =\ newtype;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_knight_a7db0413b1a979cb6c5600b9734087226}{getColor}}()\ \{\ \textcolor{keywordflow}{return}\ mColor;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ Type\ \mbox{\hyperlink{class_knight_a0b64dbaac66c602268f2b1804c19c71a}{getType}}()\ \{\ \textcolor{keywordflow}{return}\ mType;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_knight_a140c2e1168943f2870f16696d77cf1ca}{Knight}}(Color\ nColor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_resource_holder}{TextureHolder}}\&\ textures,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_knight_afdc69674a8d3431f8c7416bc6f10832e}{Knight}}(Color\ nColor,\ sf::Vector2f\ Position,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_knight_a0243d6f30dd651ccde812dfd19b56968}{drawCurrent}}(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ \ \ \ \ std::vector<sf::Vector2f>\&\ \mbox{\hyperlink{class_knight_ac0b6a117c28a52f73597670da841be57}{all\_move}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_knight_aa010b340c699f9d6f4ff46e83f4d8f19}{knight\_all\_move}};\ \}\ \textcolor{comment}{//\ virtual\ void\ значит что может быть переопределена потом в\ наследовательных\ функциях}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_knight_affebed09658794da72a91d21f12e20a7}{update\_move}}(\textcolor{keywordtype}{float}\ screensize)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{class_knight_aa010b340c699f9d6f4ff46e83f4d8f19}{knight\_all\_move}};}
+\DoxyCodeLine{00078\ \ \ \ \ unsigned(\&\mbox{\hyperlink{class_knight_ad6ea1884d1d1aeb3c02651af959d70ea}{chess\_board}})[8][8];}
+\DoxyCodeLine{00082\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_knight_a2b2419e54cc5551577abade00e1a6e29}{mSprite}};\ }
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

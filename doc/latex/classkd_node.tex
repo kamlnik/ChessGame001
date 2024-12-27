@@ -1,0 +1,233 @@
+\doxysection{kd\+Node Class Reference}
+\hypertarget{classkd_node}{}\label{classkd_node}\index{kdNode@{kdNode}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classkd_node_a45589126737d471e00e31c5580636f91}\label{classkd_node_a45589126737d471e00e31c5580636f91} 
+{\bfseries kd\+Node} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} costructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classkd_node_a0a06e72cff32f12771a2a00088894e67}{kd\+Node}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$ hptr)
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} costructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classkd_node_ad11b2341812b087fc075adf634156c00}{kd\+Node}} (const \mbox{\hyperlink{classkd_node}{kd\+Node}} \&need\+\_\+to\+\_\+copy, unsigned(\&chessboard)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} copy costructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classkd_node_a49b31ccdc8319536e1ce9e2404ab8ba1}{setrightchild}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ newright)
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} rightchild setter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classkd_node_a5f545a6b7f5488f850af7d6e6c93c157}{setleftchild}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ newleft)
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} leftchild setter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classkd_node_a1d1c9943894f9dfc9f5508f15f9e792b}{setparent}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ newparent)
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} parent setter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classkd_node_a568497a4e3411f10ac3d8a4e62fcd70e}{setcoord}} (bool coord)
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} coord setter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classkd_node_a882d79b2aadaac57f90e1c9db49fb93c}{setthis}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$ newptr)
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} pointer to figure setter. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ \mbox{\hyperlink{classkd_node_acfeb4cd5f40b5d577cce545fd371abbb}{getrightchild}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} pointer to figure setter. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ \mbox{\hyperlink{classkd_node_a4f3d383943d520c7dc42b78b18239b83}{getleftchild}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} pointer to figure setter. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ \mbox{\hyperlink{classkd_node_a7ede4be7c7447f298c150e6fc53f229c}{getparent}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} pointer to figure setter. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$ \mbox{\hyperlink{classkd_node_a888d5d153b080e7187768277ebbd74d4}{getthis}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} pointer to figure setter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classkd_node_a5a84a84d9d67f9a552311c4f81857b85}{getcoord}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} pointer to figure setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classkd_node_ae3e7ace9bd31af7cdd977f6fb1ccd728}\label{classkd_node_ae3e7ace9bd31af7cdd977f6fb1ccd728} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$ {\bfseries ptr}
+\begin{DoxyCompactList}\small\item\em Pointer to \doxylink{class_figure}{Figure}. \end{DoxyCompactList}\item 
+\Hypertarget{classkd_node_a909bcace43c184a5132427316f2aa71f}\label{classkd_node_a909bcace43c184a5132427316f2aa71f} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ {\bfseries right}
+\begin{DoxyCompactList}\small\item\em Pointer to right node. \end{DoxyCompactList}\item 
+\Hypertarget{classkd_node_ac876a4f1a1a552399025da7aa7400752}\label{classkd_node_ac876a4f1a1a552399025da7aa7400752} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ {\bfseries left}
+\begin{DoxyCompactList}\small\item\em Pointer to left node. \end{DoxyCompactList}\item 
+\Hypertarget{classkd_node_a9dbf4f8e840c2c861b296fb19b9d7913}\label{classkd_node_a9dbf4f8e840c2c861b296fb19b9d7913} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ {\bfseries parent}
+\begin{DoxyCompactList}\small\item\em Pointer to parent node. \end{DoxyCompactList}\item 
+\Hypertarget{classkd_node_a693c6f192fe006466d681d9a7ff6ac82}\label{classkd_node_a693c6f192fe006466d681d9a7ff6ac82} 
+bool {\bfseries mcoordx}
+\begin{DoxyCompactList}\small\item\em Show coord. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classkd_node_a0a06e72cff32f12771a2a00088894e67}\index{kdNode@{kdNode}!kdNode@{kdNode}}
+\index{kdNode@{kdNode}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{kdNode()}{kdNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classkd_node_a0a06e72cff32f12771a2a00088894e67} 
+kd\+Node\+::kd\+Node (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$}]{hptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} costructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hptr} & is pointer to figure \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classkd_node_ad11b2341812b087fc075adf634156c00}\index{kdNode@{kdNode}!kdNode@{kdNode}}
+\index{kdNode@{kdNode}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{kdNode()}{kdNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classkd_node_ad11b2341812b087fc075adf634156c00} 
+kd\+Node\+::kd\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classkd_node}{kd\+Node}} \&}]{need\+\_\+to\+\_\+copy}{, }\item[{unsigned(\&)}]{chessboard}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{classkd_node}{kd\+Node} copy costructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & wich we want to copy \\
+\hline
+{\em chessboard} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classkd_node_a5a84a84d9d67f9a552311c4f81857b85}\index{kdNode@{kdNode}!getcoord@{getcoord}}
+\index{getcoord@{getcoord}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{getcoord()}{getcoord()}}
+{\footnotesize\ttfamily \label{classkd_node_a5a84a84d9d67f9a552311c4f81857b85} 
+bool kd\+Node\+::getcoord (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} pointer to figure setter. 
+
+\begin{DoxyReturn}{Returns}
+coord. 
+\end{DoxyReturn}
+\Hypertarget{classkd_node_a4f3d383943d520c7dc42b78b18239b83}\index{kdNode@{kdNode}!getleftchild@{getleftchild}}
+\index{getleftchild@{getleftchild}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{getleftchild()}{getleftchild()}}
+{\footnotesize\ttfamily \label{classkd_node_a4f3d383943d520c7dc42b78b18239b83} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ kd\+Node\+::getleftchild (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} pointer to figure setter. 
+
+\begin{DoxyReturn}{Returns}
+left Node 
+\end{DoxyReturn}
+\Hypertarget{classkd_node_a7ede4be7c7447f298c150e6fc53f229c}\index{kdNode@{kdNode}!getparent@{getparent}}
+\index{getparent@{getparent}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{getparent()}{getparent()}}
+{\footnotesize\ttfamily \label{classkd_node_a7ede4be7c7447f298c150e6fc53f229c} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ kd\+Node\+::getparent (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} pointer to figure setter. 
+
+\begin{DoxyReturn}{Returns}
+parent Node. 
+\end{DoxyReturn}
+\Hypertarget{classkd_node_acfeb4cd5f40b5d577cce545fd371abbb}\index{kdNode@{kdNode}!getrightchild@{getrightchild}}
+\index{getrightchild@{getrightchild}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{getrightchild()}{getrightchild()}}
+{\footnotesize\ttfamily \label{classkd_node_acfeb4cd5f40b5d577cce545fd371abbb} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ kd\+Node\+::getrightchild (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} pointer to figure setter. 
+
+\begin{DoxyReturn}{Returns}
+right Node 
+\end{DoxyReturn}
+\Hypertarget{classkd_node_a888d5d153b080e7187768277ebbd74d4}\index{kdNode@{kdNode}!getthis@{getthis}}
+\index{getthis@{getthis}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{getthis()}{getthis()}}
+{\footnotesize\ttfamily \label{classkd_node_a888d5d153b080e7187768277ebbd74d4} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$ kd\+Node\+::getthis (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} pointer to figure setter. 
+
+\begin{DoxyReturn}{Returns}
+figure pointer. 
+\end{DoxyReturn}
+\Hypertarget{classkd_node_a568497a4e3411f10ac3d8a4e62fcd70e}\index{kdNode@{kdNode}!setcoord@{setcoord}}
+\index{setcoord@{setcoord}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{setcoord()}{setcoord()}}
+{\footnotesize\ttfamily \label{classkd_node_a568497a4e3411f10ac3d8a4e62fcd70e} 
+void kd\+Node\+::setcoord (\begin{DoxyParamCaption}\item[{bool}]{coord}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} coord setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new} & coord \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classkd_node_a5f545a6b7f5488f850af7d6e6c93c157}\index{kdNode@{kdNode}!setleftchild@{setleftchild}}
+\index{setleftchild@{setleftchild}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{setleftchild()}{setleftchild()}}
+{\footnotesize\ttfamily \label{classkd_node_a5f545a6b7f5488f850af7d6e6c93c157} 
+void kd\+Node\+::setleftchild (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{newleft}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} leftchild setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classkd_node}{kd\+Node}} & new pointer \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classkd_node_a1d1c9943894f9dfc9f5508f15f9e792b}\index{kdNode@{kdNode}!setparent@{setparent}}
+\index{setparent@{setparent}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{setparent()}{setparent()}}
+{\footnotesize\ttfamily \label{classkd_node_a1d1c9943894f9dfc9f5508f15f9e792b} 
+void kd\+Node\+::setparent (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{newparent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} parent setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classkd_node}{kd\+Node}} & new pointer \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classkd_node_a49b31ccdc8319536e1ce9e2404ab8ba1}\index{kdNode@{kdNode}!setrightchild@{setrightchild}}
+\index{setrightchild@{setrightchild}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{setrightchild()}{setrightchild()}}
+{\footnotesize\ttfamily \label{classkd_node_a49b31ccdc8319536e1ce9e2404ab8ba1} 
+void kd\+Node\+::setrightchild (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{newright}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} rightchild setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classkd_node}{kd\+Node}} & new pointer \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classkd_node_a882d79b2aadaac57f90e1c9db49fb93c}\index{kdNode@{kdNode}!setthis@{setthis}}
+\index{setthis@{setthis}!kdNode@{kdNode}}
+\doxysubsubsection{\texorpdfstring{setthis()}{setthis()}}
+{\footnotesize\ttfamily \label{classkd_node_a882d79b2aadaac57f90e1c9db49fb93c} 
+void kd\+Node\+::setthis (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$}]{newptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{classkd_node}{kd\+Node} pointer to figure setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_figure}{Figure}} & new pointer \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Include/\+My\+\_\+lib/Kdtree.\+hpp\end{DoxyCompactItemize}

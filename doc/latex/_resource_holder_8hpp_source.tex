@@ -1,0 +1,39 @@
+\doxysection{Resource\+Holder.\+hpp}
+\hypertarget{_resource_holder_8hpp_source}{}\label{_resource_holder_8hpp_source}\index{Include/My\_lib/ResourceHolder.hpp@{Include/My\_lib/ResourceHolder.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_RESOURCEHOLDER\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MY\_LIB\_RESOURCEHOLDER\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Resource,\ \textcolor{keyword}{typename}\ Identifier>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_resource_holder}{ResourceHolder}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ load(Identifier\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Parameter>}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ load(Identifier\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keyword}{const}\ Parameter\&\ secondParam);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ Resource\&\ get(Identifier\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{const}\ Resource\&\ get(Identifier\ \textcolor{keywordtype}{id})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ insertResource(Identifier\ \textcolor{keywordtype}{id},\ std::unique\_ptr<Resource>\ resource);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ std::map<Identifier,\ std::unique\_ptr<Resource>>\ mResourceMap;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}ResourceHolder.inl"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

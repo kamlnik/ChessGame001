@@ -1,0 +1,233 @@
+\doxysection{Rook Class Reference}
+\hypertarget{class_rook}{}\label{class_rook}\index{Rook@{Rook}}
+Inheritance diagram for Rook\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_rook}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_rook_ae2048ab33a6885c2e9b312a4abe4360c}{set\+\_\+\+Rook\+\_\+type}} (Type newtype)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_rook}{Rook} Type setter. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_rook_a34c57d7a32ca1c07b1ae7c1893e0eeff}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_rook}{Rook} Color getter. \end{DoxyCompactList}\item 
+Type \mbox{\hyperlink{class_rook_a6d336de07b8ba00f3805fbbec2335cc4}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_rook}{Rook} Type getter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_rook_a05e8f1da5c7c92ab059c27d0876e9bc9}{Rook}} (Color n\+Color, const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&textures, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_rook}{Rook} Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_rook_ab117a4c8a8c0b9ac8d822da065e3de48}{Rook}} (Color n\+Color, sf\+::\+Vector2f Position, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_rook}{Rook} Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rook_ad75aa014f28ed058edc8cbbc3aafd86c}{draw\+Current}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em Func that draw \doxylink{class_rook}{Rook}. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& \mbox{\hyperlink{class_rook_adfa401201dfd6c06fbbd293cadbc3d69}{all\+\_\+move}} () override
+\begin{DoxyCompactList}\small\item\em Func that returns all \doxylink{class_rook}{Rook} moves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rook_a5e28d60d4b857bae503a30b7c17de56d}{update\+\_\+move}} (float screensize) override
+\begin{DoxyCompactList}\small\item\em Func that update \doxylink{class_rook}{Rook} moves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+Color {\bfseries get\+Color} ()
+\item 
+unsigned {\bfseries get\+Type} ()
+\item 
+void {\bfseries set\+\_\+is\+\_\+under\+\_\+attack} (unsigned t)
+\item 
+bool {\bfseries get\+\_\+is\+\_\+under\+\_\+attack} ()
+\item 
+{\bfseries Figure} (const \mbox{\hyperlink{class_figure}{Figure}} \&need\+\_\+to\+\_\+copy)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_rook_a972244b048f9bf9dbda3fa309892ffe8}\label{class_rook_a972244b048f9bf9dbda3fa309892ffe8} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ {\bfseries rook\+\_\+all\+\_\+move}
+\begin{DoxyCompactList}\small\item\em Vector witch contains all possible moves of \doxylink{class_rook}{Rook}. \end{DoxyCompactList}\item 
+\Hypertarget{class_rook_a01cfd13ed2c944d1f19b0a08bb6c0e0b}\label{class_rook_a01cfd13ed2c944d1f19b0a08bb6c0e0b} 
+unsigned(\& {\bfseries chess\+\_\+board} )\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em Chessboard desk. \end{DoxyCompactList}\item 
+\Hypertarget{class_rook_a833fe0905643175b873c404e08cc6d6e}\label{class_rook_a833fe0905643175b873c404e08cc6d6e} 
+sf\+::\+Sprite {\bfseries m\+Sprite}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_rook}{Rook} sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb}\label{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb} 
+enum {\bfseries Type} \{ \newline
+{\bfseries Pawn}
+, {\bfseries King}
+, {\bfseries Queen}
+, {\bfseries Rook}
+, \newline
+{\bfseries Bishop}
+, {\bfseries Knight}
+ \}
+\item 
+\Hypertarget{class_figure_a67d539a7a852950ae9d67160561b8e08}\label{class_figure_a67d539a7a852950ae9d67160561b8e08} 
+enum {\bfseries Color} \{ {\bfseries black}
+, {\bfseries white}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Figure} (Type new\+Type, Color new\+Color)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries is\+\_\+under\+\_\+attack}
+\item 
+Type {\bfseries m\+Type}
+\item 
+Color {\bfseries m\+Color}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_rook_a05e8f1da5c7c92ab059c27d0876e9bc9}\index{Rook@{Rook}!Rook@{Rook}}
+\index{Rook@{Rook}!Rook@{Rook}}
+\doxysubsubsection{\texorpdfstring{Rook()}{Rook()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_rook_a05e8f1da5c7c92ab059c27d0876e9bc9} 
+Rook\+::\+Rook (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&}]{textures}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_rook}{Rook} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em textures} & is textures container \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_rook_ab117a4c8a8c0b9ac8d822da065e3de48}\index{Rook@{Rook}!Rook@{Rook}}
+\index{Rook@{Rook}!Rook@{Rook}}
+\doxysubsubsection{\texorpdfstring{Rook()}{Rook()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_rook_ab117a4c8a8c0b9ac8d822da065e3de48} 
+Rook\+::\+Rook (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{sf\+::\+Vector2f}]{Position}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_rook}{Rook} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em Position} & is position of this figure \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_rook_adfa401201dfd6c06fbbd293cadbc3d69}\index{Rook@{Rook}!all\_move@{all\_move}}
+\index{all\_move@{all\_move}!Rook@{Rook}}
+\doxysubsubsection{\texorpdfstring{all\_move()}{all\_move()}}
+{\footnotesize\ttfamily \label{class_rook_adfa401201dfd6c06fbbd293cadbc3d69} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& Rook\+::all\+\_\+move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that returns all \doxylink{class_rook}{Rook} moves. 
+
+\begin{DoxyReturn}{Returns}
+all \doxylink{class_queen}{Queen} moves 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_rook_ad75aa014f28ed058edc8cbbc3aafd86c}\index{Rook@{Rook}!drawCurrent@{drawCurrent}}
+\index{drawCurrent@{drawCurrent}!Rook@{Rook}}
+\doxysubsubsection{\texorpdfstring{drawCurrent()}{drawCurrent()}}
+{\footnotesize\ttfamily \label{class_rook_ad75aa014f28ed058edc8cbbc3aafd86c} 
+void Rook\+::draw\+Current (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target}{, }\item[{sf\+::\+Render\+States}]{states}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that draw \doxylink{class_rook}{Rook}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & show where output it \\
+\hline
+{\em states} & is SFML special value \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_rook_a34c57d7a32ca1c07b1ae7c1893e0eeff}\index{Rook@{Rook}!getColor@{getColor}}
+\index{getColor@{getColor}!Rook@{Rook}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{class_rook_a34c57d7a32ca1c07b1ae7c1893e0eeff} 
+unsigned Rook\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_rook}{Rook} Color getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_rook_a6d336de07b8ba00f3805fbbec2335cc4}\index{Rook@{Rook}!getType@{getType}}
+\index{getType@{getType}!Rook@{Rook}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_rook_a6d336de07b8ba00f3805fbbec2335cc4} 
+Type Rook\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_rook}{Rook} Type getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_rook_ae2048ab33a6885c2e9b312a4abe4360c}\index{Rook@{Rook}!set\_Rook\_type@{set\_Rook\_type}}
+\index{set\_Rook\_type@{set\_Rook\_type}!Rook@{Rook}}
+\doxysubsubsection{\texorpdfstring{set\_Rook\_type()}{set\_Rook\_type()}}
+{\footnotesize\ttfamily \label{class_rook_ae2048ab33a6885c2e9b312a4abe4360c} 
+void Rook\+::set\+\_\+\+Rook\+\_\+type (\begin{DoxyParamCaption}\item[{Type}]{newtype}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_rook}{Rook} Type setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Type} & of this \doxylink{class_figure}{Figure} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_rook_a5e28d60d4b857bae503a30b7c17de56d}\index{Rook@{Rook}!update\_move@{update\_move}}
+\index{update\_move@{update\_move}!Rook@{Rook}}
+\doxysubsubsection{\texorpdfstring{update\_move()}{update\_move()}}
+{\footnotesize\ttfamily \label{class_rook_a5e28d60d4b857bae503a30b7c17de56d} 
+void Rook\+::update\+\_\+move (\begin{DoxyParamCaption}\item[{float}]{screensize}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that update \doxylink{class_rook}{Rook} moves. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screensize} & is value of screen pixels \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Include/\+My\+\_\+lib/Rook.\+hpp\end{DoxyCompactItemize}

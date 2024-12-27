@@ -1,0 +1,43 @@
+\doxysection{Resource\+Identifiers.\+hpp}
+\hypertarget{_resource_identifiers_8hpp_source}{}\label{_resource_identifiers_8hpp_source}\index{Include/My\_lib/ResourceIdentifiers.hpp@{Include/My\_lib/ResourceIdentifiers.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_RESOURCEIDENTIFIERS\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MY\_LIB\_RESOURCEIDENTIFIERS\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Forward\ declaration\ of\ SFML\ classes}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{class\ }Texture;}
+\DoxyCodeLine{00009\ \}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }Textures}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{enum}\ ID}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ wPawn,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ bPawn,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ bKing,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ wKing,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ bQueen,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ wQueen,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ bRook,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ wRook,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ bBishop,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ wBishop,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ wKnight,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ bKnight,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ Chess\_board,\ \textcolor{comment}{//\ шахматная\ доска}}
+\DoxyCodeLine{00028\ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Forward\ declaration\ and\ a\ few\ type\ definitions}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Resource,\ \textcolor{keyword}{typename}\ Identifier>}
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_resource_holder}{ResourceHolder}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_resource_holder}{ResourceHolder<sf::Texture,\ Textures::ID>}}\ \mbox{\hyperlink{class_resource_holder}{TextureHolder}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,36 @@
+\doxysection{Queen.\+hpp}
+\hypertarget{_queen_8hpp_source}{}\label{_queen_8hpp_source}\index{Include/My\_lib/Queen.hpp@{Include/My\_lib/Queen.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ \ Queen.cpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @brief\ Contains\ definition\ of\ figure\ "{}Queen"{}}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *********************************************************************/}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_QUEEN\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MY\_LIB\_QUEEN\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <My\_lib/Figure.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <My\_lib/ResourceIdentifiers.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_queen}{Queen}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_figure}{Figure}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_queen_a1809d2be735bc89e59469dd3f197dcce}{set\_Queen\_type}}(Type\ newtype)\ \{\ mType\ =\ newtype;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_queen_a0cd029fd4269c2db8523cc7cff12c5ce}{getColor}}()\ \{\ \textcolor{keywordflow}{return}\ mColor;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ Type\ \mbox{\hyperlink{class_queen_add1e4b8843cab9c151ccdb8d969a44e9}{getType}}()\ \{\ \textcolor{keywordflow}{return}\ mType;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_queen_ae0b5673feb57509e4d0b939e16a2420b}{Queen}}(Color\ nColor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_resource_holder}{TextureHolder}}\&\ textures,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_queen_ae0b5673feb57509e4d0b939e16a2420b}{Queen::Queen}}(Color\ nColor,\ sf::Vector2f\ Position,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_queen_a09e577a614f17b1ecc986f30b1c76af9}{drawCurrent}}(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ \ \ \ \ std::vector<sf::Vector2f>\&\ \mbox{\hyperlink{class_queen_af52ae59cb66c85880ec34b3577da4528}{all\_move}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_queen_aa5adde529526f442c534270ab364ad36}{queen\_all\_move}};\ \}\ \textcolor{comment}{//\ virtual\ void\ значит что может быть переопределена потом в\ наследовательных\ функциях}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_queen_ad04ed1e0a862030756d0f03f6e8fab4b}{update\_move}}(\textcolor{keywordtype}{float}\ screensize)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{class_queen_aa5adde529526f442c534270ab364ad36}{queen\_all\_move}};}
+\DoxyCodeLine{00078\ \ \ \ \ unsigned(\&\mbox{\hyperlink{class_queen_ab8de48ea67e96afb7d12cd0361372237}{chess\_board}})[8][8];}
+\DoxyCodeLine{00082\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_queen_a8911ca88aa2e5bad585db7c036caa719}{mSprite}};\ }
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

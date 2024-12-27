@@ -1,0 +1,36 @@
+\doxysection{Rook.\+hpp}
+\hypertarget{_rook_8hpp_source}{}\label{_rook_8hpp_source}\index{Include/My\_lib/Rook.hpp@{Include/My\_lib/Rook.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ \ Rook.cpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @brief\ Contains\ definition\ of\ figure\ "{}Rook"{}}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *********************************************************************/}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_ROOK\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MY\_LIB\_ROOK\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <My\_lib/Figure.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <My\_lib/ResourceIdentifiers.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_rook}{Rook}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_figure}{Figure}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rook_ae2048ab33a6885c2e9b312a4abe4360c}{set\_Rook\_type}}(Type\ newtype)\ \{\ mType\ =\ newtype;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_rook_a34c57d7a32ca1c07b1ae7c1893e0eeff}{getColor}}()\ \{\ \textcolor{keywordflow}{return}\ mColor;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ Type\ \mbox{\hyperlink{class_rook_a6d336de07b8ba00f3805fbbec2335cc4}{getType}}()\ \{\ \textcolor{keywordflow}{return}\ mType;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_rook_a05e8f1da5c7c92ab059c27d0876e9bc9}{Rook}}(Color\ nColor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_resource_holder}{TextureHolder}}\&\ textures,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_rook_ab117a4c8a8c0b9ac8d822da065e3de48}{Rook}}(Color\ nColor,\ sf::Vector2f\ Position,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rook_ad75aa014f28ed058edc8cbbc3aafd86c}{drawCurrent}}(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ \ \ \ \ std::vector<sf::Vector2f>\&\ \mbox{\hyperlink{class_rook_adfa401201dfd6c06fbbd293cadbc3d69}{all\_move}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_rook_a972244b048f9bf9dbda3fa309892ffe8}{rook\_all\_move}};\ \}\ \textcolor{comment}{//\ virtual\ void\ значит что может быть переопределена потом в\ наследовательных\ функциях}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rook_a5e28d60d4b857bae503a30b7c17de56d}{update\_move}}(\textcolor{keywordtype}{float}\ screensize)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{class_rook_a972244b048f9bf9dbda3fa309892ffe8}{rook\_all\_move}};}
+\DoxyCodeLine{00078\ \ \ \ \ unsigned(\&\mbox{\hyperlink{class_rook_a01cfd13ed2c944d1f19b0a08bb6c0e0b}{chess\_board}})[8][8];}
+\DoxyCodeLine{00082\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_rook_a833fe0905643175b873c404e08cc6d6e}{mSprite}};\ }
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

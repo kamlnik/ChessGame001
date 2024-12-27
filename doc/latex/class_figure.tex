@@ -1,0 +1,113 @@
+\doxysection{Figure Class Reference}
+\hypertarget{class_figure}{}\label{class_figure}\index{Figure@{Figure}}
+Inheritance diagram for Figure\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.393162cm]{class_figure}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb}\label{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb} 
+enum {\bfseries Type} \{ \newline
+{\bfseries Pawn}
+, {\bfseries King}
+, {\bfseries Queen}
+, {\bfseries Rook}
+, \newline
+{\bfseries Bishop}
+, {\bfseries Knight}
+ \}
+\item 
+\Hypertarget{class_figure_a67d539a7a852950ae9d67160561b8e08}\label{class_figure_a67d539a7a852950ae9d67160561b8e08} 
+enum {\bfseries Color} \{ {\bfseries black}
+, {\bfseries white}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::vector$<$ sf\+::\+Vector2f $>$ \& \mbox{\hyperlink{class_figure_ac2d123d0414825c10139f243e6694a4f}{all\+\_\+move}} ()
+\item 
+virtual void \mbox{\hyperlink{class_figure_adca0082cc9152d80e23804c73740a305}{update\+\_\+move}} (float screensize)
+\item 
+\Hypertarget{class_figure_a62a2d0fc6d89bea087e28dc28f2e8aef}\label{class_figure_a62a2d0fc6d89bea087e28dc28f2e8aef} 
+Color {\bfseries get\+Color} ()
+\item 
+\Hypertarget{class_figure_a25fa29179f95035a0207ff77a455b021}\label{class_figure_a25fa29179f95035a0207ff77a455b021} 
+unsigned {\bfseries get\+Type} ()
+\item 
+\Hypertarget{class_figure_a1ab50bb99e1dda7241f228e493ff36e8}\label{class_figure_a1ab50bb99e1dda7241f228e493ff36e8} 
+void {\bfseries set\+\_\+is\+\_\+under\+\_\+attack} (unsigned t)
+\item 
+\Hypertarget{class_figure_a6c85c03f90386e68e5e0e1194ff6ad45}\label{class_figure_a6c85c03f90386e68e5e0e1194ff6ad45} 
+bool {\bfseries get\+\_\+is\+\_\+under\+\_\+attack} ()
+\item 
+\Hypertarget{class_figure_a83de1ed376d1a9aa5000a8a9f7895184}\label{class_figure_a83de1ed376d1a9aa5000a8a9f7895184} 
+{\bfseries Figure} (const \mbox{\hyperlink{class_figure}{Figure}} \&need\+\_\+to\+\_\+copy)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a40faddc692f14ca6ba1997ff17b4f84a}\label{class_figure_a40faddc692f14ca6ba1997ff17b4f84a} 
+{\bfseries Figure} (Type new\+Type, Color new\+Color)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a014f9c3d4e2129328867ac6d238471c4}\label{class_figure_a014f9c3d4e2129328867ac6d238471c4} 
+bool {\bfseries is\+\_\+under\+\_\+attack}
+\item 
+\Hypertarget{class_figure_ab552b6e99a4cc026dfc9c15963724bb4}\label{class_figure_ab552b6e99a4cc026dfc9c15963724bb4} 
+Type {\bfseries m\+Type}
+\item 
+\Hypertarget{class_figure_a49a4cfbeb79a34d3d965bc92b046b52a}\label{class_figure_a49a4cfbeb79a34d3d965bc92b046b52a} 
+Color {\bfseries m\+Color}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a1d03a7c4c2ec926b9715a4c09fbe291a}\label{class_figure_a1d03a7c4c2ec926b9715a4c09fbe291a} 
+virtual void {\bfseries draw} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const
+\item 
+virtual void \mbox{\hyperlink{class_figure_aa3d2145aab9101a9c041f52fcfb0a6d0}{draw\+Current}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_figure_ac2d123d0414825c10139f243e6694a4f}\index{Figure@{Figure}!all\_move@{all\_move}}
+\index{all\_move@{all\_move}!Figure@{Figure}}
+\doxysubsubsection{\texorpdfstring{all\_move()}{all\_move()}}
+{\footnotesize\ttfamily \label{class_figure_ac2d123d0414825c10139f243e6694a4f} 
+virtual std\+::vector$<$ sf\+::\+Vector2f $>$ \& Figure\+::all\+\_\+move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_bishop_a5848394dea1971317e05bd69796d10e0}{Bishop}}, \mbox{\hyperlink{class_king_a5ec076e3e4ad6525e0be50d990b4bde0}{King}}, \mbox{\hyperlink{class_knight_ac0b6a117c28a52f73597670da841be57}{Knight}}, \mbox{\hyperlink{class_pawn_ae4a528a35e2b4077c4b30ebd6fbba266}{Pawn}}, \mbox{\hyperlink{class_queen_af52ae59cb66c85880ec34b3577da4528}{Queen}}, and \mbox{\hyperlink{class_rook_adfa401201dfd6c06fbbd293cadbc3d69}{Rook}}.
+
+\Hypertarget{class_figure_aa3d2145aab9101a9c041f52fcfb0a6d0}\index{Figure@{Figure}!drawCurrent@{drawCurrent}}
+\index{drawCurrent@{drawCurrent}!Figure@{Figure}}
+\doxysubsubsection{\texorpdfstring{drawCurrent()}{drawCurrent()}}
+{\footnotesize\ttfamily \label{class_figure_aa3d2145aab9101a9c041f52fcfb0a6d0} 
+virtual void Figure\+::draw\+Current (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target}{, }\item[{sf\+::\+Render\+States}]{states}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_bishop_a91ee867a76addc02e884173c4a45963d}{Bishop}}, \mbox{\hyperlink{class_king_a932fdc5a32fc983f06ed662db2b51323}{King}}, \mbox{\hyperlink{class_knight_a0243d6f30dd651ccde812dfd19b56968}{Knight}}, \mbox{\hyperlink{class_pawn_a7eee9c25508404434eaf974820622a1a}{Pawn}}, \mbox{\hyperlink{class_queen_a09e577a614f17b1ecc986f30b1c76af9}{Queen}}, and \mbox{\hyperlink{class_rook_ad75aa014f28ed058edc8cbbc3aafd86c}{Rook}}.
+
+\Hypertarget{class_figure_adca0082cc9152d80e23804c73740a305}\index{Figure@{Figure}!update\_move@{update\_move}}
+\index{update\_move@{update\_move}!Figure@{Figure}}
+\doxysubsubsection{\texorpdfstring{update\_move()}{update\_move()}}
+{\footnotesize\ttfamily \label{class_figure_adca0082cc9152d80e23804c73740a305} 
+virtual void Figure\+::update\+\_\+move (\begin{DoxyParamCaption}\item[{float}]{screensize}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_bishop_a977469b84746ddfac75a518ce1c89e0c}{Bishop}}, \mbox{\hyperlink{class_king_a5c915dc23d72289f8b05d2c0c6af09b4}{King}}, \mbox{\hyperlink{class_knight_affebed09658794da72a91d21f12e20a7}{Knight}}, \mbox{\hyperlink{class_pawn_afb5876b13642857311a6252da56358ab}{Pawn}}, \mbox{\hyperlink{class_queen_ad04ed1e0a862030756d0f03f6e8fab4b}{Queen}}, and \mbox{\hyperlink{class_rook_a5e28d60d4b857bae503a30b7c17de56d}{Rook}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Include/\+My\+\_\+lib/Figure.\+hpp\end{DoxyCompactItemize}

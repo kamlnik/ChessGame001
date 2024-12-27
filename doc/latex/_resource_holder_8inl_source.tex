@@ -1,0 +1,56 @@
+\doxysection{Resource\+Holder.\+inl}
+\hypertarget{_resource_holder_8inl_source}{}\label{_resource_holder_8inl_source}\index{Include/My\_lib/ResourceHolder.inl@{Include/My\_lib/ResourceHolder.inl}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Resource,\ \textcolor{keyword}{typename}\ Identifier>}
+\DoxyCodeLine{00002\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_resource_holder}{ResourceHolder<Resource,\ Identifier>::load}}(Identifier\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ filename)}
+\DoxyCodeLine{00003\ \{}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{comment}{//\ Create\ and\ load\ resource}}
+\DoxyCodeLine{00005\ \ \ \ \ std::unique\_ptr<Resource>\ resource(\textcolor{keyword}{new}\ Resource());}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordflow}{if}\ (!resource-\/>loadFromFile(filename))}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}ResourceHolder::load\ -\/\ Failed\ to\ load\ "{}}\ +\ filename);}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{comment}{//\ If\ loading\ successful,\ insert\ resource\ to\ map}}
+\DoxyCodeLine{00010\ \ \ \ \ insertResource(\textcolor{keywordtype}{id},\ std::move(resource));}
+\DoxyCodeLine{00011\ \}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Resource,\ \textcolor{keyword}{typename}\ Identifier>}
+\DoxyCodeLine{00014\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Parameter>}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_resource_holder}{ResourceHolder<Resource,\ Identifier>::load}}(Identifier\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keyword}{const}\ Parameter\&\ secondParam)}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Create\ and\ load\ resource}}
+\DoxyCodeLine{00018\ \ \ \ \ std::unique\_ptr<Resource>\ resource(\textcolor{keyword}{new}\ Resource());}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (!resource-\/>loadFromFile(filename,\ secondParam))}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}ResourceHolder::load\ -\/\ Failed\ to\ load\ "{}}\ +\ filename);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ If\ loading\ successful,\ insert\ resource\ to\ map}}
+\DoxyCodeLine{00023\ \ \ \ \ insertResource(\textcolor{keywordtype}{id},\ std::move(resource));}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Resource,\ \textcolor{keyword}{typename}\ Identifier>}
+\DoxyCodeLine{00027\ Resource\&\ \mbox{\hyperlink{class_resource_holder}{ResourceHolder<Resource,\ Identifier>::get}}(Identifier\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{auto}\ found\ =\ mResourceMap.find(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00030\ \ \ \ \ assert(found\ !=\ mResourceMap.end());}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{return}\ *found-\/>second;}
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Resource,\ \textcolor{keyword}{typename}\ Identifier>}
+\DoxyCodeLine{00036\ \textcolor{keyword}{const}\ Resource\&\ \mbox{\hyperlink{class_resource_holder}{ResourceHolder<Resource,\ Identifier>::get}}(Identifier\ \textcolor{keywordtype}{id})\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{auto}\ found\ =\ mResourceMap.find(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00039\ \ \ \ \ assert(found\ !=\ mResourceMap.end());}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ *found-\/>second;}
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Resource,\ \textcolor{keyword}{typename}\ Identifier>}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_resource_holder}{ResourceHolder<Resource,\ Identifier>::insertResource}}(Identifier\ \textcolor{keywordtype}{id},\ std::unique\_ptr<Resource>\ resource)}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Insert\ and\ check\ success}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{auto}\ inserted\ =\ mResourceMap.insert(std::make\_pair(\textcolor{keywordtype}{id},\ std::move(resource)));}
+\DoxyCodeLine{00049\ \ \ \ \ assert(inserted.second);}
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}

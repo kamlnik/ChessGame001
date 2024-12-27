@@ -1,0 +1,64 @@
+\doxysection{World.\+hpp}
+\hypertarget{_world_8hpp_source}{}\label{_world_8hpp_source}\index{Include/My\_lib/World.hpp@{Include/My\_lib/World.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ \ World.cpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @brief\ Initializing\ and\ control\ all\ game\ process}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *********************************************************************/}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_WORLD\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MY\_LIB\_WORLD\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <My\_lib/ResourceHolder.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <My\_lib/ResourceIdentifiers.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\#include\ <My\_lib/SceneNode.hpp>}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\#include\ <My\_lib/SpriteNode.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <My\_lib/Figure.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <My\_lib/Pawn.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <My\_lib/King.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <My\_lib/Queen.hpp>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <My\_lib/Rook.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <My\_lib/Bishop.hpp>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <My\_lib/Knight.hpp>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <SFML/System/NonCopyable.hpp>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/View.hpp>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Texture.hpp>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <My\_lib/Kdtree.hpp>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ Forward\ declaration}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }sf}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{class\ }RenderWindow;}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world}{World}}\ :\ \textcolor{keyword}{private}\ sf::NonCopyable}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}};}
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_world_a00985c4e0cb3b402e13698319a63cd62}{World}}(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_ab51a17ccbb108616daacd0c34973dc8d}{draw}}();}
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_acaa2a31572eecd5091a9556e20098919}{loadTextures}}();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_ae7df49f5d488e5cd1254bf360966f410}{buildScene}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_a8b35c082c669f2489a9419b3928319ff}{World\_processEvents}}();}
+\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_world_a4385ef136dfb87e9ecbf6fa918770962}{Whoose\_move}}\ =\ 1;}
+\DoxyCodeLine{00067\ \ \ \ \ sf::RenderWindow\&\ \mbox{\hyperlink{class_world_a60a4cb4a2829ec7955eacab90b7b372c}{mWindow}};}
+\DoxyCodeLine{00071\ \ \ \ \ sf::View\ \ \mbox{\hyperlink{class_world_a3834349bcaa35987c32dfdc9eb36c138}{mWorldView}};}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_resource_holder}{TextureHolder}}\ \mbox{\hyperlink{class_world_a31c4250c39693514fa6b6c4760a04282}{mTextures}};}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_kdtree}{Kdtree}}\ \mbox{\hyperlink{class_world_af3efee20b1c5dba0ce261eac3a7af954}{Chesstree}};}
+\DoxyCodeLine{00083\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_world_a9a5ab00a261bda1b4d4f6fb3101737ee}{Chess\_board}};}
+\DoxyCodeLine{00087\ \ \ \ \ sf::FloatRect\ \mbox{\hyperlink{class_world_af739e946b9a2683927c10b5cf20e103b}{mWorldBounds}};}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_world_a93322342d994a2bb0e062546cb67e52b}{Chess\_board\_for\_figures}}[8][8]\ =\ \{\};}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_world_a3cff6f1eead16e9b1d3dce41b4b51a71}{Scale\_value}};}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_world_a54862a6a77f6e925e0321a5498962aa3}{Screen\_width}};}
+\DoxyCodeLine{00103\ \ \ \ \ std::shared\_ptr<Figure>\ \mbox{\hyperlink{class_world_a4e0c543ace076f97d3678a0a8b4c04db}{BKing}};}
+\DoxyCodeLine{00107\ \ \ \ \ std::shared\_ptr<Figure>\ \mbox{\hyperlink{class_world_a358e518a3d721f5c17812944dce1add1}{WKing}};}
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

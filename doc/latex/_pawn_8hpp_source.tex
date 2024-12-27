@@ -1,0 +1,36 @@
+\doxysection{Pawn.\+hpp}
+\hypertarget{_pawn_8hpp_source}{}\label{_pawn_8hpp_source}\index{Include/My\_lib/Pawn.hpp@{Include/My\_lib/Pawn.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ \ Pawn.cpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @brief\ Contains\ definition\ of\ figure\ "{}Pawn"{}}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *********************************************************************/}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_PAWN\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MY\_LIB\_PAWN\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <My\_lib/Figure.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <My\_lib/ResourceIdentifiers.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pawn}{Pawn}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_figure}{Figure}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pawn_a1a2a56051c4baba1d2ed5a2a346c168b}{set\_Pawn\_type}}(Type\ newtype)\ \{\ mType\ =\ newtype;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_pawn_afc99140ec31bc31b6cea39912270905f}{getColor}}()\ \{\ \textcolor{keywordflow}{return}\ mColor;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ Type\ \mbox{\hyperlink{class_pawn_a20b3260bdf95eb1dd5eef8ef768eb119}{getType}}()\ \{\ \textcolor{keywordflow}{return}\ mType;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_pawn_a3b69903a8ba744496d3089ce3ab78e0b}{Pawn}}(Color\ nColor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_resource_holder}{TextureHolder}}\&\ textures,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_pawn_aaceeffff15575a45935048d373f69888}{Pawn}}(Color\ nColor,\ \ \textcolor{keyword}{const}\ sf::Vector2f\ Position,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pawn_a7eee9c25508404434eaf974820622a1a}{drawCurrent}}(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ \ \ \ \ std::vector<sf::Vector2f>\&\ \mbox{\hyperlink{class_pawn_ae4a528a35e2b4077c4b30ebd6fbba266}{all\_move}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pawn_a6fd3f5cc00d13cda755a53d9181fdcba}{pawn\_all\_move}};\ \}\ \textcolor{comment}{//\ virtual\ void\ значит что может быть переопределена потом в\ наследовательных\ функциях}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pawn_afb5876b13642857311a6252da56358ab}{update\_move}}(\ \textcolor{keywordtype}{float}\ screensize)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00069\ \ \ \ \ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{class_pawn_a6fd3f5cc00d13cda755a53d9181fdcba}{pawn\_all\_move}};}
+\DoxyCodeLine{00078\ \ \ \ \ unsigned\ (\&\mbox{\hyperlink{class_pawn_ae27ed7d9bcc37cb98552ed8f731e50de}{chess\_board}})[8][8];}
+\DoxyCodeLine{00082\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_pawn_ac03603c515902fba18b289c28876cf55}{mSprite}};\ \ }
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

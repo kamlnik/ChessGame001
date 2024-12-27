@@ -1,0 +1,347 @@
+\doxysection{Kdtree Class Reference}
+\hypertarget{class_kdtree}{}\label{class_kdtree}\index{Kdtree@{Kdtree}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_kdtree_ab841f71cd2b9c7d82a8432cc8b214287}\label{class_kdtree_ab841f71cd2b9c7d82a8432cc8b214287} 
+{\bfseries Kdtree} ()
+\begin{DoxyCompactList}\small\item\em Kd tree construcor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kdtree_a3867605fb5fce0d9cef4f889c4b80099}{Kdtree}} (\mbox{\hyperlink{classkd_node}{kd\+Node}} \texorpdfstring{$\ast$}{*}newroot)
+\begin{DoxyCompactList}\small\item\em Kd tree construcor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_kdtree_a1117e7e99f9ae67a85837ae73c23f82a}{Kdtree}} (const \mbox{\hyperlink{class_kdtree}{Kdtree}} \&need\+\_\+to\+\_\+copy, unsigned(\&chessboard)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em Kd tree copy construcor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kdtree_ab7430c41eafd139c0b9150226af408ea}{Add\+Node}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ new\+Node)
+\begin{DoxyCompactList}\small\item\em Func that add Node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kdtree_af886ad75ea5a2825aa1e202ecd857b20}{delete\+\_\+kd\+Node}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ fptr)
+\begin{DoxyCompactList}\small\item\em Func that delete Node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kdtree_aedc2ccc0a1cb573a8db49bea1a180e03}{Delete\+Node}} (float xc, float yc)
+\begin{DoxyCompactList}\small\item\em Func that delete Node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kdtree_ad53832509f94be40c1ab2c0a61bf2c4f}{Delete\+Node}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ fptr)
+\begin{DoxyCompactList}\small\item\em Func that delete Node. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ \mbox{\hyperlink{class_kdtree_a7dfc56cdf98a0fa7ca7f10dec879d7e9}{Find\+Node}} (float xc, float yc)
+\begin{DoxyCompactList}\small\item\em Func that Find Node. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ \mbox{\hyperlink{class_kdtree_a73c508521aacf94e89daae1c5220ac48}{findminx}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ fptr)
+\begin{DoxyCompactList}\small\item\em Func that Find min Node in x coord. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ \mbox{\hyperlink{class_kdtree_a7e1c9cf82ce16cf980532b73c6c5510e}{findminy}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ fptr)
+\begin{DoxyCompactList}\small\item\em Func that Find min Node in y coord. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ \mbox{\hyperlink{class_kdtree_a714a14f5fbd837cf6a1a5be2d7aa8f37}{getroot}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_kdtree}{Kdtree} root getter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kdtree_a3e89d25a81100fd35b56557b4ca1c7d0}{update}} (float Screen\+\_\+size, unsigned(\&chessboard)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em Func that update all figures move. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kdtree_a10e8e28e897fb586bdfd32ec13304f52}{can\+\_\+make\+\_\+this\+\_\+move}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$ Wking, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$ Bking, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ fptr, sf\+::\+Vector2f Previos\+\_\+position, sf\+::\+Vector2f New\+\_\+position, unsigned is\+\_\+delete, float Screensize, unsigned(\&chessboard)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em Func that check move. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_kdtree_a6d179e0b52ffeb84feeb8003468e9820}{drawtree}} (sf\+::\+Render\+Target \&target)
+\begin{DoxyCompactList}\small\item\em Func that draw \doxylink{class_kdtree}{Kdtree}. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_kdtree_a8d55024e6ff15f779390e48ae0c21e40}{IS\+\_\+\+MATE}} (float Screensize, unsigned(chessboard)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em Func that check mate. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_kdtree_a0eba0695dc379af7d5b0746d7c9cbf4e}{func\+\_\+check\+\_\+mate}} (bool whoose\+\_\+move, float Screensize, unsigned(chessboard)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em Func that help check mate with threads. \end{DoxyCompactList}\item 
+\Hypertarget{class_kdtree_a5bde27156c548e25d7727fc1c77428f7}\label{class_kdtree_a5bde27156c548e25d7727fc1c77428f7} 
+void {\bfseries put\+Tree2} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ ptr, int level)
+\item 
+\Hypertarget{class_kdtree_aa767f7fb4d67011e477251d4efaa2777}\label{class_kdtree_aa767f7fb4d67011e477251d4efaa2777} 
+void {\bfseries help\+\_\+func\+\_\+for\+\_\+copy\+\_\+constructor} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ ptr, unsigned(\&chessboard)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_kdtree_aa86258e22200ffc68389a4280d791e36}{tree\+\_\+bypass\+\_\+help\+\_\+func}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ fptr, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ $>$ \&Figure\+\_\+list, unsigned whoose\+\_\+move)
+\begin{DoxyCompactList}\small\item\em Func that make \doxylink{class_figure}{Figure} list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_kdtree_a1072b86e99ee78416506c3fe3b683fcb}\label{class_kdtree_a1072b86e99ee78416506c3fe3b683fcb} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ {\bfseries root}
+\begin{DoxyCompactList}\small\item\em \doxylink{classkd_node}{kd\+Node} root pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_kdtree_a3867605fb5fce0d9cef4f889c4b80099}\index{Kdtree@{Kdtree}!Kdtree@{Kdtree}}
+\index{Kdtree@{Kdtree}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{Kdtree()}{Kdtree()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_kdtree_a3867605fb5fce0d9cef4f889c4b80099} 
+Kdtree\+::\+Kdtree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classkd_node}{kd\+Node}} \texorpdfstring{$\ast$}{*}}]{newroot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Kd tree construcor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classkd_node}{kd\+Node}} & pointer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kdtree_a1117e7e99f9ae67a85837ae73c23f82a}\index{Kdtree@{Kdtree}!Kdtree@{Kdtree}}
+\index{Kdtree@{Kdtree}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{Kdtree()}{Kdtree()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_kdtree_a1117e7e99f9ae67a85837ae73c23f82a} 
+Kdtree\+::\+Kdtree (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_kdtree}{Kdtree}} \&}]{need\+\_\+to\+\_\+copy}{, }\item[{unsigned(\&)}]{chessboard}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Kd tree copy construcor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em need\+\_\+to\+\_\+copy} & is element wich we want to copy. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_kdtree_ab7430c41eafd139c0b9150226af408ea}\index{Kdtree@{Kdtree}!AddNode@{AddNode}}
+\index{AddNode@{AddNode}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{AddNode()}{AddNode()}}
+{\footnotesize\ttfamily \label{class_kdtree_ab7430c41eafd139c0b9150226af408ea} 
+void Kdtree\+::\+Add\+Node (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{new\+Node}{}\end{DoxyParamCaption})}
+
+
+
+Func that add Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Node} & is pointer to element wich we want to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kdtree_a10e8e28e897fb586bdfd32ec13304f52}\index{Kdtree@{Kdtree}!can\_make\_this\_move@{can\_make\_this\_move}}
+\index{can\_make\_this\_move@{can\_make\_this\_move}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{can\_make\_this\_move()}{can\_make\_this\_move()}}
+{\footnotesize\ttfamily \label{class_kdtree_a10e8e28e897fb586bdfd32ec13304f52} 
+bool Kdtree\+::can\+\_\+make\+\_\+this\+\_\+move (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$}]{Wking}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_figure}{Figure}} $>$}]{Bking}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{fptr}{, }\item[{sf\+::\+Vector2f}]{Previos\+\_\+position}{, }\item[{sf\+::\+Vector2f}]{New\+\_\+position}{, }\item[{unsigned}]{is\+\_\+delete}{, }\item[{float}]{Screensize}{, }\item[{unsigned(\&)}]{chessboard}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Func that check move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Wking} & is pointer to white king \\
+\hline
+{\em Bking} & is pointer to black king \\
+\hline
+{\em fptr} & is pointer to this \doxylink{classkd_node}{kd\+Node} \\
+\hline
+{\em Previos\+\_\+position} & is previos position of moved \doxylink{class_figure}{Figure} \\
+\hline
+{\em New\+\_\+position} & is new position of moved \doxylink{class_figure}{Figure} \\
+\hline
+{\em is\+\_\+delete} & is if we delete \\
+\hline
+{\em Screen\+\_\+size} & is screen size \\
+\hline
+{\em chessboard} & is chessboard \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 0 if we can make else 1 
+\end{DoxyReturn}
+\Hypertarget{class_kdtree_af886ad75ea5a2825aa1e202ecd857b20}\index{Kdtree@{Kdtree}!delete\_kdNode@{delete\_kdNode}}
+\index{delete\_kdNode@{delete\_kdNode}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{delete\_kdNode()}{delete\_kdNode()}}
+{\footnotesize\ttfamily \label{class_kdtree_af886ad75ea5a2825aa1e202ecd857b20} 
+void Kdtree\+::delete\+\_\+kd\+Node (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{fptr}{}\end{DoxyParamCaption})}
+
+
+
+Func that delete Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fptr} & is pointer to element wich we want to delete. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kdtree_aedc2ccc0a1cb573a8db49bea1a180e03}\index{Kdtree@{Kdtree}!DeleteNode@{DeleteNode}}
+\index{DeleteNode@{DeleteNode}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{DeleteNode()}{DeleteNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_kdtree_aedc2ccc0a1cb573a8db49bea1a180e03} 
+void Kdtree\+::\+Delete\+Node (\begin{DoxyParamCaption}\item[{float}]{xc}{, }\item[{float}]{yc}{}\end{DoxyParamCaption})}
+
+
+
+Func that delete Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xc} & is x position of element wich we want to delete \\
+\hline
+{\em yc} & is y position of element wich we want to delete \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kdtree_ad53832509f94be40c1ab2c0a61bf2c4f}\index{Kdtree@{Kdtree}!DeleteNode@{DeleteNode}}
+\index{DeleteNode@{DeleteNode}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{DeleteNode()}{DeleteNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_kdtree_ad53832509f94be40c1ab2c0a61bf2c4f} 
+void Kdtree\+::\+Delete\+Node (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{fptr}{}\end{DoxyParamCaption})}
+
+
+
+Func that delete Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fptr} & is pointer to element wich we want to delete. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kdtree_a6d179e0b52ffeb84feeb8003468e9820}\index{Kdtree@{Kdtree}!drawtree@{drawtree}}
+\index{drawtree@{drawtree}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{drawtree()}{drawtree()}}
+{\footnotesize\ttfamily \label{class_kdtree_a6d179e0b52ffeb84feeb8003468e9820} 
+void Kdtree\+::drawtree (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target}{}\end{DoxyParamCaption})}
+
+
+
+Func that draw \doxylink{class_kdtree}{Kdtree}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & is target to screen \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kdtree_a73c508521aacf94e89daae1c5220ac48}\index{Kdtree@{Kdtree}!findminx@{findminx}}
+\index{findminx@{findminx}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{findminx()}{findminx()}}
+{\footnotesize\ttfamily \label{class_kdtree_a73c508521aacf94e89daae1c5220ac48} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ Kdtree\+::findminx (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{fptr}{}\end{DoxyParamCaption})}
+
+
+
+Func that Find min Node in x coord. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fprt} & is pointer to node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to finded element 
+\end{DoxyReturn}
+\Hypertarget{class_kdtree_a7e1c9cf82ce16cf980532b73c6c5510e}\index{Kdtree@{Kdtree}!findminy@{findminy}}
+\index{findminy@{findminy}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{findminy()}{findminy()}}
+{\footnotesize\ttfamily \label{class_kdtree_a7e1c9cf82ce16cf980532b73c6c5510e} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ Kdtree\+::findminy (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{fptr}{}\end{DoxyParamCaption})}
+
+
+
+Func that Find min Node in y coord. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fprt} & is pointer to node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to finded element 
+\end{DoxyReturn}
+\Hypertarget{class_kdtree_a7dfc56cdf98a0fa7ca7f10dec879d7e9}\index{Kdtree@{Kdtree}!FindNode@{FindNode}}
+\index{FindNode@{FindNode}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{FindNode()}{FindNode()}}
+{\footnotesize\ttfamily \label{class_kdtree_a7dfc56cdf98a0fa7ca7f10dec879d7e9} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ Kdtree\+::\+Find\+Node (\begin{DoxyParamCaption}\item[{float}]{xc}{, }\item[{float}]{yc}{}\end{DoxyParamCaption})}
+
+
+
+Func that Find Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xc} & is x position of element wich we want to find \\
+\hline
+{\em yc} & is y position of element wich we want to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to finded element 
+\end{DoxyReturn}
+\Hypertarget{class_kdtree_a0eba0695dc379af7d5b0746d7c9cbf4e}\index{Kdtree@{Kdtree}!func\_check\_mate@{func\_check\_mate}}
+\index{func\_check\_mate@{func\_check\_mate}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{func\_check\_mate()}{func\_check\_mate()}}
+{\footnotesize\ttfamily \label{class_kdtree_a0eba0695dc379af7d5b0746d7c9cbf4e} 
+bool Kdtree\+::func\+\_\+check\+\_\+mate (\begin{DoxyParamCaption}\item[{bool}]{whoose\+\_\+move}{, }\item[{float}]{Screensize}{, }\item[{unsigned(chessboard)}]{}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Func that help check mate with threads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & id pointer to this \doxylink{classkd_node}{kd\+Node} \\
+\hline
+{\em chessboard} & is chessboard \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kdtree_a714a14f5fbd837cf6a1a5be2d7aa8f37}\index{Kdtree@{Kdtree}!getroot@{getroot}}
+\index{getroot@{getroot}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{getroot()}{getroot()}}
+{\footnotesize\ttfamily \label{class_kdtree_a714a14f5fbd837cf6a1a5be2d7aa8f37} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ Kdtree\+::getroot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_kdtree}{Kdtree} root getter. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_kdtree}{Kdtree} pointer to root 
+\end{DoxyReturn}
+\Hypertarget{class_kdtree_a8d55024e6ff15f779390e48ae0c21e40}\index{Kdtree@{Kdtree}!IS\_MATE@{IS\_MATE}}
+\index{IS\_MATE@{IS\_MATE}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{IS\_MATE()}{IS\_MATE()}}
+{\footnotesize\ttfamily \label{class_kdtree_a8d55024e6ff15f779390e48ae0c21e40} 
+unsigned Kdtree\+::\+IS\+\_\+\+MATE (\begin{DoxyParamCaption}\item[{float}]{Screensize}{, }\item[{unsigned(chessboard)}]{}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Func that check mate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & id pointer to this \doxylink{classkd_node}{kd\+Node} \\
+\hline
+{\em chessboard} & is chessboard \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if mate else 1 
+\end{DoxyReturn}
+\Hypertarget{class_kdtree_aa86258e22200ffc68389a4280d791e36}\index{Kdtree@{Kdtree}!tree\_bypass\_help\_func@{tree\_bypass\_help\_func}}
+\index{tree\_bypass\_help\_func@{tree\_bypass\_help\_func}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{tree\_bypass\_help\_func()}{tree\_bypass\_help\_func()}}
+{\footnotesize\ttfamily \label{class_kdtree_aa86258e22200ffc68389a4280d791e36} 
+void Kdtree\+::tree\+\_\+bypass\+\_\+help\+\_\+func (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$}]{fptr}{, }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classkd_node}{kd\+Node}} $>$ $>$ \&}]{Figure\+\_\+list}{, }\item[{unsigned}]{whoose\+\_\+move}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Func that make \doxylink{class_figure}{Figure} list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fptr} & is pointer to this \doxylink{classkd_node}{kd\+Node}. \\
+\hline
+{\em Figure\+\_\+list} & is vector of figures. \\
+\hline
+{\em whoose\+\_\+move} & is whoose move. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_kdtree_a3e89d25a81100fd35b56557b4ca1c7d0}\index{Kdtree@{Kdtree}!update@{update}}
+\index{update@{update}!Kdtree@{Kdtree}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_kdtree_a3e89d25a81100fd35b56557b4ca1c7d0} 
+void Kdtree\+::update (\begin{DoxyParamCaption}\item[{float}]{Screen\+\_\+size}{, }\item[{unsigned(\&)}]{chessboard}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Func that update all figures move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Screen\+\_\+size} & id Screen size \\
+\hline
+{\em chessboard} & is chessboard \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Include/\+My\+\_\+lib/Kdtree.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,233 @@
+\doxysection{Pawn Class Reference}
+\hypertarget{class_pawn}{}\label{class_pawn}\index{Pawn@{Pawn}}
+Inheritance diagram for Pawn\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_pawn}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pawn_a1a2a56051c4baba1d2ed5a2a346c168b}{set\+\_\+\+Pawn\+\_\+type}} (Type newtype)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_pawn}{Pawn} Type setter. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_pawn_afc99140ec31bc31b6cea39912270905f}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_pawn}{Pawn} Color getter. \end{DoxyCompactList}\item 
+Type \mbox{\hyperlink{class_pawn_a20b3260bdf95eb1dd5eef8ef768eb119}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_pawn}{Pawn} Type getter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pawn_a3b69903a8ba744496d3089ce3ab78e0b}{Pawn}} (Color n\+Color, const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&textures, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_pawn}{Pawn} Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pawn_aaceeffff15575a45935048d373f69888}{Pawn}} (Color n\+Color, const sf\+::\+Vector2f Position, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_pawn}{Pawn} Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pawn_a7eee9c25508404434eaf974820622a1a}{draw\+Current}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em Func that draw \doxylink{class_pawn}{Pawn}. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& \mbox{\hyperlink{class_pawn_ae4a528a35e2b4077c4b30ebd6fbba266}{all\+\_\+move}} () override
+\begin{DoxyCompactList}\small\item\em Func that returns all \doxylink{class_pawn}{Pawn} moves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pawn_afb5876b13642857311a6252da56358ab}{update\+\_\+move}} (float screensize) override
+\begin{DoxyCompactList}\small\item\em Func that update \doxylink{class_pawn}{Pawn} moves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+Color {\bfseries get\+Color} ()
+\item 
+unsigned {\bfseries get\+Type} ()
+\item 
+void {\bfseries set\+\_\+is\+\_\+under\+\_\+attack} (unsigned t)
+\item 
+bool {\bfseries get\+\_\+is\+\_\+under\+\_\+attack} ()
+\item 
+{\bfseries Figure} (const \mbox{\hyperlink{class_figure}{Figure}} \&need\+\_\+to\+\_\+copy)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_pawn_a6fd3f5cc00d13cda755a53d9181fdcba}\label{class_pawn_a6fd3f5cc00d13cda755a53d9181fdcba} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ {\bfseries pawn\+\_\+all\+\_\+move}
+\begin{DoxyCompactList}\small\item\em Vector witch contains all possible moves of \doxylink{class_pawn}{Pawn}. \end{DoxyCompactList}\item 
+\Hypertarget{class_pawn_ae27ed7d9bcc37cb98552ed8f731e50de}\label{class_pawn_ae27ed7d9bcc37cb98552ed8f731e50de} 
+unsigned(\& {\bfseries chess\+\_\+board} )\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em Chessboard desk. \end{DoxyCompactList}\item 
+\Hypertarget{class_pawn_ac03603c515902fba18b289c28876cf55}\label{class_pawn_ac03603c515902fba18b289c28876cf55} 
+sf\+::\+Sprite {\bfseries m\+Sprite}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_pawn}{Pawn} sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb}\label{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb} 
+enum {\bfseries Type} \{ \newline
+{\bfseries Pawn}
+, {\bfseries King}
+, {\bfseries Queen}
+, {\bfseries Rook}
+, \newline
+{\bfseries Bishop}
+, {\bfseries Knight}
+ \}
+\item 
+\Hypertarget{class_figure_a67d539a7a852950ae9d67160561b8e08}\label{class_figure_a67d539a7a852950ae9d67160561b8e08} 
+enum {\bfseries Color} \{ {\bfseries black}
+, {\bfseries white}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Figure} (Type new\+Type, Color new\+Color)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries is\+\_\+under\+\_\+attack}
+\item 
+Type {\bfseries m\+Type}
+\item 
+Color {\bfseries m\+Color}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pawn_a3b69903a8ba744496d3089ce3ab78e0b}\index{Pawn@{Pawn}!Pawn@{Pawn}}
+\index{Pawn@{Pawn}!Pawn@{Pawn}}
+\doxysubsubsection{\texorpdfstring{Pawn()}{Pawn()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_pawn_a3b69903a8ba744496d3089ce3ab78e0b} 
+Pawn\+::\+Pawn (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&}]{textures}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_pawn}{Pawn} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em textures} & is textures container \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_pawn_aaceeffff15575a45935048d373f69888}\index{Pawn@{Pawn}!Pawn@{Pawn}}
+\index{Pawn@{Pawn}!Pawn@{Pawn}}
+\doxysubsubsection{\texorpdfstring{Pawn()}{Pawn()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_pawn_aaceeffff15575a45935048d373f69888} 
+Pawn\+::\+Pawn (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{const sf\+::\+Vector2f}]{Position}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_pawn}{Pawn} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em Position} & is position of this figure \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pawn_ae4a528a35e2b4077c4b30ebd6fbba266}\index{Pawn@{Pawn}!all\_move@{all\_move}}
+\index{all\_move@{all\_move}!Pawn@{Pawn}}
+\doxysubsubsection{\texorpdfstring{all\_move()}{all\_move()}}
+{\footnotesize\ttfamily \label{class_pawn_ae4a528a35e2b4077c4b30ebd6fbba266} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& Pawn\+::all\+\_\+move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that returns all \doxylink{class_pawn}{Pawn} moves. 
+
+\begin{DoxyReturn}{Returns}
+all \doxylink{class_pawn}{Pawn} moves 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_pawn_a7eee9c25508404434eaf974820622a1a}\index{Pawn@{Pawn}!drawCurrent@{drawCurrent}}
+\index{drawCurrent@{drawCurrent}!Pawn@{Pawn}}
+\doxysubsubsection{\texorpdfstring{drawCurrent()}{drawCurrent()}}
+{\footnotesize\ttfamily \label{class_pawn_a7eee9c25508404434eaf974820622a1a} 
+void Pawn\+::draw\+Current (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target}{, }\item[{sf\+::\+Render\+States}]{states}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that draw \doxylink{class_pawn}{Pawn}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & show where output it \\
+\hline
+{\em states} & is SFML special value \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_pawn_afc99140ec31bc31b6cea39912270905f}\index{Pawn@{Pawn}!getColor@{getColor}}
+\index{getColor@{getColor}!Pawn@{Pawn}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{class_pawn_afc99140ec31bc31b6cea39912270905f} 
+unsigned Pawn\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_pawn}{Pawn} Color getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_pawn_a20b3260bdf95eb1dd5eef8ef768eb119}\index{Pawn@{Pawn}!getType@{getType}}
+\index{getType@{getType}!Pawn@{Pawn}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_pawn_a20b3260bdf95eb1dd5eef8ef768eb119} 
+Type Pawn\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_pawn}{Pawn} Type getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_pawn_a1a2a56051c4baba1d2ed5a2a346c168b}\index{Pawn@{Pawn}!set\_Pawn\_type@{set\_Pawn\_type}}
+\index{set\_Pawn\_type@{set\_Pawn\_type}!Pawn@{Pawn}}
+\doxysubsubsection{\texorpdfstring{set\_Pawn\_type()}{set\_Pawn\_type()}}
+{\footnotesize\ttfamily \label{class_pawn_a1a2a56051c4baba1d2ed5a2a346c168b} 
+void Pawn\+::set\+\_\+\+Pawn\+\_\+type (\begin{DoxyParamCaption}\item[{Type}]{newtype}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_pawn}{Pawn} Type setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Type} & of this \doxylink{class_figure}{Figure} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_pawn_afb5876b13642857311a6252da56358ab}\index{Pawn@{Pawn}!update\_move@{update\_move}}
+\index{update\_move@{update\_move}!Pawn@{Pawn}}
+\doxysubsubsection{\texorpdfstring{update\_move()}{update\_move()}}
+{\footnotesize\ttfamily \label{class_pawn_afb5876b13642857311a6252da56358ab} 
+void Pawn\+::update\+\_\+move (\begin{DoxyParamCaption}\item[{float}]{screensize}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that update \doxylink{class_pawn}{Pawn} moves. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screensize} & is value of screen pixels \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Include/\+My\+\_\+lib/Pawn.\+hpp\end{DoxyCompactItemize}

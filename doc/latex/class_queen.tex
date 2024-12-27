@@ -1,0 +1,233 @@
+\doxysection{Queen Class Reference}
+\hypertarget{class_queen}{}\label{class_queen}\index{Queen@{Queen}}
+Inheritance diagram for Queen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_queen}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_queen_a1809d2be735bc89e59469dd3f197dcce}{set\+\_\+\+Queen\+\_\+type}} (Type newtype)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_queen}{Queen} Type setter. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_queen_a0cd029fd4269c2db8523cc7cff12c5ce}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_queen}{Queen} Color getter. \end{DoxyCompactList}\item 
+Type \mbox{\hyperlink{class_queen_add1e4b8843cab9c151ccdb8d969a44e9}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_queen}{Queen} Type getter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_queen_ae0b5673feb57509e4d0b939e16a2420b}{Queen}} (Color n\+Color, const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&textures, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_queen}{Queen} Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_queen_a5d0659e160f3d55f86be4fb14fdc6565}{Queen}} (Color n\+Color, sf\+::\+Vector2f Position, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_queen}{Queen} Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_queen_a09e577a614f17b1ecc986f30b1c76af9}{draw\+Current}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em Func that draw \doxylink{class_queen}{Queen}. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& \mbox{\hyperlink{class_queen_af52ae59cb66c85880ec34b3577da4528}{all\+\_\+move}} () override
+\begin{DoxyCompactList}\small\item\em Func that returns all \doxylink{class_queen}{Queen} moves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_queen_ad04ed1e0a862030756d0f03f6e8fab4b}{update\+\_\+move}} (float screensize) override
+\begin{DoxyCompactList}\small\item\em Func that update \doxylink{class_queen}{Queen} moves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+Color {\bfseries get\+Color} ()
+\item 
+unsigned {\bfseries get\+Type} ()
+\item 
+void {\bfseries set\+\_\+is\+\_\+under\+\_\+attack} (unsigned t)
+\item 
+bool {\bfseries get\+\_\+is\+\_\+under\+\_\+attack} ()
+\item 
+{\bfseries Figure} (const \mbox{\hyperlink{class_figure}{Figure}} \&need\+\_\+to\+\_\+copy)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_queen_aa5adde529526f442c534270ab364ad36}\label{class_queen_aa5adde529526f442c534270ab364ad36} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ {\bfseries queen\+\_\+all\+\_\+move}
+\begin{DoxyCompactList}\small\item\em Vector witch contains all possible moves of \doxylink{class_queen}{Queen}. \end{DoxyCompactList}\item 
+\Hypertarget{class_queen_ab8de48ea67e96afb7d12cd0361372237}\label{class_queen_ab8de48ea67e96afb7d12cd0361372237} 
+unsigned(\& {\bfseries chess\+\_\+board} )\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em Chessboard desk. \end{DoxyCompactList}\item 
+\Hypertarget{class_queen_a8911ca88aa2e5bad585db7c036caa719}\label{class_queen_a8911ca88aa2e5bad585db7c036caa719} 
+sf\+::\+Sprite {\bfseries m\+Sprite}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_queen}{Queen} sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb}\label{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb} 
+enum {\bfseries Type} \{ \newline
+{\bfseries Pawn}
+, {\bfseries King}
+, {\bfseries Queen}
+, {\bfseries Rook}
+, \newline
+{\bfseries Bishop}
+, {\bfseries Knight}
+ \}
+\item 
+\Hypertarget{class_figure_a67d539a7a852950ae9d67160561b8e08}\label{class_figure_a67d539a7a852950ae9d67160561b8e08} 
+enum {\bfseries Color} \{ {\bfseries black}
+, {\bfseries white}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Figure} (Type new\+Type, Color new\+Color)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries is\+\_\+under\+\_\+attack}
+\item 
+Type {\bfseries m\+Type}
+\item 
+Color {\bfseries m\+Color}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_queen_ae0b5673feb57509e4d0b939e16a2420b}\index{Queen@{Queen}!Queen@{Queen}}
+\index{Queen@{Queen}!Queen@{Queen}}
+\doxysubsubsection{\texorpdfstring{Queen()}{Queen()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_queen_ae0b5673feb57509e4d0b939e16a2420b} 
+Queen\+::\+Queen (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&}]{textures}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_queen}{Queen} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em textures} & is textures container \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_queen_a5d0659e160f3d55f86be4fb14fdc6565}\index{Queen@{Queen}!Queen@{Queen}}
+\index{Queen@{Queen}!Queen@{Queen}}
+\doxysubsubsection{\texorpdfstring{Queen()}{Queen()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_queen_a5d0659e160f3d55f86be4fb14fdc6565} 
+Queen\+::\+Queen (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{sf\+::\+Vector2f}]{Position}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_queen}{Queen} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em Position} & is position of this figure \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_queen_af52ae59cb66c85880ec34b3577da4528}\index{Queen@{Queen}!all\_move@{all\_move}}
+\index{all\_move@{all\_move}!Queen@{Queen}}
+\doxysubsubsection{\texorpdfstring{all\_move()}{all\_move()}}
+{\footnotesize\ttfamily \label{class_queen_af52ae59cb66c85880ec34b3577da4528} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& Queen\+::all\+\_\+move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that returns all \doxylink{class_queen}{Queen} moves. 
+
+\begin{DoxyReturn}{Returns}
+all \doxylink{class_queen}{Queen} moves 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_queen_a09e577a614f17b1ecc986f30b1c76af9}\index{Queen@{Queen}!drawCurrent@{drawCurrent}}
+\index{drawCurrent@{drawCurrent}!Queen@{Queen}}
+\doxysubsubsection{\texorpdfstring{drawCurrent()}{drawCurrent()}}
+{\footnotesize\ttfamily \label{class_queen_a09e577a614f17b1ecc986f30b1c76af9} 
+void Queen\+::draw\+Current (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target}{, }\item[{sf\+::\+Render\+States}]{states}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that draw \doxylink{class_queen}{Queen}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & show where output it \\
+\hline
+{\em states} & is SFML special value \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_queen_a0cd029fd4269c2db8523cc7cff12c5ce}\index{Queen@{Queen}!getColor@{getColor}}
+\index{getColor@{getColor}!Queen@{Queen}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{class_queen_a0cd029fd4269c2db8523cc7cff12c5ce} 
+unsigned Queen\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_queen}{Queen} Color getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_queen_add1e4b8843cab9c151ccdb8d969a44e9}\index{Queen@{Queen}!getType@{getType}}
+\index{getType@{getType}!Queen@{Queen}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_queen_add1e4b8843cab9c151ccdb8d969a44e9} 
+Type Queen\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_queen}{Queen} Type getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_queen_a1809d2be735bc89e59469dd3f197dcce}\index{Queen@{Queen}!set\_Queen\_type@{set\_Queen\_type}}
+\index{set\_Queen\_type@{set\_Queen\_type}!Queen@{Queen}}
+\doxysubsubsection{\texorpdfstring{set\_Queen\_type()}{set\_Queen\_type()}}
+{\footnotesize\ttfamily \label{class_queen_a1809d2be735bc89e59469dd3f197dcce} 
+void Queen\+::set\+\_\+\+Queen\+\_\+type (\begin{DoxyParamCaption}\item[{Type}]{newtype}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_queen}{Queen} Type setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Type} & of this \doxylink{class_figure}{Figure} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_queen_ad04ed1e0a862030756d0f03f6e8fab4b}\index{Queen@{Queen}!update\_move@{update\_move}}
+\index{update\_move@{update\_move}!Queen@{Queen}}
+\doxysubsubsection{\texorpdfstring{update\_move()}{update\_move()}}
+{\footnotesize\ttfamily \label{class_queen_ad04ed1e0a862030756d0f03f6e8fab4b} 
+void Queen\+::update\+\_\+move (\begin{DoxyParamCaption}\item[{float}]{screensize}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that update \doxylink{class_queen}{Queen} moves. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screensize} & is value of screen pixels \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Include/\+My\+\_\+lib/Queen.\+hpp\end{DoxyCompactItemize}

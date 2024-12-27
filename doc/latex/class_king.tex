@@ -1,0 +1,233 @@
+\doxysection{King Class Reference}
+\hypertarget{class_king}{}\label{class_king}\index{King@{King}}
+Inheritance diagram for King\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_king}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_king_a502bdcde2f6ab9272bbdfc566dc115c8}{set\+\_\+\+King\+\_\+type}} (Type newtype)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_king}{King} Type setter. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_king_aa36ed980a1092ccd95afe85234b25273}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_king}{King} Color getter. \end{DoxyCompactList}\item 
+Type \mbox{\hyperlink{class_king_a771b4623d1230097ca935faac7579dab}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_king}{King} Type getter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_king_a325b264ee5d217a14f6b78936cade376}{King}} (Color n\+Color, const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&textures, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_king}{King} Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_king_ac84e5cdc608ba58123db6116301fc17a}{King}} (Color n\+Color, sf\+::\+Vector2f Position, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_king}{King} Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_king_a932fdc5a32fc983f06ed662db2b51323}{draw\+Current}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em Func that draw \doxylink{class_king}{King}. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& \mbox{\hyperlink{class_king_a5ec076e3e4ad6525e0be50d990b4bde0}{all\+\_\+move}} () override
+\begin{DoxyCompactList}\small\item\em Func that returns all \doxylink{class_king}{King} moves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_king_a5c915dc23d72289f8b05d2c0c6af09b4}{update\+\_\+move}} (float screensize) override
+\begin{DoxyCompactList}\small\item\em Func that update \doxylink{class_king}{King} moves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+Color {\bfseries get\+Color} ()
+\item 
+unsigned {\bfseries get\+Type} ()
+\item 
+void {\bfseries set\+\_\+is\+\_\+under\+\_\+attack} (unsigned t)
+\item 
+bool {\bfseries get\+\_\+is\+\_\+under\+\_\+attack} ()
+\item 
+{\bfseries Figure} (const \mbox{\hyperlink{class_figure}{Figure}} \&need\+\_\+to\+\_\+copy)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_king_acda202090ee1f087115dcfa286ca064c}\label{class_king_acda202090ee1f087115dcfa286ca064c} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ {\bfseries king\+\_\+all\+\_\+move}
+\begin{DoxyCompactList}\small\item\em Vector witch contains all possible moves of \doxylink{class_king}{King}. \end{DoxyCompactList}\item 
+\Hypertarget{class_king_ad2d631844b60830ad5ce12d770d98664}\label{class_king_ad2d631844b60830ad5ce12d770d98664} 
+unsigned(\& {\bfseries chess\+\_\+board} )\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em Chessboard desk. \end{DoxyCompactList}\item 
+\Hypertarget{class_king_ac1fc7166f242b1eb809d8056101dc5d9}\label{class_king_ac1fc7166f242b1eb809d8056101dc5d9} 
+sf\+::\+Sprite {\bfseries m\+Sprite}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_king}{King} sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb}\label{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb} 
+enum {\bfseries Type} \{ \newline
+{\bfseries Pawn}
+, {\bfseries King}
+, {\bfseries Queen}
+, {\bfseries Rook}
+, \newline
+{\bfseries Bishop}
+, {\bfseries Knight}
+ \}
+\item 
+\Hypertarget{class_figure_a67d539a7a852950ae9d67160561b8e08}\label{class_figure_a67d539a7a852950ae9d67160561b8e08} 
+enum {\bfseries Color} \{ {\bfseries black}
+, {\bfseries white}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Figure} (Type new\+Type, Color new\+Color)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries is\+\_\+under\+\_\+attack}
+\item 
+Type {\bfseries m\+Type}
+\item 
+Color {\bfseries m\+Color}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_king_a325b264ee5d217a14f6b78936cade376}\index{King@{King}!King@{King}}
+\index{King@{King}!King@{King}}
+\doxysubsubsection{\texorpdfstring{King()}{King()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_king_a325b264ee5d217a14f6b78936cade376} 
+King\+::\+King (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&}]{textures}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_king}{King} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em textures} & is textures container \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_king_ac84e5cdc608ba58123db6116301fc17a}\index{King@{King}!King@{King}}
+\index{King@{King}!King@{King}}
+\doxysubsubsection{\texorpdfstring{King()}{King()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_king_ac84e5cdc608ba58123db6116301fc17a} 
+King\+::\+King (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{sf\+::\+Vector2f}]{Position}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_king}{King} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em Position} & is position of this figure \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_king_a5ec076e3e4ad6525e0be50d990b4bde0}\index{King@{King}!all\_move@{all\_move}}
+\index{all\_move@{all\_move}!King@{King}}
+\doxysubsubsection{\texorpdfstring{all\_move()}{all\_move()}}
+{\footnotesize\ttfamily \label{class_king_a5ec076e3e4ad6525e0be50d990b4bde0} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& King\+::all\+\_\+move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that returns all \doxylink{class_king}{King} moves. 
+
+\begin{DoxyReturn}{Returns}
+all \doxylink{class_king}{King} moves 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_king_a932fdc5a32fc983f06ed662db2b51323}\index{King@{King}!drawCurrent@{drawCurrent}}
+\index{drawCurrent@{drawCurrent}!King@{King}}
+\doxysubsubsection{\texorpdfstring{drawCurrent()}{drawCurrent()}}
+{\footnotesize\ttfamily \label{class_king_a932fdc5a32fc983f06ed662db2b51323} 
+void King\+::draw\+Current (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target}{, }\item[{sf\+::\+Render\+States}]{states}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that draw \doxylink{class_king}{King}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & show where output it \\
+\hline
+{\em states} & is SFML special value \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_king_aa36ed980a1092ccd95afe85234b25273}\index{King@{King}!getColor@{getColor}}
+\index{getColor@{getColor}!King@{King}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{class_king_aa36ed980a1092ccd95afe85234b25273} 
+unsigned King\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_king}{King} Color getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_king_a771b4623d1230097ca935faac7579dab}\index{King@{King}!getType@{getType}}
+\index{getType@{getType}!King@{King}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_king_a771b4623d1230097ca935faac7579dab} 
+Type King\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_king}{King} Type getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_king_a502bdcde2f6ab9272bbdfc566dc115c8}\index{King@{King}!set\_King\_type@{set\_King\_type}}
+\index{set\_King\_type@{set\_King\_type}!King@{King}}
+\doxysubsubsection{\texorpdfstring{set\_King\_type()}{set\_King\_type()}}
+{\footnotesize\ttfamily \label{class_king_a502bdcde2f6ab9272bbdfc566dc115c8} 
+void King\+::set\+\_\+\+King\+\_\+type (\begin{DoxyParamCaption}\item[{Type}]{newtype}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_king}{King} Type setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Type} & of this \doxylink{class_figure}{Figure} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_king_a5c915dc23d72289f8b05d2c0c6af09b4}\index{King@{King}!update\_move@{update\_move}}
+\index{update\_move@{update\_move}!King@{King}}
+\doxysubsubsection{\texorpdfstring{update\_move()}{update\_move()}}
+{\footnotesize\ttfamily \label{class_king_a5c915dc23d72289f8b05d2c0c6af09b4} 
+void King\+::update\+\_\+move (\begin{DoxyParamCaption}\item[{float}]{screensize}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that update \doxylink{class_king}{King} moves. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screensize} & is value of screen pixels \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Include/\+My\+\_\+lib/King.\+hpp\end{DoxyCompactItemize}

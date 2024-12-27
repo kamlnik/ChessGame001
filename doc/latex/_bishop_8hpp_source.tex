@@ -1,0 +1,34 @@
+\doxysection{Bishop.\+hpp}
+\hypertarget{_bishop_8hpp_source}{}\label{_bishop_8hpp_source}\index{Include/My\_lib/Bishop.hpp@{Include/My\_lib/Bishop.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ \ Bishop.cpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @brief\ Contains\ definition\ of\ figure\ "{}Bishop"{}}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *********************************************************************/}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_BISHOP\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MY\_LIB\_BISHOP\_HPP}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <My\_lib/Figure.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <My\_lib/ResourceIdentifiers.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_bishop}{Bishop}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_figure}{Figure}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bishop_a5bf65be55993d6291696d964984603b4}{set\_Bishop\_type}}(Type\ newtype)\ \{\ mType\ =\ newtype;\ \}\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_bishop_a4c344f62ea5533ed3441a167130b0000}{getColor}}()\ \{\ \textcolor{keywordflow}{return}\ mColor;\ \}}
+\DoxyCodeLine{00032\ \ \ \ \ Type\ \mbox{\hyperlink{class_bishop_a5a4df8533edbd3b41cca61ad9e39597b}{getType}}()\ \{\ \textcolor{keywordflow}{return}\ mType;\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_bishop_af6e737b3170a2ad35f03ceec2bbf86c0}{Bishop}}(Color\ nColor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_resource_holder}{TextureHolder}}\&\ textures,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_bishop_a34198773cbac97c055a01ea485cfba61}{Bishop}}(Color\ nColor,\ sf::Vector2f\ Position,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bishop_a91ee867a76addc02e884173c4a45963d}{drawCurrent}}(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00061\ \ \ \ \ std::vector<sf::Vector2f>\&\ \mbox{\hyperlink{class_bishop_a5848394dea1971317e05bd69796d10e0}{all\_move}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_bishop_abdb909e83184a2f0dd6829ca33e0d3bb}{bishop\_all\_move}};\ \}\ \textcolor{comment}{//\ virtual\ void\ значит что может быть переопределена потом в\ наследовательных\ функциях}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_bishop_a977469b84746ddfac75a518ce1c89e0c}{update\_move}}(\textcolor{keywordtype}{float}\ screensize)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{class_bishop_abdb909e83184a2f0dd6829ca33e0d3bb}{bishop\_all\_move}};}
+\DoxyCodeLine{00076\ \ \ \ \ unsigned(\&\mbox{\hyperlink{class_bishop_a04fe63258b6d2b798e1923ab624f4b3a}{chess\_board}})[8][8];}
+\DoxyCodeLine{00080\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_bishop_a90f976214224338f379c3fdd9ca0952d}{mSprite}};\ }
+\DoxyCodeLine{00081\ \};}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

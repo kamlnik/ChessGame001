@@ -1,0 +1,36 @@
+\doxysection{King.\+hpp}
+\hypertarget{_king_8hpp_source}{}\label{_king_8hpp_source}\index{Include/My\_lib/King.hpp@{Include/My\_lib/King.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ \ King.cpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ @brief\ Contains\ definition\ of\ figure\ "{}King"{}}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *********************************************************************/}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MY\_LIB\_KING\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MY\_LIB\_KING\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <My\_lib/Figure.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <My\_lib/ResourceIdentifiers.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_king}{King}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_figure}{Figure}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_king_a502bdcde2f6ab9272bbdfc566dc115c8}{set\_King\_type}}(Type\ newtype)\ \{\ mType\ =\ newtype;\ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_king_aa36ed980a1092ccd95afe85234b25273}{getColor}}()\ \{\ \textcolor{keywordflow}{return}\ mColor;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ Type\ \mbox{\hyperlink{class_king_a771b4623d1230097ca935faac7579dab}{getType}}()\ \{\ \textcolor{keywordflow}{return}\ mType;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_king_a325b264ee5d217a14f6b78936cade376}{King}}(Color\ nColor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_resource_holder}{TextureHolder}}\&\ textures,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_king_a325b264ee5d217a14f6b78936cade376}{King::King}}(Color\ nColor,\ sf::Vector2f\ Position,\ \textcolor{keywordtype}{unsigned}(\&new\_chess\_board)[8][8]);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_king_a932fdc5a32fc983f06ed662db2b51323}{drawCurrent}}(sf::RenderTarget\&\ target,\ sf::RenderStates\ states)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ \ \ \ \ std::vector<sf::Vector2f>\&\ \mbox{\hyperlink{class_king_a5ec076e3e4ad6525e0be50d990b4bde0}{all\_move}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_king_acda202090ee1f087115dcfa286ca064c}{king\_all\_move}};\ \}\ \textcolor{comment}{//\ virtual\ void\ значит что может быть переопределена потом в\ наследовательных\ функциях}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_king_a5c915dc23d72289f8b05d2c0c6af09b4}{update\_move}}(\textcolor{keywordtype}{float}\ screensize)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ std::vector<sf::Vector2f>\ \mbox{\hyperlink{class_king_acda202090ee1f087115dcfa286ca064c}{king\_all\_move}};}
+\DoxyCodeLine{00078\ \ \ \ \ unsigned(\&\mbox{\hyperlink{class_king_ad2d631844b60830ad5ce12d770d98664}{chess\_board}})[8][8];}
+\DoxyCodeLine{00082\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_king_ac1fc7166f242b1eb809d8056101dc5d9}{mSprite}};\ }
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

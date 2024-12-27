@@ -1,0 +1,233 @@
+\doxysection{Bishop Class Reference}
+\hypertarget{class_bishop}{}\label{class_bishop}\index{Bishop@{Bishop}}
+Inheritance diagram for Bishop\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_bishop}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_bishop_a5bf65be55993d6291696d964984603b4}{set\+\_\+\+Bishop\+\_\+type}} (Type newtype)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_bishop}{Bishop} Type setter. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_bishop_a4c344f62ea5533ed3441a167130b0000}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_bishop}{Bishop} Color getter. \end{DoxyCompactList}\item 
+Type \mbox{\hyperlink{class_bishop_a5a4df8533edbd3b41cca61ad9e39597b}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_bishop}{Bishop} Type getter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bishop_af6e737b3170a2ad35f03ceec2bbf86c0}{Bishop}} (Color n\+Color, const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&textures, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_bishop}{Bishop} Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bishop_a34198773cbac97c055a01ea485cfba61}{Bishop}} (Color n\+Color, sf\+::\+Vector2f Position, unsigned(\&new\+\_\+chess\+\_\+board)\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_bishop}{Bishop} Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bishop_a91ee867a76addc02e884173c4a45963d}{draw\+Current}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const override
+\begin{DoxyCompactList}\small\item\em Func that draw \doxylink{class_bishop}{Bishop}. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& \mbox{\hyperlink{class_bishop_a5848394dea1971317e05bd69796d10e0}{all\+\_\+move}} () override
+\begin{DoxyCompactList}\small\item\em Func that returns all \doxylink{class_bishop}{Bishop} moves. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bishop_a977469b84746ddfac75a518ce1c89e0c}{update\+\_\+move}} (float screensize) override
+\begin{DoxyCompactList}\small\item\em Func that update \doxylink{class_bishop}{Bishop} moves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+Color {\bfseries get\+Color} ()
+\item 
+unsigned {\bfseries get\+Type} ()
+\item 
+void {\bfseries set\+\_\+is\+\_\+under\+\_\+attack} (unsigned t)
+\item 
+bool {\bfseries get\+\_\+is\+\_\+under\+\_\+attack} ()
+\item 
+{\bfseries Figure} (const \mbox{\hyperlink{class_figure}{Figure}} \&need\+\_\+to\+\_\+copy)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_bishop_abdb909e83184a2f0dd6829ca33e0d3bb}\label{class_bishop_abdb909e83184a2f0dd6829ca33e0d3bb} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ {\bfseries bishop\+\_\+all\+\_\+move}
+\begin{DoxyCompactList}\small\item\em Vector witch contains all possible moves of \doxylink{class_bishop}{Bishop}. \end{DoxyCompactList}\item 
+\Hypertarget{class_bishop_a04fe63258b6d2b798e1923ab624f4b3a}\label{class_bishop_a04fe63258b6d2b798e1923ab624f4b3a} 
+unsigned(\& {\bfseries chess\+\_\+board} )\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em Chessboard desk. \end{DoxyCompactList}\item 
+\Hypertarget{class_bishop_a90f976214224338f379c3fdd9ca0952d}\label{class_bishop_a90f976214224338f379c3fdd9ca0952d} 
+sf\+::\+Sprite {\bfseries m\+Sprite}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_bishop}{Bishop} sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb}\label{class_figure_a1a96a996e3c8c0a48cf99a854a04d3cb} 
+enum {\bfseries Type} \{ \newline
+{\bfseries Pawn}
+, {\bfseries King}
+, {\bfseries Queen}
+, {\bfseries Rook}
+, \newline
+{\bfseries Bishop}
+, {\bfseries Knight}
+ \}
+\item 
+\Hypertarget{class_figure_a67d539a7a852950ae9d67160561b8e08}\label{class_figure_a67d539a7a852950ae9d67160561b8e08} 
+enum {\bfseries Color} \{ {\bfseries black}
+, {\bfseries white}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Figure} (Type new\+Type, Color new\+Color)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_figure}{Figure}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries is\+\_\+under\+\_\+attack}
+\item 
+Type {\bfseries m\+Type}
+\item 
+Color {\bfseries m\+Color}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_bishop_af6e737b3170a2ad35f03ceec2bbf86c0}\index{Bishop@{Bishop}!Bishop@{Bishop}}
+\index{Bishop@{Bishop}!Bishop@{Bishop}}
+\doxysubsubsection{\texorpdfstring{Bishop()}{Bishop()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_bishop_af6e737b3170a2ad35f03ceec2bbf86c0} 
+Bishop\+::\+Bishop (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{const \mbox{\hyperlink{class_resource_holder}{Texture\+Holder}} \&}]{textures}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_bishop}{Bishop} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em textures} & is textures container \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_bishop_a34198773cbac97c055a01ea485cfba61}\index{Bishop@{Bishop}!Bishop@{Bishop}}
+\index{Bishop@{Bishop}!Bishop@{Bishop}}
+\doxysubsubsection{\texorpdfstring{Bishop()}{Bishop()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_bishop_a34198773cbac97c055a01ea485cfba61} 
+Bishop\+::\+Bishop (\begin{DoxyParamCaption}\item[{Color}]{n\+Color}{, }\item[{sf\+::\+Vector2f}]{Position}{, }\item[{unsigned(\&)}]{new\+\_\+chess\+\_\+board}{\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_bishop}{Bishop} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Color} & is color of figure \\
+\hline
+{\em Position} & is position of this figure \\
+\hline
+{\em new\+\_\+chess\+\_\+board} & is new chessboard desk \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_bishop_a5848394dea1971317e05bd69796d10e0}\index{Bishop@{Bishop}!all\_move@{all\_move}}
+\index{all\_move@{all\_move}!Bishop@{Bishop}}
+\doxysubsubsection{\texorpdfstring{all\_move()}{all\_move()}}
+{\footnotesize\ttfamily \label{class_bishop_a5848394dea1971317e05bd69796d10e0} 
+std\+::vector$<$ sf\+::\+Vector2f $>$ \& Bishop\+::all\+\_\+move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that returns all \doxylink{class_bishop}{Bishop} moves. 
+
+\begin{DoxyReturn}{Returns}
+all \doxylink{class_bishop}{Bishop} moves 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_bishop_a91ee867a76addc02e884173c4a45963d}\index{Bishop@{Bishop}!drawCurrent@{drawCurrent}}
+\index{drawCurrent@{drawCurrent}!Bishop@{Bishop}}
+\doxysubsubsection{\texorpdfstring{drawCurrent()}{drawCurrent()}}
+{\footnotesize\ttfamily \label{class_bishop_a91ee867a76addc02e884173c4a45963d} 
+void Bishop\+::draw\+Current (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target}{, }\item[{sf\+::\+Render\+States}]{states}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that draw \doxylink{class_bishop}{Bishop}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & show where output it \\
+\hline
+{\em states} & is SFML special value \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+\Hypertarget{class_bishop_a4c344f62ea5533ed3441a167130b0000}\index{Bishop@{Bishop}!getColor@{getColor}}
+\index{getColor@{getColor}!Bishop@{Bishop}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{class_bishop_a4c344f62ea5533ed3441a167130b0000} 
+unsigned Bishop\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_bishop}{Bishop} Color getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_bishop_a5a4df8533edbd3b41cca61ad9e39597b}\index{Bishop@{Bishop}!getType@{getType}}
+\index{getType@{getType}!Bishop@{Bishop}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_bishop_a5a4df8533edbd3b41cca61ad9e39597b} 
+Type Bishop\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_bishop}{Bishop} Type getter. 
+
+\begin{DoxyReturn}{Returns}
+Type of this \doxylink{class_figure}{Figure} 
+\end{DoxyReturn}
+\Hypertarget{class_bishop_a5bf65be55993d6291696d964984603b4}\index{Bishop@{Bishop}!set\_Bishop\_type@{set\_Bishop\_type}}
+\index{set\_Bishop\_type@{set\_Bishop\_type}!Bishop@{Bishop}}
+\doxysubsubsection{\texorpdfstring{set\_Bishop\_type()}{set\_Bishop\_type()}}
+{\footnotesize\ttfamily \label{class_bishop_a5bf65be55993d6291696d964984603b4} 
+void Bishop\+::set\+\_\+\+Bishop\+\_\+type (\begin{DoxyParamCaption}\item[{Type}]{newtype}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_bishop}{Bishop} Type setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Type} & of this \doxylink{class_figure}{Figure} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_bishop_a977469b84746ddfac75a518ce1c89e0c}\index{Bishop@{Bishop}!update\_move@{update\_move}}
+\index{update\_move@{update\_move}!Bishop@{Bishop}}
+\doxysubsubsection{\texorpdfstring{update\_move()}{update\_move()}}
+{\footnotesize\ttfamily \label{class_bishop_a977469b84746ddfac75a518ce1c89e0c} 
+void Bishop\+::update\+\_\+move (\begin{DoxyParamCaption}\item[{float}]{screensize}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Func that update \doxylink{class_bishop}{Bishop} moves. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screensize} & is value of screen pixels \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_figure}{Figure}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Include/\+My\+\_\+lib/Bishop.\+hpp\end{DoxyCompactItemize}
