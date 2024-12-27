@@ -369,20 +369,6 @@ void Kdtree::DeleteNode(std::shared_ptr <kdNode> fptr) {
     
 }
 
-void Kdtree::ChangeNode(std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete) {
-    if (fptr == nullptr) {
-        throw std::runtime_error("ChangeNode Error: pointer = nullptr");
-    }
-    fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
-    DeleteNode(fptr); 
-    std::cout << "nice" << std::endl;
-    if (is_delete == 1) {
-        DeleteNode(New_position.x, New_position.y);
-    }
-    fptr->getthis()->setPosition(New_position.x, New_position.y);
-    AddNode(fptr);
-}
-
 void putTree(sf::RenderTarget& target, std::shared_ptr <kdNode> ptr, int level)
 {
     int i = level;

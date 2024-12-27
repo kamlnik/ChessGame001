@@ -1,3 +1,8 @@
+/*********************************************************************
+ * @file  Game.cpp
+ *
+ * @brief Contains a start Game.
+ *********************************************************************/
 #ifndef MY_LIB_GAME_HPP 
 #define MY_LIB_GAME_HPP
 
@@ -14,17 +19,25 @@
 class Game : private sf::NonCopyable
 {
 public:
+	/**
+	* @brief Game Initialize.
+	*/
 	Game();
+	/**
+	* @brief Func that run Game.
+	*/
 	void run();
 
-private:;
-	static const sf::Time	TimePerFrame;
+private:
+	/**
+	* @brief Render Window.
+	*/
 	sf::RenderWindow mWindow;
+	/**
+	* @brief World element.
+	*/
 	World mWorld;
-	//sf::Font mFont;
-	sf::Text mStatisticsText;
-	sf::Time mStatisticsUpdateTime;
-	std::size_t	mStatisticsNumFrames;
+
 };
 
 #endif
