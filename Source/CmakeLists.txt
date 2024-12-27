@@ -1,26 +1,66 @@
 cmake_minimum_required(VERSION 3.8)
-# Добавьте источник в исполняемый файл этого проекта.
-#add_executable (Source "Main.cpp" "Game.cpp" "SceneNode.cpp" "Figure.cpp" "Entity.cpp" "SpriteNode.cpp" "World.cpp" "Pawn.cpp")
-add_executable (Source "Main.cpp" "Game.cpp"  "Figure.cpp" "Pawn.cpp" "Kdtree.cpp" "World.cpp"  "King.cpp" "Queen.cpp" "Rook.cpp" "Bishop.cpp" "Knight.cpp")
-#add_subdirectory("Resource")
-#find_package(Threads REQUIRED)
-#link_libraries(Threads::Threads)
 
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-window.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-network.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-system.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-audio.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics-d.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-window-d.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-network-d.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-system-d.lib)
-target_link_libraries(Source ${CMAKE_SOURCE_DIR}/SFML_library/sfml-audio-d.lib)
-#target_link_libraries(ChessGame "Resource")
+set(SOURCE_EXE "Main.cpp")
 
+
+set(SOURCE_LIB "Game.cpp"  "Figure.cpp" "Pawn.cpp" "Kdtree.cpp" "World.cpp"  "King.cpp" "Queen.cpp" "Rook.cpp" "Bishop.cpp" "Knight.cpp")
+
+
+add_library("My_classes" STATIC ${SOURCE_LIB})
+
+
+add_executable("Source" ${SOURCE_EXE})
+
+
+target_link_libraries(
+	"Source" PRIVATE "My_classes" 
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-window.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-network.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-system.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-audio.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics-d.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-window-d.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-network-d.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-system-d.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-audio-d.lib
+)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 
 set_property(TARGET Source PROPERTY CXX_STANDARD 17)
 set_property(TARGET Source PROPERTY CXX_STANDARD_REQUIRED ON)
+
+enable_testing()
+
+
+Include(FetchContent)
+
+FetchContent_Declare(
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.4.0 # or a later release
+)
+
+FetchContent_MakeAvailable(Catch2)
+
+
+add_executable("tests" Tests.cpp)
+
+
+target_link_libraries(
+	"tests" PRIVATE "My_classes" 
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-window.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-network.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-system.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-audio.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-graphics-d.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-window-d.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-network-d.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-system-d.lib
+	${CMAKE_SOURCE_DIR}/SFML_library/sfml-audio-d.lib
+	Catch2::Catch2 
+	Catch2::Catch2WithMain
+)

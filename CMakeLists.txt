@@ -3,6 +3,7 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
+
 # Включение горячей перезагрузки для компиляторов MSVC, если поддерживается.
 
 project ("ChessGame")
