@@ -240,9 +240,10 @@ public:
     *
     * @param ptr id pointer to this kdNode
     * @param chessboard is chessboard
+    * // need to update discription 
     * @return 0 if mate else 1
     */
-    unsigned IS_MATE(float Screensize, unsigned(chessboard)[8][8]);
+    unsigned IS_MATE(float Screensize, unsigned(chessboard)[8][8], bool whoose_move);
     /**
     * @brief Func that help check mate with threads.
     *

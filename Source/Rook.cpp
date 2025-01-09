@@ -13,12 +13,12 @@ Textures::ID RookTextureID(unsigned t)
 	}
 }
 
-Rook::Rook(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) :Figure(Type::Rook, ncolor), rook_all_move(), chess_board(new_chess_board), mSprite(textures.get(RookTextureID(ncolor))) {}
+Rook::Rook(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) :Figure(Type::Rook, ncolor), rook_all_move(), chess_board(new_chess_board), mSprite(textures.get(RookTextureID(ncolor))), first_move(1) {}
 
 void Rook::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(mSprite, states);// вывод king
 }
-Rook::Rook(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]) :Figure(Figure::Rook, nColor), chess_board(new_chess_board), mSprite(), rook_all_move() {
+Rook::Rook(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]) :Figure(Figure::Rook, nColor), chess_board(new_chess_board), mSprite(), rook_all_move(), first_move(1) {
 	this->setPosition(Position);
 }
 

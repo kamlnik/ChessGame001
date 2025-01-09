@@ -342,7 +342,32 @@ void World::World_processEvents() {
 							
 							unsigned status = 0;
 							if (t == 0) {
-								status = Chesstree.IS_MATE(Screen_width, Chess_board_for_figures);
+								if (moved_element.front()->getthis()->getType() == Figure::Pawn) {
+									if (moved_element.front()->getthis()->getColor() == 1 && new_index_correct_position(moved_element.front()->getthis()->getPosition().y, Screen_width) == 0) {
+										//удаление пешки и добавление пешки 
+										Chesstree.DeleteNode(moved_element.front());
+										std::unique_ptr<Queen> wQueen(new Queen(Figure::white, mTextures, Chess_board_for_figures));
+										wQueen.get()->setOrigin(40.f, 40.f);
+										wQueen.get()->scale(Scale_value, Scale_value);
+										wQueen.get()->getTransform();
+										wQueen->setPosition(moved_element.front()->getthis()->getPosition());
+										std::shared_ptr <kdNode> node_for_wQueen(new kdNode(std::move(wQueen)));
+										Chesstree.AddNode(node_for_wQueen);
+										Chesstree.update(Screen_width, Chess_board_for_figures);
+									}
+									else if (moved_element.front()->getthis()->getColor() == 0 && new_index_correct_position(moved_element.front()->getthis()->getPosition().y, Screen_width) == 7) {
+										Chesstree.DeleteNode(moved_element.front());
+										std::unique_ptr<Queen> bQueen(new Queen(Figure::black, mTextures, Chess_board_for_figures));
+										bQueen.get()->setOrigin(40.f, 40.f);
+										bQueen.get()->scale(Scale_value, Scale_value);
+										bQueen.get()->getTransform();
+										bQueen->setPosition(moved_element.front()->getthis()->getPosition());
+										std::shared_ptr <kdNode> node_for_bQueen(new kdNode(std::move(bQueen)));
+										Chesstree.AddNode(node_for_bQueen);
+										Chesstree.update(Screen_width, Chess_board_for_figures);
+									}
+								}
+								status = Chesstree.IS_MATE(Screen_width, Chess_board_for_figures, Whoose_move);
 								if (status == 1) {
 									if (moved_element.front()->getthis()->getColor() == 1) {
 										std::cout << "______ Mate to black ______" << std::endl;
@@ -351,9 +376,9 @@ void World::World_processEvents() {
 									std::cout << "______ Mate to white ______" << std::endl;
 									}
 								}
-						/*	else if (status == 2) {
-								std::cout << "____________PAT_____________" << std::endl;
-							}*/
+								else if (status == 2) {
+									std::cout << "____________PAT____________" << std::endl;
+								}
 								else if (WKing->get_is_under_attack() == 1){
 									std::cout << "______ Check to white ______" << std::endl;
 								}
@@ -370,6 +395,7 @@ void World::World_processEvents() {
 								else {
 									Whoose_move = 1;
 								}
+								
 							}
 							
 						}
@@ -377,7 +403,7 @@ void World::World_processEvents() {
 							moved_element.front()->getthis()->setPosition(Previos_Position);
 						}
 						//func_print_desk(Chess_board_for_figures);
-						//putTree(Chesstree.getroot(), 0 );
+						//putTree(Chesstree.getroot(), 0);
 						Previos_Position = sf::Vector2f(0.f, 0.f);
 						moved_element.clear();
 					}

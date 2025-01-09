@@ -25,6 +25,7 @@ kdNode::kdNode(const kdNode& need_to_copy, unsigned(&chessboard)[8][8]) {
    }else
    if (need_to_copy.ptr->getType() == Figure::King) {
        std::shared_ptr<King> newptr(new King(need_to_copy.ptr->getColor(), need_to_copy.ptr->getPosition(), chessboard));
+      // newptr->set_is_first_move();
        this->ptr = newptr;
    }else
    if (need_to_copy.ptr->getType() == Figure::Knight) {
@@ -458,25 +459,151 @@ void Kdtree::update(float Screen_size , unsigned(&chessboard)[8][8]) {
 }
 
 bool Kdtree::can_make_this_move(std::shared_ptr<Figure> Wking, std::shared_ptr<Figure> Bking, std::shared_ptr<kdNode> fptr, sf::Vector2f Previos_position, sf::Vector2f New_position, unsigned is_delete, float Screensize, unsigned(&chessboard)[8][8]) {
-    if (fptr == nullptr) {
-        throw std::runtime_error("ChangeNode Error: pointer = nullptr");
-    }
-    if (fptr->getthis() == nullptr) {
-        throw std::runtime_error("ChangeNode Error: pointer to figure = nullptr");
-    }
     fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
     DeleteNode(fptr);
+    unsigned Nx = index_correct_position(New_position.x, Screensize);
+    unsigned Ny = index_correct_position(New_position.y, Screensize);
+    unsigned Px = index_correct_position(Previos_position.x, Screensize);
+    unsigned Py = index_correct_position(Previos_position.y, Screensize);
     std::shared_ptr<kdNode> deleted_element = nullptr;
     if (is_delete == 1) {
         deleted_element = FindNode(New_position.x, New_position.y);
         DeleteNode(New_position.x, New_position.y);
     }
+    if (fptr->getthis()->getColor() == 1 && fptr->getthis()->getType() == Figure::King && Nx == 6 && Ny == 7 && fptr->getthis()->is_first_move() == 1) {
+        std::shared_ptr<kdNode> Rook = nullptr;
+        Rook = FindNode(750, 750);
+        if (Rook != nullptr && Rook->getthis()->is_first_move() == 1) {
+            DeleteNode(Rook);
+            Rook->getthis()->setPosition(New_position.x - 100, New_position.y);
+            AddNode(Rook);
+            fptr->getthis()->setPosition(New_position.x, New_position.y);
+            AddNode(fptr);
+            chessboard[7][7] = 0;
+            chessboard[7][5] = 2;
+            chessboard[Py][Px] = 0;
+            chessboard[Ny][Nx] = 2;
+            update(Screensize, chessboard);
+            if (Wking->get_is_under_attack() == 1) {
+                DeleteNode(fptr);
+                fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
+                AddNode(fptr);
+                chessboard[Ny][Nx] = 0;
+                chessboard[7][7] = 2;
+                chessboard[7][5] = 0;
+                chessboard[Py][Px] = fptr->getthis()->getColor() + 1;
+                DeleteNode(Rook);
+                Rook->getthis()->setPosition(750, 750);
+                AddNode(Rook);
+                update(Screensize, chessboard);
+                return 1;
+            }
+            fptr->getthis()->set_is_first_move();
+            Rook->getthis()->set_is_first_move();
+            return 0;
+        }
+    }
+    else if(fptr->getthis()->getColor() == 1 && fptr->getthis()->getType() == Figure::King && Nx == 2 && Ny == 7 && fptr->getthis()->is_first_move() == 1){
+        std::shared_ptr<kdNode> Rook = nullptr;
+        Rook = FindNode(50, 750);
+        if (Rook != nullptr && Rook->getthis()->is_first_move() == 1) {
+            DeleteNode(Rook);
+            Rook->getthis()->setPosition(New_position.x + 100, New_position.y);
+            AddNode(Rook);
+            fptr->getthis()->setPosition(New_position.x, New_position.y);
+            AddNode(fptr);
+            chessboard[7][0] = 0;
+            chessboard[7][3] = 2;
+            chessboard[Py][Px] = 0;
+            chessboard[Ny][Nx] = 2;
+            update(Screensize, chessboard);
+            if (Wking->get_is_under_attack() == 1) {
+                DeleteNode(fptr);
+                fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
+                AddNode(fptr);
+                chessboard[Ny][Nx] = 0;
+                chessboard[7][0] = 2;
+                chessboard[7][3] = 0;
+                chessboard[Py][Px] = fptr->getthis()->getColor() + 1;
+                DeleteNode(Rook);
+                Rook->getthis()->setPosition(50, 750);
+                AddNode(Rook);
+                update(Screensize, chessboard);
+                return 1;
+            }
+            fptr->getthis()->set_is_first_move();
+            Rook->getthis()->set_is_first_move();
+            return 0;
+        }
+    }
+    else if (fptr->getthis()->getColor() == 0 && fptr->getthis()->getType() == Figure::King && Nx == 1 && Ny == 0 && fptr->getthis()->is_first_move() == 1) {
+        std::shared_ptr<kdNode> Rook = nullptr;
+        Rook = FindNode(50, 50);
+        if (Rook != nullptr && Rook->getthis()->is_first_move() == 1) {
+            DeleteNode(Rook);
+            Rook->getthis()->setPosition(New_position.x + 100, New_position.y);
+            AddNode(Rook);
+            fptr->getthis()->setPosition(New_position.x, New_position.y);
+            AddNode(fptr);
+            chessboard[0][0] = 0;
+            chessboard[0][2] = 1;
+            chessboard[Py][Px] = 0;
+            chessboard[Ny][Nx] = 1;
+            update(Screensize, chessboard);
+            if (Wking->get_is_under_attack() == 1) {
+                DeleteNode(fptr);
+                fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
+                AddNode(fptr);
+                chessboard[Ny][Nx] = 0;
+                chessboard[0][0] = 1;
+                chessboard[0][2] = 0;
+                chessboard[Py][Px] = fptr->getthis()->getColor() + 1;
+                DeleteNode(Rook);
+                Rook->getthis()->setPosition(50, 50);
+                AddNode(Rook);
+                update(Screensize, chessboard);
+                return 1;
+            }
+            fptr->getthis()->set_is_first_move();
+            Rook->getthis()->set_is_first_move();
+            return 0;
+        }
+    }
+    else if (fptr->getthis()->getColor() == 0 && fptr->getthis()->getType() == Figure::King && Nx == 5 && Ny == 0 && fptr->getthis()->is_first_move() == 1) {
+        std::shared_ptr<kdNode> Rook = nullptr;
+        Rook = FindNode(750, 50);
+        if (Rook != nullptr && Rook->getthis()->is_first_move() == 1) {
+            DeleteNode(Rook);
+            Rook->getthis()->setPosition(New_position.x - 100, New_position.y);
+            AddNode(Rook);
+            fptr->getthis()->setPosition(New_position.x, New_position.y);
+            AddNode(fptr);
+            chessboard[0][7] = 0;
+            chessboard[0][4] = 1;
+            chessboard[Py][Px] = 0;
+            chessboard[Ny][Nx] = 1;
+            update(Screensize, chessboard);
+            if (Wking->get_is_under_attack() == 1) {
+                DeleteNode(fptr);
+                fptr->getthis()->setPosition(Previos_position.x, Previos_position.y);
+                AddNode(fptr);
+                chessboard[Ny][Nx] = 0;
+                chessboard[0][7] = 1;
+                chessboard[0][4] = 0;
+                chessboard[Py][Px] = fptr->getthis()->getColor() + 1;
+                DeleteNode(Rook);
+                Rook->getthis()->setPosition(750, 50);
+                AddNode(Rook);
+                update(Screensize, chessboard);
+                return 1;
+            }
+            fptr->getthis()->set_is_first_move();
+            Rook->getthis()->set_is_first_move();
+            return 0;
+        }
+    }
     fptr->getthis()->setPosition(New_position.x, New_position.y);
     AddNode(fptr);
-    unsigned Nx = index_correct_position(New_position.x, Screensize);
-    unsigned Ny = index_correct_position(New_position.y, Screensize);
-    unsigned Px = index_correct_position(Previos_position.x, Screensize);
-    unsigned Py = index_correct_position(Previos_position.y, Screensize);
     chessboard[Py][Px] = 0;
     chessboard[Ny][Nx] = (fptr->getthis()->getColor()) + 1;
     unsigned t = fptr->getthis()->getColor();
@@ -494,7 +621,9 @@ bool Kdtree::can_make_this_move(std::shared_ptr<Figure> Wking, std::shared_ptr<F
         update(Screensize, chessboard);
         return 1;
     }
-
+    if (fptr->getthis()->getType() == Figure::King || fptr->getthis()->getType() == Figure::Rook) { // позволяет контролировать первый ход ладьи и короля 
+        fptr->getthis()->set_is_first_move();
+    }
     return 0;
 }
 
@@ -624,18 +753,23 @@ bool Kdtree::func_check_mate( bool whoose_move, float Screensize, unsigned(chess
     return 0;
 }
 
-unsigned Kdtree::IS_MATE(float Screensize, unsigned(chessboard)[8][8]) {
+unsigned Kdtree::IS_MATE(float Screensize, unsigned(chessboard)[8][8], bool whoose_move) {
     std::shared_ptr<Figure> Wking;
     std::shared_ptr<Figure> Bking;
     func_find_king(&Wking, &Bking, root);
-    if (Wking->get_is_under_attack() == 1) {
-        if (func_check_mate(1, Screensize, chessboard) == 0) {
+    if (Wking->get_is_under_attack() == 1 && whoose_move == 1) {
+        if (func_check_mate(whoose_move, Screensize, chessboard) == 0) {
             return 1;
         }
     }
-    else if (Bking->get_is_under_attack() == 1) {
-        if (func_check_mate(0, Screensize, chessboard) == 0) {
+    else if (Bking->get_is_under_attack() == 1 && whoose_move == 0) {
+        if (func_check_mate(whoose_move, Screensize, chessboard) == 0) {
             return 1;
+        }
+    }
+    else {
+        if ( (func_check_mate(1, Screensize, chessboard) == 0 && whoose_move == 0) || (func_check_mate(0, Screensize, chessboard) == 0) && whoose_move == 1) {
+            return 2;
         }
     }
     return 0;

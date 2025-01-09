@@ -27,6 +27,8 @@ public:
     unsigned getType() { return mType;  }
     void set_is_under_attack(unsigned t) { is_under_attack = t; }
     bool get_is_under_attack() { return is_under_attack; }
+    virtual bool is_first_move() { return 0; }
+    virtual void set_is_first_move() { return; }
     Figure(const Figure& need_to_copy);
 
 private:

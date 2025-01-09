@@ -12,13 +12,16 @@ Textures::ID KingTextureID(unsigned t)
 		return Textures::wKing;
 	}
 }
-King::King(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) :Figure(Type::King, ncolor), king_all_move(), chess_board(new_chess_board), mSprite(textures.get(KingTextureID(ncolor))) {}
+King::King(Color ncolor, const TextureHolder& textures, unsigned(&new_chess_board)[8][8]) :Figure(Type::King, ncolor), king_all_move(), chess_board(new_chess_board), mSprite(textures.get(KingTextureID(ncolor))), first_move(1) {}
 
 void King::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(mSprite, states);// вывод king
 }
-King::King(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]) : Figure(Figure::King, nColor), chess_board(new_chess_board), mSprite(), king_all_move() {
+King::King(Color nColor, sf::Vector2f Position, unsigned(&new_chess_board)[8][8]) : Figure(Figure::King, nColor), chess_board(new_chess_board), mSprite(), king_all_move(), first_move(1) {
 	this->setPosition(Position);
+}
+bool King::is_first_move() {
+	return first_move;
 }
 
 
@@ -34,6 +37,73 @@ unsigned mindex_correct_position_for_king(float position, float Screen_size) {
 
 }
 
+bool left_white_castling(unsigned(&chess_board)[8][8], unsigned x, unsigned y) {
+	if (x != 4 || y != 7) {
+		return 0;
+	}
+	for (int xl = x - 1; xl > 0; xl--) {
+		if (chess_board[y][xl] != 0) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+bool right_white_castling(unsigned(&chess_board)[8][8], unsigned x, unsigned y) {
+	if (x != 4 || y != 7) {
+		return 0;
+	}
+	for (int xl = x + 1; xl < 7; xl++) {
+		if (chess_board[y][xl] != 0) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+bool left_black_castling(unsigned(&chess_board)[8][8], unsigned x, unsigned y) {
+	if (x != 3 || y != 0) {
+		return 0;
+	}
+	for (int xl = x - 1; xl > 0; xl--) {
+		if (chess_board[y][xl] != 0) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+bool right_black_castling(unsigned(&chess_board)[8][8], unsigned x, unsigned y) {
+	if (x != 3 || y != 0) {
+		return 0;
+	}
+	for (int xl = x + 1; xl < 7; xl++) {
+		if (chess_board[y][xl] != 0) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+void castling(unsigned fcolor, unsigned(&chess_board)[8][8], std::vector<sf::Vector2f>& king_all_move, float Screen_size, unsigned x, unsigned y) {
+	float xl = (Screen_size / 8);
+	if (fcolor == 1) {
+		if (left_white_castling(chess_board, x, y) == 1) {
+			king_all_move.push_back(sf::Vector2f((x - 2) * xl + (xl / 2), (y) * xl + (xl / 2)));
+		}
+		if (right_white_castling(chess_board, x, y) == 1) {
+			king_all_move.push_back(sf::Vector2f((x + 2) * xl + (xl / 2), (y) * xl + (xl / 2)));
+		}
+	}
+	else {
+		if (left_black_castling(chess_board, x, y) == 1) {
+			king_all_move.push_back(sf::Vector2f((x - 2) * xl + (xl / 2), (y)*xl + (xl / 2)));
+		}
+		if (right_black_castling(chess_board, x, y) == 1) {
+			king_all_move.push_back(sf::Vector2f((x + 2) * xl + (xl / 2), (y)*xl + (xl / 2)));
+		}
+	}
+}
 
 void King::update_move(float Screen_size) {
 	unsigned x = mindex_correct_position_for_king(this->getPosition().x, Screen_size);
@@ -201,5 +271,9 @@ void King::update_move(float Screen_size) {
 				king_all_move.push_back(sf::Vector2f((x - 1) * xl + (xl / 2), (y + 1) * xl + (xl / 2)));
 			}
 		}
+	}
+	if (first_move == 1 && (chess_board[y][x] == 2 || chess_board[y][x] == 1)) {
+		//std::cout << "daun" << std::endl;
+		castling(fcolor, chess_board, king_all_move, Screen_size, x, y);
 	}
 }

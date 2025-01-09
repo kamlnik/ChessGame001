@@ -65,6 +65,8 @@ public:
     *
     * @param screensize is value of screen pixels
     */
+    bool is_first_move() override;
+    void set_is_first_move() override { first_move = 0; }
     void update_move(float screensize) override;
 
 public:
@@ -80,5 +82,6 @@ public:
     * @brief King sprite.
     */
     sf::Sprite mSprite; 
+    bool first_move;
 };
 #endif
